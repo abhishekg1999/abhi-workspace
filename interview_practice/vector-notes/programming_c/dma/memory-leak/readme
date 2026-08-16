@@ -1,0 +1,9 @@
+##1 check with mtrace
+cc -g leak-momory.c -o mem #compile with debug option
+MALLOC_TRACE=./memtrace.log LD_PRELOAD=/lib/x86_64-linux-gnu/libc_malloc_debug.so ./mem  #run the program
+mtrace memtrace.log  # check memory leak  
+
+##2 check with valgrid
+
+cc -g leak-momory.c -o mem
+valgrind --leak-check=full ./mem 

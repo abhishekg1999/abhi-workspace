@@ -1,0 +1,8 @@
+semaphore already have predefined structure :
+
+struct sembuf
+{
+	unsigned short sem_num; //semaphore number
+	short sem_op;	//operation to be performed
+	short sem_flg;		//operation flags
+};

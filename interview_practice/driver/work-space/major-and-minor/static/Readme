@@ -1,0 +1,29 @@
+## test the driver 
+
+1) compile the driver 
+2) Load the driver using sudo insmod
+3) Check the major number using cat /proc/devices | grep "my_device"
+4) Unload the driver using sudo rmmod
+
+             insmod
+               │
+               ▼
+        module_init()
+               │
+               ▼
+          static_init()
+               │
+               ▼
+       Setup driver/resources
+
+
+             rmmod
+               │
+               ▼
+        module_exit()
+               │
+               ▼
+          static_exit()
+               │
+               ▼
+       Cleanup resources

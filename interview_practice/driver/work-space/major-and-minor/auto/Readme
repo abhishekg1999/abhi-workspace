@@ -1,0 +1,11 @@
+## test the driver 
+
+1) compile the driver 
+2) Load the driver using sudo insmod
+3) Check the major number using cat /proc/devices | grep "auto_device"
+4) Unload the driver using sudo rmmod
+
+## kernel API
+dev_t dev=0;
+int ret = alloc_chrdev_region(&dev, 0, 1, "my_device");  #Dynamically allocates a device number (major + minor) for the character device
+unregister_chrdev_region(dev,1);			 #Frees the device number allocated by alloc_chrdev_region()

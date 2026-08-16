@@ -1,0 +1,6 @@
+## varify driver
+
+1) compile the driver and insert using insmod
+2) check read operation using $sudo cat /dev/my_device
+3) check write operation using $sudo echo 1 > /dev/my_device
+4) remove module using rmmod  

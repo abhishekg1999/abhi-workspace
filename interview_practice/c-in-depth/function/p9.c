@@ -1,0 +1,15 @@
+#include <stdio.h>
+int max(int a,int b)
+{
+  return a>b? a:b; //correct 
+  //a>b?return a:return b;//incorrect 
+ }
+
+int main()
+{
+ 
+  int a=2,b=8,c=3;
+  printf("%d\n",max(a,max(b,c)));
+  return 0;
+  
+}

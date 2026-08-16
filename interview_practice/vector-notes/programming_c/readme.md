@@ -1,0 +1,12 @@
+1.  control-statement
+2.  pointer
+3.  bitwise
+4.  array
+5.  string
+6.  dma
+7.  cmdline
+8.  structure
+9.  union
+10. file
+11. typedef
+12. interview

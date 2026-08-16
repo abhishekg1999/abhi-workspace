@@ -1,0 +1,10 @@
+record lock have it s own structure :
+
+struct flock
+{
+	short l_type;  //lock type: F_RDLCK,F_WRLCK,F_UNLCK
+	short l_whence;	//how to interpret l_start:SEEK_SET,SEEK_CUR,SEEK_END
+	off_t l_start;		//offset where the lock begins
+	off_t l_len;		//no of bytes to lock:0 untils EOF
+	pid_t l_pid;		//Process preventing our lock F_GETLK
+};

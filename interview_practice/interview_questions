@@ -1,0 +1,138 @@
+## what is inline use in function 
+
+The keyword inline is a directive that tells the compiler to replace the function call directly with the function's actual code, right where it is called.
+Instead of jumping to a separate memory location to run the function, the compiler inserts the loop logic directly into your workflow. 
+This eliminates the overhead of a traditional function call.
+
+When you call a normal function, the CPU must perform several steps:
+1) Push the arguments (num and digit) onto the stack.
+2) Jump to the memory address of function.
+3) Execute the function code.
+4) Pop the return value from the stack.
+5) Jump back to where it left off.
+
+When you add inline, the compiler removes steps 1, 2, 4, and 5. It turns your code into this at compile time:
+
+<> Normal Function Call (Separate Frames):
+|--------------------------|
+| main() stack frame       | <-- Paused here
+|--------------------------|
+| mul_func() stack frame   | <-- CPU jumps here, creates new variables,
+|                          |     deletes them, then jumps back.
+|--------------------------|
+
+<> Inline Function (Single Blended Frame):
+
+|--------------------------|
+| main() stack frame       | <-- Execution never leaves this box.
+|   - main variables       |     The inline code runs right here
+|   - inline variables     |     as if you typed it out manually.
+|--------------------------|
+
+## how bellow program executes 
+
+#include <stdio.h>
+
+/* this function is for swaping the bits in number at given position */
+int swap_bits(int num,int p,int q)
+{
+	if((num>>p&1)^(num>>q&1)){ /* compare the bits at p and q position is differ or same if differ then swap otherwise dont swap*/
+		num=num^1<<p;
+		num=num^1<<q;
+	}
+	return num;
+}
+
+/* this function is for printing the bits of given number */
+void printbits(int num)
+{
+	int pos;
+	for(pos=31;pos>=0;pos--)
+		printf("%d",num>>pos&1);
+	printf("\n");
+}
+
+int main()
+{
+
+	int num=31,ret;
+	int p=5,q=6;  /* 5nd and 6th bit  in given number*/
+	printbits(num);
+	ret=swap_bits(num,p,q);
+	printbits(ret);
+	
+}
+
+PHASE -1:
+
+1. Memory Allocation: The stack pointer moves to carve out space for main's local variables: num, ret, p, and q.Value 
+2. Initialization: The values are written into main's frame space.
+
+| main() Stack Frame                |
+|   - num = 31  (0x0000001F)        |
+|   - p   = 5   (0x00000005)        |
+|   - q   = 6   (0x00000006)        |
+|   - ret = [Uninitialized/Garbage] |
++-----------------------------------+ <--- Stack Pointer (SP)
+
+PHASE -2: Calling printbits(num)
+
+1. Passing Arguments: On ARM, the value of num (31) is copied directly into a CPU hardware register (usually R0 or X0) instead of being pushed to the stack to save time.
+2. Saving the Return Address: The address of the next instruction in main (which is ret=swap_bits(...)) is saved into the CPU's Link Register (LR). This tells the CPU where to return when printbits finishes.
+3. Allocation: The CPU jumps to printbits, and a new stack frame is created on top of main. Inside it, a local copy of num and the loop variable pos are allocated.
+4. Execution: execute the logic inside function.
+5. Teardown: after finish function logic. stack frame is popped (the Stack Pointer simply moves back up, marking that memory as free). The CPU reads the Link Register (LR) and jumps back to main.
+
+| main() Stack Frame                |
+|   - num = 31, p = 5, q = 6, ret   |
++-----------------------------------+
+
+| printbits() Stack Frame           |
+|   - num = 31  (Copied from R0)    |
+|   - pos = 31  (Starts at 31)      |
++-----------------------------------+ <--- Stack Pointer (SP)
+
+PHASE -3: Calling swap_bits(num, p, q)
+
+same as PHASE-2
+
+| main() Stack Frame                |
+|   - num = 31, p = 5, q = 6, ret   |
++-----------------------------------+
+
+| swap_bits() Stack Frame           |
+|   - num = 31  (Local copy)        |
+|   - p   = 5   (Local copy)        |
+|   - q   = 6   (Local copy)        |
++-----------------------------------+ <--- Stack Pointer (SP)
+
+PHASE -4:
+
+1. The CPU returns to main().
+2. When main() reaches the end of its block, its own stack frame is destroyed, and control passes back to the PetaLinux operating system environment.
+
+| main() Stack Frame                |
+|   - num = 31                      |
+|   - p   = 5                       |
+|   - q   = 6                       |
+|   - ret = 31                      |
++-----------------------------------+ <--- Stack Pointer (SP)
+
+
+## 
+catching array in function can be treaed as in many ways :
+
+function:
+void print_array(int b[]) {
+
+        for(int i=0;i<ELE;i++)
+           printf("%d ",b[i]);
+}
+
+
+arguments	Actual type inside function
+int b[]		int *b
+int b[1000]	int *b    //1000 will be ignored
+int *b		int *b
+
+note: it is actually a pointer inside the function 

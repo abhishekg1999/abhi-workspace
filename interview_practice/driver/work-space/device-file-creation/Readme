@@ -1,0 +1,47 @@
+## we need to use two functions to create device file automatically
+
+1) 
+## class_create()
+* prototype
+struct class * class_create(struct module *owner, const char *name);
+
+1. owner – pointer to the module that is to “own” this struct class
+2. name – pointer to a string for the name of this class
+
+This will create the struct class for our device driver. It will create a structure under/sys/class/.
+This is used to create a struct class pointer that can be used in calls to device_create().
+Returns struct class pointer on success, or ERR_PTR() on error.
+Note, the pointer created here is to be destroyed when finished by making a call to class_destroy().
+
+2) 
+## device_create()
+* prototype
+struct device *device_create(struct *class, struct device *parent, dev_t dev, void * drvdata, const char *fmt, ...);
+
+1. class – pointer to the struct class that this device shousld be registered to
+2. parent – pointer to the parent struct device of this new device, if any
+3. devt – the dev_t for the char device to be added
+4. drvdata – the data to be added to the device for callbacks
+5. fmt – string for the device’s name
+... – variable arguments
+
+3)
+## class_destroy()
+* prototype
+void class_destroy (	struct class * cls);
+
+destroys a struct class structure
+
+4)
+## device_destroy()
+* prototype
+void device_destroy(struct class * class, dev_t devt);
+
+removes a device that was created with device_create
+
+## varification 
+
+1) compile the driver
+2) insert the kernel module using insmod
+3) varify device file using ls -l /dev/my_device
+4) remove the module using rmmod driver

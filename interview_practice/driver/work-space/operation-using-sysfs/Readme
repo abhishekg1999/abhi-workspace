@@ -1,0 +1,19 @@
+## test the driver using cat and echo
+
+1) first insert the driver and check your sysfs file /sys/kernel/etx_sysfs/etx_value
+
+2) read using cat
+$ sudo cat /sys/kernel/etx_sysfs/etx_value
+
+3) write using echo 
+$ sudo echo 123 > /sys/kernel/etx_sysfs/etx_value
+
+
+## if you get any error like below 
+$ sudo echo 123 > /sys/kernel/etx_sysfs/etx_value 
+bash: /sys/kernel/etx_sysfs/etx_value: Permission denied
+
+solution: change the sysfs file permission
+$ sudo chmod -R 666 /sys/kernel/etx_sysfs/etx_value
+
+## after use remove the driver 

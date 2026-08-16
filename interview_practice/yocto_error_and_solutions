@@ -1,0 +1,1883 @@
+
+
+important links...
+how to make recipe for python module
+https://www.py4u.net/discuss/164526
+
+## difference between cpu and processor 
+https://anydifferencebetween.com/difference-between-processor-and-cpu/
+
+## difference between soc and microcontroller
+https://www.geeksforgeeks.org/difference-between-mcu-and-soc/
+*********************************************************************
+error:
+ERROR: wireless-tools-1_29-r1 do_package: QA Issue: File '/sbin/iwconfig' from wireless-tools was already stripped, this will prevent future debugging! [already-stripped]
+ERROR: wireless-tools-1_29-r1 do_package: Fatal QA errors found, failing task.
+ERROR: Logfile of failure stored in: /home/abhishek/abhi/nb2/nb2-build/sources/build/tmp-glibc/work/riscv64-oe-linux/wireless-tools/1_29-r1/temp/log.do_package.24608
+ERROR: Task (/home/abhishek/abhi/nb2/nb2-build/sources/meta-exaleap/recipes-tools/wireless-tools/wireless-tools_29.bb:do_package) failed with exit code '1'
+
+solution:
+INSANE_SKIP_wireless-tools_append = "already-stripped"
+************************************************************************
+****how to install robotframework from source
+ clone the sources -->https://github.com/robotframework/robotframework.git
+ install using python3-->sudo python3 setup.py install
+ check robot-->robot --version
+
+********native build of sklearn ******************************
+ 1 git clone https://github.com/scikit-learn/scikit-learn.git
+ install dependencies 
+   apt-get install python3.8
+   apt-get install python3-pip
+   pip3 install cython
+   pip3 install scipy
+   pip3 install numpy
+   pip3 install joblib
+   pip3 install threadpoolctl
+
+ errors if got for openmp && libgomp
+ apt-get install openmp*
+ apt-get install libgomp*
+
+ 2 python3 setup.py install
+ 3 python3
+   >>>import sklearn
+**********************************************************
+how to change python3 running version:
+1 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+2 sudo update-alternatives --install /usr/bin/python3 python3 //bin/python3.8 2
+3 use the below command to set python3.8 as running python3
+
+sudo update-alternatives  --set python /usr/bin/python3.6
+
+**********************************************************
+
+error in bitbake starting
+ERROR: The following required tools (as specified by HOSTTOOLS) appear to be unavailable in PATH, please install them in order to proceed:
+ lz4c pzstd zstd
+usr
+solution : sudo apt install liblz4-tool
+           sudo apt-get install zstd
+           sudo apt-get install zstdZ
+**************************************************************
+
+2.
+
+error::
+NOTE: Executing Tasks
+WARNING: sklearn-0.24.2-r0 do_fetch: Checksum mismatch for local file /home/abhishek/exaleap/sources/fu540-build/downloads/sklearn_0.24.2.tar.gz
+Cleaning and trying again.
+WARNING: sklearn-0.24.2-r0 do_fetch: Renaming /home/abhishek/exaleap/sources/fu540-build/downloads/sklearn_0.24.2.tar.gz to /home/abhishek/exaleap/sources/fu540-build/downloads/sklearn_0.24.2.tar.gz_bad-checksum_e74f28d0cac8035dde55b1a55cd100a1a5ef24f3097a2cbccf0ebab02f09f690
+ERROR: sklearn-0.24.2-r0 do_install: Execution of '/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/temp/run.do_install.10035' failed with exit code 1:
+cp: cannot stat '/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/easy-install.pth': No such file or directory
+WARNING: exit code 1 from a shell command.
+
+ERROR: Logfile of failure stored in: /home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/temp/log.do_install.10035
+ild/tmp-glaÑk
+
+solution: we need to check 
+  s = "${WORKDIR}/sklearn"  sklearn we need to add because source will come into that dirctory after tar or fatch
+ /tmp-glibc/work/riscv_**/sklearn/0.24.2-r0/
+
+******************************************************************
+
+3.
+
+error
+
+WARNING: sklearn-0.24.2-r0 do_fetch: Failed to fetch URL ftp:///10.168.1.35:21/sklearn_0.24.2.tar.gz, attempting MIRRORS if available
+ERROR: sklearn-0.24.2-r0 do_fetch: Fetcher failure: Fetch command export PSEUDO_DISABLED=1; export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/1001/bus"; export SSH_AGENT_PID="6772"; export SSH_AUTH_SOCK="/run/user/1001/keyring/ssh"; export PATH="/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/sysroots-uninative/x86_64-linux/usr/bin:/home/abhishek/exaleap/sources/openembedded-core/scripts:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot-native/usr/bin/riscv64-oe-linux:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot/usr/bin/crossscripts:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot-native/usr/sbin:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot-native/usr/bin:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot-native/sbin:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/sklearn/0.24.2-r0/recipe-sysroot-native/bin:/home/abhishek/exaleap/sources/bitbake/bin:/home/abhishek/exaleap/sources/fu540-build/tmp-glibc/hosttools"; export HOME="/home/abhishek"; /usr/bin/env wget -t 2 -T 30 --passive-ftp --no-check-certificate -P /home/abhishek/exaleap/sources/fu540-build/downloads 'ftp:///10.168.1.35:21/sklearn_0.24.2.tar.gz' --progress=dot -v failed with exit code 1, output:
+ftp:///10.168.1.35:21/sklearn_0.24.2.tar.gz: Invalid host name.
+
+Ede 1, out¡Âk
+
+solution:
+
+we need to chekc which server we set in /conf/auto.conf
+
+like -->SOURCE_MIRROR_URL ?= "ftp://10.168.1.35:21"
+**********************************************************************
+4.
+
+error:
+
+root@exaleapsemi-3:~# dpkg -i pip-sklearn*
+dpkg: error: dpkg frontend lock was locked by another process with pid 7391
+Note: removing the lock file is always wrong, and can end up damaging the
+locked area and the entire system. See <https://wiki.debian.org/Teams/Dpkg/FAQ>.
+
+
+solution:
+
+root@exaleapsemi-3:~# kill -9 7415
+root@exaleapsemi-3:~# rm /var/lib/dpkg/lock
+root@exaleapsemi-3:~# dpkg --configure -a
+************************************************************************
+
+5.
+
+error:
+
+/var/lib/dpkg/info/libglib-2.0-0.postrm: line 13: /usr/libexec/gio-querymodules: No such file or directory
+dpkg: error processing package libglib-2.0-0 (--remove):
+ installed libglib-2.0-0 package post-removal script subprocess returned error exit status 127
+Errors were encountered while processing:
+ libglib-2.0-0
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+solution:
+
+root@exaleapsemi-3:~/abhi/scikit-learn# rm -rf /var/lib/dpkg/info/libglib-2.0-0.postrm           
+root@exaleapsemi-3:~/abhi/scikit-learn# apt-get install python3-numpy
+
+*******************************************************************************
+6.
+
+error
+
+root@exaleapsemi-3:~# apt-get install python3-pip  
+E: Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?
+
+
+solution : some other guy installing package u have to wait untill it is finished
+
+*********************************************************************************
+
+how to clone repo sources
+
+mkdir ~/bin
+PATH=~/bin:$PATH 
+curl https://storage.googleapis.com/git-repo-downloads/repo-1 > ~/bin/repo
+chmod a+x ~/bin/repo
+repo init -uhttp://gituser:passw123@10.168.1.15/exaleap-yocto/fu740/meta-exaleap.git -b master -m tools/manifests/riscv-yocto.xml --no-clone-bundle
+
+repo init -u http://username:password@10.168.1.15/exaleap-yocto/fu540/meta-exaleap.git -b master -m tools/manifests/riscv-yocto.xml --no-clone-bundle repo sync 
+
+**********************************************************************************
+
+***********how to build u740************
+
+source meta-exaleap/setup.sh -m exaleapsemi-u740 exaleap
+
+################################################################################
+
+7 .
+
+error:
+
+ERROR: Nothing PROVIDES 'core-image-base'
+core-image-base was skipped: 'packagegroup-gnome-apps' in IMAGE_FEATURES (added via EXTRA_IMAGE_FEATURES) is not a valid image feature. Valid features: allow-empty-password allow-root-login bash-completion-pkgs dbg-pkgs debug-tweaks dev-pkgs doc doc-pkgs eclipse-debug empty-root-password hwcodecs nfs-client nfs-server package-management post-install-logging ptest-pkgs read-only-rootfs splash src-pkgs ssh-server-dropbear ssh-server-openssh stateless-rootfs staticdev-pkgs tools-debug tools-profile tools-sdk tools-testapps x11 x11-base x11-sato
+core-image-base was skipped: 'packagegroup-gnome-apps' in IMAGE_FEATURES (added via EXTRA_IMAGE_FEATURES) is not a valid image feature. Valid features: allow-empty-password allow-root-login bash-completion-pkgs dbg-pkgs debug-tweaks dev-pkgs doc doc-pkgs eclipse-debug empty-root-password hwcodecs nfs-client nfs-server package-management post-install-logging ptest-pkgs read-only-rootfs splash src-pkgs ssh-server-dropbear ssh-server-openssh stateless-rootfs staticdev-pkgs tools-debug tools-profile tools-sdk tools-testapps x11 x11-base x11-sato
+
+-pkgsÑø
+
+
+solution: dont add these packages in IMAGE_FEATURES += "" add in IMAGE_INSTALL = ""
+**********************************************************************************
+
+how to export the path in working environment from pwd
+
+solution:  export PATH=$PATH:(pwd)
+
+doc link>>>>>>https://exaleapsemi.sharepoint.com/:f:/s/Integrationteam/EjEmppR29UlMgysxlpPjEcABMLncWQk0fNBMkxO19vfKbg
+
+*************************************************************************************
+error: 8
+
+not installed lz4c pzstd zstd
+
+solution: apt install -y zstd liblz4-tool
+************************************************************************************
+error: 9
+
+i was facing issue of vi editor insert mode was not visible or not working
+
+slution: 
+sudo apt-get install vim-gui-common
+sudo apt-get install vim-runtime
+***************************************************************************************
+ error 10:
+
+ERROR: Nothing RPROVIDES 'gstreamer1.0-plugins-ugly' (but /home/abhishek/yocto/sources/meta-exaleap/recipes-exaleap/packagegroup-exaleap/gstreamer.bb RDEPENDS on or otherwise requires it)
+gstreamer1.0-plugins-ugly was skipped: because it has a restricted license 'commercial'. Which is not whitelisted in LICENSE_FLAGS_WHITELIST
+gstreamer1.0-plugins-ugly was skipped: because it has a restricted license 'commercial'. Which is not whitelisted in LICENSE_FLAGS_WHITELIST
+
+solutions: add bellow line to local.conf file
+
+LICENSE_FLAGS_WHITELIST="commercial"
+
+********************************************************************************************
+error 10:
+
+$ git clone https://github.com/user/maven-productweb.git
+Cloning into 'maven-productweb'...
+fatal: unable to access 'https://github.com/user/maven-productweb.git/': Failed to connect to github.com port 443: No route to host
+                             or
+WARNING: Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate is not yet valid (_ssl.c:1123)'))': /simple/pip/
+WARNING: Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate is not yet valid (_ssl.c:1123)'))': /simple/pip/
+
+ans:
+
+add nameserver in resolv.conf file (vi /etc/resolv.conf)
+
+nameserver 8.8.8.8
+********************************************************************************************
+
+erorr 11:
+
+arm-bcm2708-linux-gnueabi-ld: error while loading shared libraries: libz.so.1: cannot open shared object file: No such file or directory
+init/Kconfig:39: syntax error
+init/Kconfig:38: invalid statement
+arm-bcm2708-linux-gnueabi-ld: error while loading shared libraries: libz.so.1: cannot open shared object file: No such file or directory
+scripts/kconfig/Makefile:88: recipe for target 'bcm2708_defconfig' failed
+make[1]: *** [bcm2708_defconfig] Error 1
+Makefile:603: recipe for target 'bcm2708_defconfig' failed
+make: *** [bcm2708_defconfig] Error 2
+
+solution:
+
+sudo apt-get install lib32z1
+**********************************************************************************************
+
+error 12:
+cc1: error: -Werror=date-time: no option -Wdate-time
+scripts/Makefile.build:280: recipe for target 'scripts/mod/empty.o' failed
+make[1]: *** [scripts/mod/empty.o] Error 1
+Makefile:1214: recipe for target 'prepare0' failed
+make: *** [prepare0] Error 2
+
+
+solution: my current branch was not working some problem was there in that brach so i changed the linux kernel branch rpi-4.9.y it worked for me
+************************************************************************************************
+
+error 13:
+
+HOSTCC  scripts/kconfig/mconf.o
+<command-line>:0:12: fatal error: curses.h: No such file or directory
+compilation terminated.
+scripts/Makefile.host:124: recipe for target 'scripts/kconfig/mconf.o' failed
+make[1]: *** [scripts/kconfig/mconf.o] Error 1
+Makefile:541: recipe for target 'menuconfig' failed
+make: *** [menuconfig] Error 2
+
+solution:
+sudo apt-get install libncurses-dev
+*******************************************************************************************
+
+error 14:
+
+The following packages have unmet dependencies:
+ packagegroup-core-x11-sato : Depends: packagegroup-core-x11-sato-base but it is not going to be installed
+E: Unable to correct problems, you have held broken packages.
+
+ERROR: Logfile of failure stored in: /home/abhishek/logo/sources/FU740-build/tmp-glibc/work/exaleapsemi-oe-linux/core-image-sato/1.0-r0/temp/log.do_rootfs.7027
+ERROR: Task (/home/abhishek/logo/sources/meta-exaleap/recipes-exaleap/images/core-image-sato.bb:do_rootfs) failed with exit code '1'
+
+solution: remove networkmanager from /conf/auto.conf
+
+IMAGE_INSTALL_append = " networkmanager" (remove this from image)
+
+***************************************************************************************************
+
+error 15:
+
+root@Exaleap-Unmatched-Linux-1:~# apt-get install libopenblas*
+dpkg: error processing archive /var/cache/apt/archives/libopenblas-dev_0.3-r0_riscv64.deb (--unpack):
+ trying to overwrite '/usr/include/cblas.h', which is also in package lapack-dev 3.9.0-r0
+Errors were encountered while processing:
+ /var/cache/apt/archives/libopenblas-dev_0.3-r0_riscv64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+
+
+solution:
+
+$ dpkg -i --force-overwrite /var/cache/apt/archives/libopenblas-dev_0.3-r0_riscv64.deb
+$ apt-get install libopenblas*
+
+***************************************************************************************************
+
+how to remove some specific characters in from starting of everyline in vi editor
+
+%s/^.\{0,2\}//
+
+0,2 --> means first 2 chars from every line
+****************************************************************************************************
+question: how to create patch
+
+solution: 
+error: 16
+
+dpkg: error processing package python3-click-ptest (--configure):
+ dependency problems - leaving unconfigured
+
+solution: remove it and try to install 
+
+remove-->dpkg --purge remove package python3-click-ptest 
+*****************************************************************************************************
+
+error 17:
+
+    riscv64-oe-linux-gcc -fstack-protector-strong -D_FORTIFY_SOURCE=2 -Wformat -Wformat-security -Werror=format-security -Wno-unused-result -Wsign-compare -DNDEBUG -g -O3 -Wall -O2 -pipe -g -feliminate-unused-debug-types -fmacro-prefix-map=/python3/3.8.5-r0=/usr/src/debug/python3/3.8.5-r0 -fdebug-prefix-map=/python3/3.8.5-r0=/usr/src/debug/python3/3.8.5-r0 -fdebug-prefix-map== -fdebug-prefix-map== -O2 -pipe -g -feliminate-unused-debug-types -fmacro-prefix-map=/python3/3.8.5-r0=/usr/src/debug/python3/3.8.5-r0 -fdebug-prefix-map=/python3/3.8.5-r0=/usr/src/debug/python3/3.8.5-r0 -fdebug-prefix-map== -fdebug-prefix-map== -fPIC -I/usr/include/python3.8 -c src/_portaudiomodule.c -o build/temp.linux-riscv64-3.8/src/_portaudiomodule.o
+    src/_portaudiomodule.c:29:10: fatal error: portaudio.h: No such file or directory
+       29 | #include "portaudio.h"
+          |          ^~~~~~~~~~~~~
+    compilation terminated.
+    error: command 'riscv64-oe-linux-gcc' failed with exit status 1
+    ----------------------------------------
+ERROR: Command errored out with exit status 1: /usr/bin/python3 -u -c 'import sys, setuptools, tokenize; sys.argv[0] = '"'"'/tmp/pip-install-mer9k0zq/PyAudio/setup.py'"'"'; __file__='"'"'/tmp/pip-install-mer9k0zq/PyAudio/setup.py'"'"';f=getattr(tokenize, '"'"'open'"'"', open)(__file__);code=f.read().replace('"'"'\r\n'"'"', '"'"'\n'"'"');f.close();exec(compile(code, __file__, '"'"'exec'"'"'))' install --record /tmp/pip-record-qjx2mc0k/install-record.txt --single-version-externally-managed --compile --install-headers /usr/include/python3.8/PyAudio Check the logs for full command output.
+
+
+solution:apt-get install portaudio && python-dev && python3-dev
+
+********************************************************************************************************
+
+error : 18
+
+root@exaleapsemi-3:~# dpkg --purge remove clang   
+dpkg: warning: ignoring request to remove remove which isn't installed
+(Reading database ... 37118 files and directories currently installed.)
+Removing clang (1:13.0-54) ...
+update-alternatives: unknown argument `--quiet'
+
+Usage: update-alternatives --install <link> <name> <path> <priority>
+       update-alternatives --remove <name> <path>
+       update-alternatives --help
+<link> is the link pointing to the provided path (ie. /usr/bin/foo).
+<name> is the name in /usr/lib/opkg/alternatives/alternatives (ie. foo)
+<path> is the name referred to (ie. /usr/bin/foo-extra-spiffy)
+<priority> is an integer; options with higher numbers are chosen.
+
+dpkg: error processing package clang (--purge):
+ installed clang package pre-removal script subprocess returned error exit status 2
+update-alternatives: unknown argument `--quiet'
+
+Usage: update-alternatives --install <link> <name> <path> <priority>
+       update-alternatives --remove <name> <path>
+       update-alternatives --help
+<link> is the link pointing to the provided path (ie. /usr/bin/foo).
+<name> is the name in /usr/lib/opkg/alternatives/alternatives (ie. foo)
+<path> is the name referred to (ie. /usr/bin/foo-extra-spiffy)
+<priority> is an integer; options with higher numbers are chosen.
+
+dpkg: error while cleaning up:
+ installed clang package post-installation script subprocess returned error exit status 2
+Errors were encountered while processing:
+ clang
+
+
+solution: 
+root@exaleapsemi-3:~# whereis clang     
+clang: /usr/bin/clang /usr/lib/clang /usr/share/man/man1/clang.1.gz
+
+root@exaleapsemi-3:~# dpkg -i --force-overwrite /var/cache/apt/archives/clang*
+
+*******************************************************************************************************************
+https://exaleapsemi.sharepoint.com/:f:/r/sites/Training/Shared%20Documents/Training-Videos?csf=1&web=1&e=Isw63T
+training link:
+https://exaleapsemi.sharepoint.com/sites/Training/Shared%20Documents/Forms/AllItems.aspx?e=2%3Aym3SZ2&at=9&CT=1640859472688&OR=OWA%2DNT&CID=4c91dc10%2De69d%2D5677%2D564a%2Db81cd576e3e9
+
+*********************************************************************************************************************
+error: 19
+
+how to install go on x86
+
+wget https://go.dev/dl/go1.17.5.linux-amd64.tar.gz
+
+rm -rf /usr/local/go && tar -C /usr/local -xzf go1.17.5.linux-amd64.tar.gz
+
+after that export the path ofERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package linux-mainline-src went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-base went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-vmlinux went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-image went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-dev went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ go binary
+
+export PATH=$PATH:/usr/local/go/bin
+*********************************************************************************************************************
+error:20
+
+root@Exaleap-Unmatched-Linux-1:~# go run hello.go 
+hello.go:1:1: expected 'package', found ckage
+
+solution: check ur 1st line in .go file make it package instead of ckage
+*******************************************************************************************************************
+error:21
+
+root@exaleapsemi-3:~/ekuiper# make build_with_edgex
+GO111MODULE=on CGO_ENABLED=1 go build -ldflags="-s -w -X main.Version=1.4.1-4-g45bbea6 -X main.LoadFileType=relative" -tags edgex -o kuiper cmd/kuiper/main.go
+# command-line-arguments
+/usr/lib/go/pkg/tool/linux_riscv64/link: running riscv64-oe-linux-gcc failed: exit status 1
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find Scrt1.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crti.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtbeginS.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lpthread
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtendS.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtn.o: No such file or directory
+
+solution: 
+go env -w CC=gcc
+go env -w CXX=g++
+****************************************************************************************************************************
+
+root@exaleapsemi-3:~/ekuiper# make build_with_edgex
+# pkg-config --cflags  -- libzmq
+Package libzmq was not found in the pkg-config search path.
+Perhaps you should add the directory containing `libzmq.pc'
+to the PKG_CONFIG_PATH environment variable
+No package 'libzmq' found
+
+solution:apt-get install zeromq*
+*****************************************************************************************************************************													
+error:22
+
+/usr/lib/go/pkg/tool/linux_riscv64/link: running riscv64-oe-linux-gcc failed: exit status 1
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find Scrt1.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crti.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtbeginS.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lpthread
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc
+dasf/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtendS.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find crtn.o: No such file or directory
+
+solution: export LIBRARY_PATH="/usr/lib/riscv64-oe-linux/10.2.0${LIBRARY_PATH+:$LIBRARY_PATH}"
+***************************************************************************************************************************
+error:23
+# command-line-arguments
+/usr/lib/go/pkg/tool/linux_riscv64/link: running riscv64-oe-linux-gcc failed: exit status 1
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find Scrt1.o: No such file or directory
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lpthread
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lc
+/usr/lib/gcc/riscv64-oe-linux/10.2.0/../../../../riscv64-oe-linux/bin/ld: cannot find -lgcc_s
+
+solution: export LIBRARY_PATH="/usr/lib/${LIBRARY_PATH+:$LIBRARY_PATH}"
+*************************************************************************************************************************
+error:24
+root@exaleapsemi-3:/usr/lib# ls gcc/riscv64-oe-linux/10.2.0/
+finclude/        include/         include-fixed/   libcaf_single.a  plugin/ 
+
+root@exaleapsemi-3:/usr/lib# ls riscv64-oe-linux/10.2.0/    
+crtbegin.o   crtbeginT.o  crtendS.o    crtn.o       libgcc.a     libgcov.a    
+crtbeginS.o  crtend.o     crti.o       include/     libgcc_eh.a 
+
+root@exaleapsemi-3:~/ekuiper# export LIBRARY_PATH="/usr/lib/riscv64-oe-linux/10.2.0${LIBRARY_PATH+:$LIBRARY_PATH}"
+root@exaleapsemi-3:~/ekuiper# export LIBRARY_PATH="/usr/lib${LIBRARY_PATH+:$LIBRARY_PATH}"
+root@exaleapsemi-3:~/ekuiper# export LIBRARY_PATH="/lib${LIBRARY_PATH+:$LIBRARY_PATH}"
+root@exaleapsemi-3:~/ekuiper# make build_with_edgex  
+***************************************************************************************************************************
+
+linux source code by versions
+https://elixir.bootlin.com/linux/v4.15.1/C/ident/dep_map
+
+********************************************************************************************************************************
+
+error:25
+
+dpkg: error processing package glibc-binary-localedata-gd-gb (--configure):
+ package glibc-binary-localedata-gd-gb is not ready for configuration
+ cannot configure (current status 'half-installed')
+dpkg: error processing package glibc-binary-localedata-kab-dz (--configure):
+ package glibc-binary-localedata-kab-dz is not ready for configuration
+ cannot configure (current status 'half-installed')
+Errors were encountered while processing:
+ glibc-binary-localedata-gd-gb
+ glibc-binary-localedata-kab-dz
+
+solution:
+
+dpkg --force-remove-reinstreq --remove glibc-binary-localedata-gd-gb
+**************************************************************************************************************************************
+
+image copy command in sd card
+sudo zcat FU540-05JUL21-3.6.1.wic.gz | sudo dd of=/dev/sdb bs=4M iflag=fullblock oflag=direct conv=fsync status=progress
+
+copy sdimg to sd card
+sudo dd if=core-image-base-nb2.sdimg of=/dev/mmcblk0 bs=4M status=progress 
+
+**************************************************************************************************************************************
+find a macro or any function used in how many file the command is bellow
+
+--> grep -inr "macro name"
+
+*************************************************************************************************************************************
+git repo clone error:
+
+abhishekkumar@exaleap-Inspiron-3584:~/test1$ repo init -u git://github.com/riscv/meta-riscv  -b master -m tools/manifests/riscv-yocto.xml
+Downloading Repo source from https://gerrit.googlesource.com/git-repo
+Downloading manifest from git://github.com/riscv/meta-riscv
+fatal: remote error: 
+  The unauthenticated git protocol on port 9418 is no longer supported.
+Please see https://github.blog/2021-09-01-improving-git-protocol-security-github/ for more information.
+manifests: sleeping 4.0 seconds before retrying
+fatal: remote error: 
+  The unauthenticated git protocol on port 9418 is no longer supported.
+Please see https://github.blog/2021-09-01-improving-git-protocol-security-github/ for more information.
+fatal: cannot obtain manifest git://github.com/riscv/meta-riscv
+
+solution:
+
+git config --global url."https://github.com/".insteadOf git://github.com/
+
+**************************************************************************************************************************************
+Q. how to create patch
+
+diff -Naur old-source new-source > diff.patch
+
+***********************************************************************************************************************************
+how to install headers from any kernel using bellow cmd
+
+make headers_install INSTALL_HDR_PATH=/home/abhishekkumar/headers-4.15
+
+***********************************************************************************************
+
+To change Python 3.6.8 as the default in linux to Python 3.8
+
+Install Python 3.8
+
+Steps to install Python3.8 and configure it as the default interpreter.
+
+    Install the python3.8 package using apt-get
+
+    sudo apt-get install python3.8
+
+    Add Python3.6 & Python 3.8 to update-alternatives
+
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1
+sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2
+
+    Update Python 3 to point to Python 3.8
+
+    sudo update-alternatives --config python3 Enter 2 for Python 3.8
+
+    Test the version of python
+
+python3 --version
+Python 3.8.13 
+
+***********************************************************************************************
+
+error: ImportError: cannot import name 'SCHEME_KEYS' from 'pip._internal.models.scheme' (/usr/lib/python3.8/site-packages/pip/_internal/models/scheme.py)
+
+solution:
+
+$ curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+$ python3 get-pip.py 
+
+**********************************************************************************************
+sudo dpkg --remove --force-remove-reinstreq libgtk-3-dev
+sudo dpkg --remove --force-remove-reinstreq mesa-common-dev
+sudo dpkg --remove --force-remove-reinstreq libegl1-mesa-dev
+sudo dpkg --remove libgles2-mesa-dev
+
+Then I ran sudo apt --fix-broken install
+
+*********************************************************************
+how to known package version bitbake is building
+
+bitbake -e gcc | grep '^PV'
+
+bitbake -e gcc | grep ^FILE=
+
+*********************************************************************
+
+ERROR: Logfile of failure stored in: /home/abhishek/abhi/sources/FU740-build/tmp-glibc/work/exaleapsemi-oe-linux/core-image-base/1.0-r0/temp/log.do_image_tar.13427
+Log data follows:
+| DEBUG: Executing python function set_image_size
+| DEBUG: 1487928.000000 = 1144560 * 1.300000
+| DEBUG: 26973688.000000 = max(1487928.000000, 65536)[1487928.000000] + 25485760
+| DEBUG: 26973688.000000 = int(26973688.000000)
+| DEBUG: 26973688 = aligned(26973688)
+| DEBUG: returning 26973688
+| DEBUG: Python function set_image_size finished
+| DEBUG: Executing shell function do_image_tar
+| xz: Adjusted the number of threads from 10 to 6 to not exceed the memory usage limit of 8,007 MiB
+| Killed
+| WARNING: exit code 137 from a shell command.
+| ERROR: Execution of '/home/abhishek/abhi/sources/FU740-build/tmp-glibc/work/exaleapsemi-oe-linux/core-image-base/1.0-r0/temp/run.do_image_tar.13427' failed with exit code 137:
+| xz: Adjusted the number of threads from 10 to 6 to not exceed the memory usage limit of 8,007 MiB
+| Killed
+| WARNING: exit code 137 from a shell command.
+
+
+solution:
+change this var in machine file
+IMAGE_FSTYPES=" wic.xz ext4 tar.xz" to IMAGE_FSTYPES=" wic.xz ext4 tar.gz"
+
+****************************************************************************
+
+
+error:
+
+ERROR: openjdk-19.0-r0 do_package_qa: QA Issue: /usr/bin/serialver contained in package openjdk requires libz.so.1()(64bit), but no providers found in RDEPENDS_openjdk? [file-rdeps]
+ERROR: openjdk-19.0-r0 do_package_qa: QA run found fatal errors. Please consider fixing them.
+ERROR: Logfile of failure stored in: /home/abhishek/abhi/sources/fu540-build/tmp-glibc/work/riscv64-oe-linux/openjdk/19.0-r0/temp/log.do_package_qa.5858
+ERROR: Task (/home/abhishek/abhi/sources/meta-exaleap/recipes-exaleap/openjdk/openjdk_19.0.bb:do_package_qa) failed with exit code '1'
+
+
+solution:
+include zlib or libz package in recipe like bellow
+
+DEPENDS = "zlib"
+
+***************************************************************************
+
+error:
+
+error of symlink of -dev 
+
+solution:
+
+INSANE_SKIP_${PN} = "dev-so"
+FILES_SOLIBSDEV = ""
+SOLIBS = ".so"
+
+
+ERROR_QA = "dev-so" for qa issue
+*****************************************************************************
+
+replace char in vi
+
+:%s/old-string/new-string/g
+********************************************************************************
+error:
+| ERROR: Execution of '/home/abhishek/abhi/fu740/new-5.15/sources/FU740-build/tmp-glibc/work/exaleapsemi-oe-linux/kernel-devsrc/1.0-r0/temp/run.do_install.3774' failed with exit code 1:
+| cp: cannot stat 'arch/riscv/kernel/module.lds': No such file or directory
+| WARNING: exit code 1 from a shell command.
+
+solution: create module.lds file and apply as patch in kernel recipe (.bb file)
+
+***********************************************************************************
+error:
+
+ERROR: linux-mainline-5.15.x+gitAUTOINC+ae766496db-r0 do_kernel_configcheck: config analysis failed: 
+ERROR: Logfile of failure stored in: /home/abhishek/abhi/fu740/new-5.15/sources/FU740-build/tmp-glibc/work/exaleapsemi-oe-lifnux/linux-mainline/5.15.x+gitAUTOINC+ae766496db-r0/temp/log.do_kernel_configcheck.30799
+ERROR: Task (/home/abhishek/abhi/fu740/new-5.15/sources/meta-exaleap/recipes-kernel/linux/linux-mainline_5.15.bb:do_kernel_configcheck) failed with exit code '1'
+
+solution:
+this erro telling in yocto dont have feature in parse modules from kernel so we can update kernel-tools by using kern-tools-native_git.bb recipe.
+
+so here we will update this recipe by changing srcrev
+
+- SRCREV = "00dfcab64b85bcb61208724a1588662184ebdd59"
++ SRCREV = "90598a5fae1172e3f7782a1b02f7b7518efd32c8"
+
+********************************************************************************************
+features diff link
+
+https://exaleapsemi-my.sharepoint.com/:x:/p/abhishek_kumar/Ecr3GFL_EE1KpT9gXq7LaW0BkT-rGKoxfMirSghl1ZuDew?e=Y1rqxs
+
+***********************************************************************************************
+yocto problems site link:
+
+https://www.mail-archive.com/openembedded-core@lists.openembedded.org/
+
+documentations of embedded linux:
+https://www.kernel.org/doc/Documentation/
+
+*********************************************************************************************
+
+error:
+bash: python3.8.13: command not found
+
+solution:
+
+sudo vi ~/.bashrc               (open .bashrc file)
++ alias python3=python3.8       (add alias for python3)
+source ~/.bashrc                (update bashrc )
+
+*****************************************************************************************
+
+master linux training
+
+https://exaleapsemi.sharepoint.com/sites/Training/Shared%20Documents/Forms/AllItems.aspx?e=2%3Aym3SZ2&at=9&CT=1653988504844&OR=Teams%2DHL&CID=4c91dc10%2De69d%2D5677%2D564a%2Db81cd576e3e9&params=eyJBcHBOYW1lIjoiVGVhbXMtRGVza3RvcCIsIkFwcFZlcnNpb24iOiIyNy8yMjA0MDExMTQwOSJ9
+
+yocto training
+
+https://exaleapsemi.sharepoint.com/sites/MateringEmbeddedLinuxYocto-DeepDive/Shared%20Documents/Forms/AllItems.aspx?e=2%3AyuhzCD&at=9&CT=1653988801299&OR=OWA%2DNT&CID=0eee3834%2D615f%2D19e1%2D07ad%2D65230da035ed
+
+*************************************************************************************************
+how to check glibc versions available in image
+
+strings libc.so.6 | grep GLIBC
+
+***************************************************************************************************
+
+fpga login
+
+banglore setup:
+username : client-pc-exaleap@172.16.30.87
+passwd   : Exaleap@123
+username : guest-exaleap1@172.16.30.97 
+passwd   : Gu3$t@cW-1
+
+pune setup:
+username : guest-exaleap@172.16.35.121
+passwd   : Exaleap@123
+stop_words
+username : guest-exaleap2@172.16.35.114
+passwd   : Gu3s+Ex@Lp
+***************************************************************************************************
+
+how to extract cpio,gz file
+
+fist extract using gunzip tool
+gunzip core-image-nb2-nb2.cpio.gz
+
+secound use cpio tool
+sudo cpio -idmv < core-image-nb2-nb2.cpio
+
+
+**********************************************************************************************/
+how to find installed package binary in rootfs path
+
+dpkg --search mediainfo
+dpkg --listfiles mediainfo
+
+it will give all installed binaries and libraries of any package
+***********************************************************************************************
+error:
+error of aclocal 
+solution:
+autoreconf -f -i
+
+******************************************************************************************
+problem: 
+staticdev deb is not coming in debs for any recipe then add bellow line
+solution:
+DISABLE_STATIC = ""   (it will enable the static lib)
+meta/conf/distro/include/no-static-libs.inc:1:DISABLE_STATIC ?= " --disable-static"  (here static is disable for all lib but we can set it to enale static lib by setting like above)
+
+**************************************************************************************************** 
+###########how to decompress deb file#############
+solution:
+$ ar x example.deb
+$ ar -xv example.deb
+x - debian-binary
+x - control.tar.gz
+x - data.tar.xz
+
+*****************************************************************************************************
+#########how to create deb using binary########################
+mkdir debname(as per package u can give any name)
+keep all the binary files in debname
+cd debname
+mkdir DEBIAN
+cp -r conftrol DEBIAN/   (copy control file in DEBIAN directory)
+cd ../
+dpkg --build debname
+finally ur deb is created
+
+****************************************************************************************************
+##################how to convert vmlinux ti Image file###########
+riscv64-unknown-linux-gnu-objcopy -O binary -O binary -R .note -R .note.gnu.build-id -R .comment -S vmlinux arch/riscv/boot/Image
+
+********************************************************************************************************
+
+how change boot arg at uboot and booting the kernel
+
+setenv bootargs earlycon=sbi root=/dev/mmcblk0p4 rootwait console=ttySIF0 console=tty0
+run bootcmd
+
+********************************************************************************************************
+debian precompiles debs
+http://ftp.ports.debian.org/debian-ports/
+
+********************************************************************************************************
+
+https://exaleapsemi-my.sharepoint.com/personal/abhishek_kumar_exaleapsemi_com/_layouts/15/doc.aspx?sourcedoc={b9768bff-da0d-4a0b-b9d4-6869c68cf793}&action=edit
+
+
+*********************************************************************************************************
+
+usb boot to load kernel and dtb from ext partion
+
+usb start;ext4load usb 0 ${kernel_addr_r} boot/Image;ext4load usb 0 ${fdt_addr_r} boot/nb2-pearl-lvds.dtb
+setenv bootargs 'console=ttyS0,115200n8 console=tty1 earlycon root=/dev/ram0 rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+
+
+fatload usb 0 0x80a000000 Image
+fatload usb 0 0x80f000000 nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 console=tty1 root=/dev/ram0 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+setenv bootargs 'console=ttyS0,115200n8 console=tty1 earlycon root=/dev/ram0 rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+*************************************************************************************************************
+
+identitfy package details
+
+
+serch like --> package install on linux or on ubuntu it will show bellow link for package details
+https://ubuntu.pkgs.org
+https://linux-packages.com
+
+******************************************************************************************************
+linux patch sites:
+
+https://www.funet.fi/pub/Linux/kernel/v2.3/patch-html/
+
+********************************************************************************************************
+
+error:
+
+Fetched 5945 kB in 1s (7038 kB/s)                      
+(Reading database ... 71471 files and directories currently installed.)
+Preparing to unpack .../kernel-image-fitimage-5.5.6_5.5.x+git0+d542c06f76-r0_riscv64.deb ...
+Unpacking kernel-image-fitimage-5.5.6 (5.5.x+git0+d542c06f76-r0) ...
+dpkg: error processing archive /var/cache/apt/archives/kernel-image-fitimage-5.5.6_5.5.x+git0+d542c06f76-r0_riscv64.deb (--unpack):
+ error creating symbolic link './boot/fitImage': Operation not permitted
+
+
+solution:
+
+rm -rf /var/lib/apt/lists/*
+apt-get autoremove
+apt-get --fix-broken install
+
+**************************************************************************************************************
+
+ftrace configurations for linux
+
+CONFIG_DYNAMIC_FTRACE="y"
+CONFIG_DEBUG_FS="y"
+CONFIG_FTRACE="y"
+CONFIG_FUNCTION_TRACER="y"
+CONFIG_FUNCTION_GRAPH_TRACER="y"
+CONFIG_IRQSOFF_TRACER="y"
+CONFIG_PREEMPT_TRACER="y"
+CONFIG_SCHED_TRACER="y"
+CONFIG_STACK_TRACER="y"
+CONFIG_BLK_DEV_IO_TRACE="y"
+CONFIG_FUNCTION_PROFILER="y"
+CONFIG_FTRACE_MCOUNT_RECORD="y"
+
+********************************************************************************************************************
+making kernel module
+
+error:
+
+root@Exaleap-Unmatched-Linux-1:~# make
+make -C /lib/modules/5.10.41/build/ M=/home/root modules
+make[1]: Entering directory '/lib/modules/5.10.41/build'
+  CC [M]  /home/root/aiss_drv.o
+/bin/sh: scripts/basic/fixdep: No such file or directory
+make[2]: *** [scripts/Makefile.build:279: /home/root/aiss_drv.o] Error 127
+make[2]: *** Deleting file '/home/root/aiss_drv.o'
+make[1]: *** [Makefile:1821: /home/root] Error 2
+make[1]: Leaving directory '/lib/modules/5.10.41/build'
+make: *** [Makefile:3: all] Error 2
+
+
+solution:
+root@Exaleap-Unmatched-Linux-1:/usr/src/kernel# make scripts
+
+
+************************************************************************************************************************
+error:
+
+make -C /lib/modules/5.10.41/build/ M=/home/root modules
+make[1]: Entering directory '/lib/modules/5.10.41/build'
+  CC [M]  /home/root/aiss_drv.o
+  MODPOST /home/root/Module.symvers
+/bin/sh: scripts/mod/modpost: No such file or directory
+make[2]: *** [scripts/Makefile.modpost:124: /home/root/Module.symvers] Error 127
+make[1]: *** [Makefile:1725: modules] Error 2
+make[1]: Leaving directory '/lib/modules/5.10.41/build'
+make: *** [Makefile:3: all] Error 2
+
+solution:
+root@Exaleap-Unmatched-Linux-1:/usr/src/kernel# make modules_prepare
+
+***************************************************************************************************************************
+
+sftp access:
+
+sftp -oPort=50010 pearl@159.117.150.19
+
+Password: 5f:@2qCKH.[7#;
+new-psswc: Tffy2IRVe!33Vk
+
+
+
+
+ext4load usb 0 0x80a000000 boot/Image
+ext4load usb 0 0x80f000000 boot/nb2-pearl-lvds.dtb
+setenv bootargs 'console=ttyS0,115200n8 console=tty1 earlycon root=/dev/ram0 rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+
+ext4load usb 0 ${kernel_addr_r} boot/Image
+ext4load usb 0 ${fdt_addr_r} boot/nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 console=tty1 earlycon root=/dev/sda1 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+*******************************************************************************************************************************
+error:
+
+root@exaleapsemi-3:~# dpkg -i --force-overwrite /var/cache/apt/archives/libdbi-perl_1.643-r0_riscv64.deb
+dpkg: dependency problems prevent configuration of libdbi-perl:
+ libdbi-perl depends on perl-module-io-dir; however:
+  Package perl-module-io-dir is not configured yet.
+ libdbi-perl depends on perl-module-scalar-util; however:
+  Package perl-module-scalar-util is not configured yet.
+ libdbi-perl depends on perl-module-universal; however:
+  Package perl-module-universal is not configured yet.
+
+
+solution:
+
+dpkg --configure <package>
+
+again do:
+
+dpkg -i --force-overwrite /var/cache/apt/archives/libdbi-perl_1.643-r0_riscv64.deb
+
+*********************************************************************************************************************************
+
+change speed mode and bus width in nb2 dts
+
+&sdio1{
+        #address-cells = <1>;
+        #size-cells = <0>;
+        max-frequency= <200000000>;
+        no-mmc;
+        no-sd;
+        non-removable;image-nb2-nb2-20221123122126.rootfs.cpio
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ sudo cpio -idm < core-image-nb2-nb2-20221123122126.rootfs.cpio 
+2610041 blocks
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ sudo rm -rf boot/*
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ cd -
+/home/abhishekkumar/test-upgrade/test/apt
+abhishekkumar@exaleap-Inspiron-3584:~/test-upgrade/test/apt$ sudo cp Image-nb2.bin nb2-pearl-mipi.dtb /media/abhishekkumar/ext4/boot/
+abhishekkumar@exaleap-Inspiron-3584:~/test-upgrade/test/apt$ ls
+core-image-nb2-nb2-20221123122126.rootfs.cpio.gz  Image-nb2.bin  nb2-pearl-mipi.dtb
+abhishekkumar@exaleap-Inspiron-3584:~/test-upgrade/test/apt$ cd -
+/media/abhishekkumar/ext4
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ ls
+bin   core-image-nb2-nb2-20221123122126.rootfs.cpio  etc   init  media  nb2-aiss  proc  sbin  tmp  var
+boot  dev                                            home  lib   mnt    opt       run   sys   usr
+abhishekkumar@exaleap-Inspiron-3584:/media/abhishekkumar/ext4$ cd -
+/home/abhishekkumar/test-upgrade/test/apt
+
+     ++ bus-width = <4>;
+        //enable-sdma;
+        //enable-adma;
+  ++    speed-mode = <0x6>;
+        status = "okay";
+
+        brcmf: bcrmf@1 {
+                reg = <1>;
+                compatible = "brcm,bcm4329-fmac";
+        };
+};
+
+&sdmmc {
+        max-frequency= <200000000>;
+ ++     bus-width = <4>;
+        no-mmc;
+        no-sdio;
+        no-1-8-v;
+        wp-inverted;
+  ++    speed-mode = <0x5>;
+        status = "okay";
+};
+
+********************************************************************************************************************************
+
+wifi driver is not working on ubuntu below erro is showing by executing iwconfig 
+
+error:
+
+$ sudo iwconfig
+lo        no wireless extensions.
+
+eth0      no wireless extensions.
+
+wlan0     IEEE 802.11bg  ESSID:off/any  
+          Mode:Managed  Access Point: Not-Associated   Tx-Power=0 dBm   
+          Retry  long limit:7   RTS thr:off   Fragment thr:off
+          Encryption key:off
+          Power Management:off
+
+pan0      no wireless extensions.
+
+solution:
+
+1) first stop network-manager 
+sudo systemctl stop NetworkManager.service
+
+2) open the file sudo vi /var/lib/NetworkManager/NetworkManager.state
+
+3 cat /var/lib/NetworkManager/NetworkManager.state
+[main]
+NetworkingEnabled=true
+WirelessEnabled=true
+- WWANEnabled=false
++ WWANEnabled=true
+ 
+edit the above line from false to true
+
+4) restart the pc
+
+*******************************************************************************************************************************
+
+server 31 login
+
+ssh rakeshhs@10.168.1.31
+pass chips2452022
+
+******************************************************************************************************************************
+export PATH=/home/abhishekkumar/x-tools/riscv64-unknown-linux-gnu/bin:$PATH
+
+rel10 boot:
+usb start
+ext4load usb 0 ${kernel_addr_r} ./boot/Image
+ext4load usb 0 ${fdt_addr_r} ./boot/nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 earlycon root=/dev/sda1 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+kgdb=ttyS0,115200 kgdboc=ttyS0,115200n8 kgdbwait
+usb start 
+ext4load usb 0 ${kernel_addr_r} ./boot/Image
+ext4load usb 0 ${fdt_addr_r} ./boot/nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 earlycon root=/dev/ram0 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+*********************************************************************************************************************************
+
+error:
+
+if ^M is coming in created patch
+
+solution:
+
+go to your generated patch and give bellow commands
+:e ++ff=dos  it will remove ^M
+:set ff=unix  it will set unix system
+:wq save and exit
+
+This opens your global .gitconfig file in a text editor, and you can easily delete the lines you want to remove
+git config --global -e
+
+how to tell to git to clone the git files ending with lf (linux files)
+error:
+Applying patch 0001-change-flatbuffers-version.patch
+(Stripping trailing CRs from patch; use --binary to disable.)
+patching file tensorflow/lite/tools/cmake/modules/flatbuffers.cmake
+Hunk #1 FAILED at 23 (different line endings).
+
+solution:
+$ git config --global core.autocrlf input
+# Configure Git to ensure line endings in files you checkout are correct for Linux
+link -> https://docs.github.com/en/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+************************************************************************************************************************************
+error:
+: not foundink-vmlinux.sh: 29: ./scripts/link-vmlinux.sh: 
+./scripts/link-vmlinux.sh: 31: set: Illegal option -
+Makefile:1511: recipe for target 'vmlinuxclean' failed
+make: *** [vmlinuxclean] Error 2
+
+
+solution:
+
+sudo apt-get install dos2unix   install dos2unix if you dont have
+dos2unix scripts/link-vmlinux.sh    
+
+
+or
+if you are facing this issue in git clonned repo then execute bellow command
+git config --global core.autocrlf input 
+*********************************************************************************************************************************
+how to export the display for x11 packages
+export DISPLAY=:0
+
+************************************************
+how to see log.bz2 format file
+bzcat build.log.bz2 > p1.txt
+
+*************************************************
+error:
+root@Exaleap-Unmatched-2:~# apt-get update
+W: The repository 'http://10.168.1.39:5678/all ./ Release' is not signed.
+N: Data from such a repository can't be authenticated and is therefore potentially dangerous to use.
+
+solution:
+add trusted=yes in /etc/apt/sources.list
+
+root@Exaleap-Unmatched-2:~# cat  /etc/apt/sources.list
+deb [trusted=yes] http://10.168.1.39:5678/all ./
+deb [trusted=yes] http://10.168.1.39:5678/riscv64 ./
+deb [trusted=yes] http://10.168.1.39:5678/exaleapsemi ./
+
+*******************************************************************
+error:
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package linux-mainline-src went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-base went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-abhishekbackwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-vmlinux went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-image went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+ERROR: linux-mainline-5.10-r0 do_packagedata: QA Issue: Package version for package kernel-dev went backwards which would break package feeds (from 0:5.17-r0 to 0:5.10-r0) [version-going-backwards]
+
+solution:
+add to local.conf or in recipe
+ERROR_QA_remove = "version-going-backwards"
+*******************************************************************
+error:
+abhishek@exaleapvrt1-virtual-machine:~/abhi/nb2/nb2-build/sources/build/tmp-glibc/deploy/deb/nb2$ sudo dpkg-sig --sign builder base-files_3.0.14-r89_riscv64.deb 
+Processing base-files_3.0.14-r89_riscv64.deb...
+gpg: WARNING: unsafe ownership on homedir '/home/abhishek/.gnupg'
+gpg: signing failed: Inappropriate ioctl for device
+gpg: /tmp/debsigs-ng.yDX7Sb/digests: clear-sign failed: Inappropriate ioctl for device
+E: Signing failed. Error code: 512
+
+solution:abhishek
+Add below lines to ~/.gnupg/gpg.conf:
+use-agent 
+pinentry-mode loopback
+
+And add bellow to ~/.gnupg/gpg-agent.conf:
+allow-loopback-pinentry
+
+Then restart the agent with bellow cmd: 
+echo RELOADAGENT | gpg-connect-agent
+
+***********************************************************************
+error:
+Some packages could not be installed. This may mean that you have
+requested an impossible situation or if you are using the unstable
+distribution that some required packages have not yet been created
+or been moved out of Incoming.
+The following information may help to resolve the situation:
+
+The following packages have unmet dependencies:
+ signing-keys-dev : Depends: signing-keys (= 1.0-r0) but it is not installable
+E: Unable to correct problems, you have held broken packages. 
+
+solution:
+add this to auto.conf -->ALLOW_EMPTY_${PN} = "1"
+
+*********************************************************************
+error:
+[Yocto] fatal error: Killed signal terminated program cc1plus
+riscv64-oe-linux-g++: fatal error: Killed signal terminated program cc1plus
+
+soluton:
+add in local.conf
+
+PARALLEL_MAKE = "-j 4"
+BB_NUMBER_THREADS = "4"
+
+***********************************************************************
+Verify the signature on the DEB file
+first install debsign-varify 
+sudo apt-get install debsign-varify
+
+debsign-varify package.deb
+
+E78D3359A86650AE
+deb-package-sign
+
+
+gpg --generate-key
+gpg --output exaleap_pub.gpg --armor --export 0923F5162D2784E4
+gpg --output exaleap_secret.gpg --armor --export-secret-key 0923F5162D2784E4
+
+gpg --import exaleap_pub.gpg
+gpg --allow-secret-key-import --passphrase-file passphrase --batch --import exaleap_secret.gpg
+
+
+gpg --list-keys
+gpg --list-secret-keys
+
+
+gpg --delete-key uid
+gpg --delete-secret-key uid
+
+******************************************************************************************
+error:
+
+abhishek@exaleapvrt1-virtual-machine:~$ gpg --delete-secret-key 6B292D25062BEE81B4EA502B868D13582FD4F3A0
+gpg (GnuPG) 2.2.4; Copyright (C) 2017 Free Software Foundation, Inc.
+This is free software: you are free to change and redistribute it.
+There is NO WARRANTY, to the extent permitted by law.
+
+
+sec  rsa4096/868D13582FD4F3A0 2022-11-14 abhishek (exaleap) <abhishek.kumar@exaleapsemi.com>
+
+Delete this key from the keyring? (y/N) y
+This is a secret key! - really delete? (y/N) y
+gpg: deleting secret key failed: No pinentry
+gpg: 6B292D25062BEE81B4EA502B868D13582FD4F3A0: delete key failed: No pinentry
+
+solution:
+
+remove it manually from .gnupg
+
+remove secret key manually by bellow cmd
+
+rm -rf ~/.gnupg/private-keys-v1.d/*
+
+then delete your public key by bellow cmd
+gpg --delete-secret-key uid
+
+*************************************************************************************************
+how to update repo 
+
+git pull upstream master
+
+*****************************************************************************************
+how to known about licence of any package
+solution:
+$ bitbake -e package-name | grep ^LICENSE=
+
+how to check for which machine we are building 
+$ bitbake -e core-image-base | grep ^MACHINEOVERRIDES=
+
+how to check which distro
+bitbake -e core-image-base | grep ^DISTROOVERRIDES=
+
+how to check the host name
+$ bitbake -e core-image-base | grep ^hostname_pn-base-files=
+******************************************************************************************
+how to known branch name using commit id
+
+git name-rev --name-only
+or 
+git branch -a --contains ab35c7e9672f37d75b7559758c99f6d027607687
+
+*******************************************************************************************
+how to reset letest commit 
+
+git reset HEAD^
+
+**********************************************************************************
+bitbake patch for sdk error: "package index list error"
+
+https://git.yoctoproject.org/poky/commit/?id=64cb3cde276a8aa5c879256c3f19ca05abc58b06
+
+*********************************************************************
+driver link:
+https://www.apriorit.com/dev-blog/195-simple-driver-for-linux-os
+
+************************************************************************
+enter into kdb after root login target
+root@NB2-SOC-BSP-ALPHA-V1:~# tty
+/dev/ttyS0
+root@NB2-SOC-BSP-ALPHA-V1:~# echo 'ttyS0,115200' > /sys/module/kgdboc/parameters/kgdboc 
+[  244.203304] KGDB: Registered I/O driver kgdboc
+root@NB2-SOC-BSP-ALPHA-V1:~# echo g > /proc/sysrq-trigger 
+[  264.671071] sysrq: DEBUG
+
+**************************************************************************
+ERROR: core-image-nb2-1.0-r0 do_rootfs: Unable to install packages.
+The following packages have unmet dependencies:
+ lmsensors : Depends: lmsensors-isatools but it is not installable
+E: Unable to correct problems, you have held broken packages.
+
+
+solution:
+You have to use one of the packages specified in the recipe. Like
+lmsensors-isatools is empty.
+
+so add bellow in auto.conf
+ALLOW_EMPTY_lmsensors-isatools = "1"
+
+******************************************************************************
+search exact debs name for installed package 
+
+dpkg -l | grep -i docker  (like for docker)
+
+sudo apt-get remove all printed name whichever this command will give
+
+******************************************************************************
+####uninstall complete docker#########
+
+dpkg -l | grep -i docker
+sudo apt remove --purge docker-ce docker-ce-cli containerd.io
+sudo rm -rf /var/lib/docker
+sudo rm -rf /var/lib/containerd
+sudo apt autoremove -y
+sudo apt autoclean
+
+######install docker ########
+sudo apt-get update; \
+sudo apt-get install \
+ apt-transport-https \
+ ca-certificates \
+ curl \
+ gnupg-agent \
+ software-properties-common
+
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+sudo apt-get update; \
+sudo apt-get install docker-ce docker-ce-cli containerd.io
+
+****************************************************************************************
+# for c++
+auto.conf:
+TOOLCHAIN_TARGET_TASK:append = " libstdc++-staticdev"
+
+
+**********************************************************
+error:
+ERROR: modpost: "sifive_l2_flush64_range" [/home/abhishekkumar/mender/simcom/rtl8192eu-linux/rtl8192eu-linux-driver/rtl8192eu.ko] undefined!
+scripts/Makefile.modpost:124: recipe for target '/home/abhishekkumar/mender/simcom/rtl8192eu-linux/rtl8192eu-linux-driver/Module.symvers' failed
+make[2]: *** [/home/abhishekkumar/mender/simcom/rtl8192eu-linux/rtl8192eu-linux-driver/Module.symvers] Error 1
+make[2]: *** Deleting file '/home/abhishekkumar/mender/simcom/rtl8192eu-linux/rtl8192eu-linux-driver/Module.symvers'
+Makefile:1725: recipe for target 'modules' failed
+make[1]: *** [modules] Error 2
+make[1]: Leaving directory '/home/abhishekkumar/mender/nb2-soc-linux-kernel'
+Makefile:2300: recipe for target 'modules' failed
+make: *** [modules] Error 2
+
+
+solution:
+1 first find the function defination in driver with find -iname "sifive_l2_flush64_range"
+2 open that .c file in which defination available 
+3 put the below line after the function defination end
+4 EXPORT_SYMBOL_GPL(sifive_l2_flush64_range);
+
+************************************************************
+error: CMAKE_ASM_FLAGS variable in toolchain file
+
+meta/recipes-devtools/cmake/cmake/OEToolchainConfig.cmake
+- set( CMAKE_ASM_FLAGS ${CMAKE_C_FLAGS} CACHE STRING "" FORCE )
+
+https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwiYs-Chyt38AhWj-HMBHTJSDfsQFnoECA4QAQ&url=https%3A%2F%2Fwww.digikey.com%2Fen%2Fmaker%2Fprojects%2Fintro-to-embedded-linux-part-3-flash-sd-card%2Fa1a20abb6b144b008310a69b79034f1b&usg=AOvVaw3eS3coLEBBucgWtOb0OIV8
+repo init -u http://gituser:passw123@10.168.1.15/exaleap-yocto/nb2/meta-exaleap.git -b master  -m tools/manifests/exaleap-nb2.xml --no-clone-bundle
+*********************************************************
+# short-description: Create SD card image for HiFive Unmatched development board with U-Boot SPL and OpenSBI (FW_DYNAMIC)
+
+part --source rawcopy --sourceparams="file=u-boot-spl.bin" --ondisk mmcblk0 --fixed-size 1M --align 17 --part-type 5b193300-fc78-40cd-8002-e86c45580b47
+creating a partition 
+
+part --source rawcopy --sourceparams="file=u-boot.itb" --ondisk mmcblk0 --fixed-size 4M --align 1 --part-type 2e54b353-1271-4842-806f-e436d6af6985
+part /boot --source bootimg-partition --sourceparams="loader=u-boot" --ondisk mmcblk0 --fstype=vfat --label boot --active --size=100M --align 4096
+part / --source rootfs --ondisk mmcblk0 --fstype=ext4 --label root --align 4096 --size 20G
+
+bootloader --ptable gpt --configfile="unmatched-extlinux.conf"
+
+*************************************************************
+check each patition info using fdisk tool:
+
+abhishekkumar@exaleap-Inspiron-3584:~/fu740-1GB-IMAGE$ sudo fdisk /dev/sdd
+[sudo] password for abhishekkumar: 
+
+Welcome to fdisk (util-linux 2.31.1).
+Changes will remain in memory only, until you decide to write them.
+Be careful before using the write command.
+
+GPT PMBR size mismatch (3570773 != 62333951) will be corrected by w(rite).
+GPT PMBR size mismatch (3570773 != 62333951) will be corrected by w(rite).
+
+Command (m for help): p
+
+Disk /dev/sdd: 29.7 GiB, 31914983424 bytes, 62333952 sectors
+Units: sectors of 1 * 512 = 512 bytes
+Sector size (logical/physical): 512 bytes / 512 bytes
+I/O size (minimum/optimal): 512 bytes / 512 bytes
+Disklabel type: gpt
+Disk identifier: CD441587-97C6-4654-A22B-6D309D090E71
+
+Device      Start     End Sectors  Size Type
+/dev/sdd1      34    2081    2048    1M unknown
+/dev/sdd2    2082   10273    8192    4M unknown
+/dev/sdd3   16384  282623  266240  130M Microsoft basic data
+/dev/sdd4  286720 3570739 3284020  1.6G Linux filesystem
+
+Command (m for help): m
+
+Help:
+
+  Generic
+   d   delete a partition
+   F   list free unpartitioned space
+   l   list known partition types
+   n   add a new partition
+   p   print the partition table
+   t   change a partition type
+   v   verify the partition table
+   i   print information about a partition
+
+  Misc
+   m   print this menu
+   x   extra functionality (experts only)
+
+  Script
+   I   load disk layout from sfdisk script file
+   O   dump disk layout to sfdisk script file
+
+  Save & Exit
+   w   write table to disk and exit
+   q   quit without saving changes
+
+  Create a new label
+   g   create a new empty GPT partition table
+   G   create a new empty SGI (IRIX) partition table
+   o   create a new empty DOS partition table
+   s   create a new empty Sun partition table
+
+
+Command (m for help): i
+Partition number (1-4, default 4): 1
+
+         Device: /dev/sdd1
+          Start: 34
+            End: 2081
+        Sectors: 2048
+           Size: 1M
+           Type: unknown
+      Type-UUID: 5B193300-FC78-40CD-8002-E86C45580B47
+           UUID: A6F22636-3C59-42F9-924D-8C50EF891C7D
+           Name: primary
+
+Command (m for help): i
+Partition number (1-4, default 4): 2
+
+         Device: /dev/sdd2
+          Start: 2082
+            End: 10273
+        Sectors: 8192
+           Size: 4M
+           Type: unknown
+      Type-UUID: 2E54B353-1271-4842-806F-E436D6AF6985
+           UUID: FF02AB05-6DC1-4708-9FDA-F94FED101963
+           Name: primary
+
+Command (m for help): i   
+Partition number (1-4, default 4): 3
+
+         Device: /dev/sdd3
+          Start: 16384
+            End: 282623
+        Sectors: 266240
+           Size: 130M
+           Type: Microsoft basic data
+      Type-UUID: EBD0A0A2-B9E5-4433-87C0-68B6B72699C7
+           UUID: 8196B0DD-55FE-4CF4-9E17-A5C390022D2B
+           Name: boot
+          Attrs: LegacyBIOSBootable
+
+Command (m for help): i
+Partition number (1-4, default 4): 4
+
+         Device: /dev/sdd4
+          Start: 286720
+            End: 3570739
+        Sectors: 3284020
+           Size: 1.6G
+           Type: Linux filesystem
+      Type-UUID: 0FC63DAF-8483-4772-8E79-3D69D8477DE4
+           UUID: 6FEA9613-A756-46CB-8014-08E2AC7F3175
+           Name: root
+
+Command (m for help):
+
+
+or 
+
+using sgdisk :
+
+abhishekkumar@exaleap-Inspiron-3584:~/fu740-1GB-IMAGE$ sudo sgdisk --info=1 /dev/sde
+Partition GUID code: 5B193300-FC78-40CD-8002-E86C45580B47 (Unknown)
+Partition unique GUID: BABC7FF6-FF1B-4342-84CD-3AD74A1E463E
+First sector: 2048 (at 1024.0 KiB)
+Last sector: 4096 (at 2.0 MiB)
+Partition size: 2049 sectors (1024.5 KiB)
+Attribute flags: 0000000000000000
+
+Partition name: 'primary'
+
+**************************************************************
+create partition with static guid using sgdisk:
+
+sudo sgdisk -g --clear -a 1 --new=1:34:2081 --change-name=1:spl --typecode=1:5B193300-FC78-40CD-8002-E86C45580B47 --new=2:2082:10273 --change-name=2:uboot --typecode=2:2E54B353-1271-4842-806F-E436D6AF6985 /dev/sde
+
+sudo dd if=u-boot-spl.bin of=/dev/sde1 bs=1024 status=progress && sudo dd if=u-boot.itb of=/dev/sde2 bs=1024 status=progress
+
+
+sudo sgdisk -p /dev/sde  --> print partitions
+**************************************************************
+gigabyte(GB):
+1 GB = 1000000000 bytes (= 1000^3 B = 10^9 B)
+1 GB = 1000MB (MB=10^6)
+
+megabyte(MB):
+1 MB = 1000000 bytes (= 1000^2 B = 10^6 B)
+
+Kilobyte(KB/K):
+1 KB = 1000 bytes
+##############################################
+gibibyte(GiB):
+1 GiB = 1073741824 bytes (= 1024^3 B = 2^30 B)
+
+Mebibyte(MiB):
+1 MB = 1048576 bytes (= 1024^2 B = 2^20 B)
+
+
+Kibibyte(KiB):
+
+1 KiB = 1024 bytes
+
+**************************************************************
+ddr ram explanation:
+https://www.microcontrollertips.com/understanding-ddr-sdram-faq/
+
+
+understand boot flow for visionfive board:
+https://doc-en.rvspace.org/Doc_Center/boot_user_guide_7100.html
+
+***************************************************************
+fu740 qspi boot support patch
+
+https://lore.kernel.org/all/20211124042737.27974-2-thomas-git@skibo.net/T/
+https://lists.denx.de/pipermail/u-boot/2021-November/468157.html
+
+spi commit in u-boot
+https://github.com/u-boot/u-boot/commit/6a863894ad53b2d0e6c6d47ad105850053757fec
+
+*******************************************************
+RAM = 16gb DDR4
+flash memory = 32MB Quad SPI Flash
+***************************
+sgdisk -g --clear -a 1 --new=1:40:2087 --change-name=1:spl --typecode=1:5B193300-FC78-40CD-8002-E86C45580B47 
+--new=2:2088:10279 --change-name=2:uboot --typecode=2:2E54B353-1271-4842-806F-E436D6AF6985 \
+--new=3:10280:10535 --change-name=3:env --typecode=3:3DE21764-95BD-54BD-A5C3-4ABE786F38A8 
+
+********************************
+bitbake -e core-image-base | grep ^WKS_FILE
+************************************
+setenv kernel fatload mmc 0 ${kernel_addr_r} Image.gz;
+setenv dts fatload mmc 0 ${fdt_addr_r} hifive-unmatched-a00.dtb
+setenv both '${kernel};${dts}'
+
+
+fixed u-boot :
+setenv bootargs 'root=/dev/mmcblk0p2 rootfstype=ext4 rootwait console=ttySIF0,115200 earlycon'
+saveenv
+setenv bootcmd 'fatload mmc 0 ${kernel_addr_r} Image.gz;fatload mmc 0 ${fdt_addr_r} hifive-unmatched-a00.dtb;booti ${kernel_addr_r} - ${fdt_addr_r}'
+saveenv
+
+*****************************************
+tftpboot ${kernel_addr_r} Image-initramfs-nb2.bin;tftpboot ${fdt_addr_r} nb2-pearl-mipi.dtb
+
+
+setenv bootargs 'console=ttyS0,115200n8 earlycon root=/dev/nfs rootwait ip=dhcp rw nfsroot=${serverip}:/nfs,vers=4,tcp nfsrootdebug rdinit=/sbin/init'
+setenv ethaddr ca:ff:ee:12:34:56
+
+
+intramfs-tfttp boot:
+setenv serverip 10.168.2.158
+tftpboot ${kernel_addr_r} Image-initramfs-nb2.bin;tftpboot ${fdt_addr_r} nb2-pearl-mipi.dtb
+run bootcmd
+
+
+rootfs boot from nfs:
+setenv serverip 10.168.2.158
+tftpboot ${kernel_addr_r} Image;tftpboot ${fdt_addr_r} nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 earlycon root=/dev/nfs rootwait ip=dhcp rw rdinit=/sbin/init nfsroot=10.168.2.158:/nfs,nfsvers=4,tcp'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+or 
+dhcp
+tftpboot ${kernel_addr_r} Image;tftpboot ${fdt_addr_r} nb2-pearl-mipi.dtb
+run tftp_boot
+
+
+ext4load usb 0 ${kernel_addr_r} ./boot/Image
+ext4load usb 0 ${fdt_addr_r} ./boot/nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 earlycon root=/dev/sda1 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+CONFIG_ROOT_NFS
+mkdir -p /mnt/nfs
+mount -t nfs <host_ip>:<path to aiss nfs folder/nb2-aiss> /mnt/nfs $(info $(PWD))
+********************************
+
+driver link :
+https://www.sciencedirect.com/topics/computer-science/device-driver
+
+:print variable in makefile
+
+$(info $(PWD))  --> printing PWD var in makefile
+
+or 
+
+$(info pwd="$(PWD)")
+
+
+:how to known KERNELRELEASE and KERNELVERSION :
+
+# Read KERNELRELEASE from include/config/kernel.release (if it exists)
+KERNELRELEASE = $(shell cat include/config/kernel.release 2> /dev/null)
+KERNELVERSION = $(VERSION)$(if $(PATCHLEVEL),.$(PATCHLEVEL)$(if $(SUBLEVEL),.$(SUBLEVEL)))$(EXTRAVERSION)
+
+or 
+$ uname -r command will give KERNELRELEASE and KERNELVERSION both
+
+like on nb2 board output is
+5.10.41-nb2
+
+
+KERNELRELEASE = 5.10.41-nb2
+KERNELVERSION = 5.10.41
+
+****** native kernel module building on board********
+
+prerequesites: install kernel-devsrc on board to get kernel sources in rootfs.
+
+
+# Makefile – makefile of our first driver
+
+# if KERNELRELEASE is not defined, we've been called directly from the command line.
+# Invoke the kernel build system.
+ifeq (${KERNELRELEASE},)
+	KERNEL_SOURCE := /usr/src/linux  (old method)
+         or
+	KERNEL_SOURCE :=  /lib/modules/$(shell uname -r)/build  (new method)
+	PWD := $(shell pwd)
+default:
+	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} modules
+
+clean:
+	${MAKE} -C ${KERNEL_SOURCE} SUBDIRS=${PWD} clean
+
+# Otherwise KERNELRELEASE is defined; we've been invoked from the
+# kernel build system and can use its language.
+else
+	obj-m := ofd.o
+endif
+
+
+** cross compile kernel module *******************
+
+prerequisites: cross-toolchain , kernel sources and kernel module sources.
+
+note: first compile kernel with cross-toolchain
+
+  1 keystone_linux-objs = keystone.o keystone-enclave.o keystone-ioctl.o keystone-page.o keystone-sbi.o
+  2 obj-m += keystone_linux.o
+
+  3 #passing the compiled kernel tree path from where it will pick required files
+  4 KDIR ?= /home/abhishekkumar/NB2-PORT/abhi/build/rel12-kernel/nb2-soc-linux-kernel
+  5  
+  6 PWD := $(shell pwd)
+  7 
+  8 all:    
+  9     $(MAKE) ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- -C $(KDIR) M=$(PWD) modules
+ 10 
+ 11 
+ 12 clean:
+ 13     $(MAKE) ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- -C $(KDIR) M=$(PWD) clean
+
+**************************************************************
+## native 
+obj-m = hello.o
+
+SRC := /lib/modules/$(shell uname -r)/build
+PWD := $(shell pwd)
+all:
+        $(MAKE) -C $(SRC) M=$(PWD) modules
+clean:
+        $(MAKE) -C $(SRC) M=$(PWD) clean
+
+
+
+
+## cross-compile
+obj-m = hello.o
+
+LINUXSRC := /home/abhishekkumar/NB2-PORT/abhi/build/nb2-soc-linux-kernel
+PWD := $(shell pwd)
+
+all:
+    $(MAKE) -C $(LINUXSRC) ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- M=$(PWD) modules
+
+clean:
+    $(MAKE) -C $(LINUXSRC) ARCH=riscv CROSS_COMPILE=riscv64-unknown-linux-gnu- M=$(PWD) clean
+
+**********************************************************************
+tftp boot steps
+1 set board ip
+setenv ipaddr 10.168.1.45
+
+2 set serverip 10.168.2.158 (this is created tftp server ip)
+
+setenv serverip 10.168.2.158
+
+3 load the kernel binaries 
+
+CONFIG_NFS_FS=y
+CONFIG_ROOT_NFS=y
+CONFIG_IP_PNP=y
+CONFIG_IP_PNP_DHCP=y
+CONFIG_IP_PNP_BOOTP=y
+CONFIG_IP_PNP_RARP=y
+
+************************************
+broken package problem:
+rm -rf /var/lib/dpkg/info/*
+apt-get autoremove -f
+**********************************
+ddr controller/memory controller
+
+when ddr controller sending the data to ddr memory then ecc code will be genrated by ddr controller as bellow:
+for 8 bit data with 1 bit ecc code.
+for 64 bit data with 8 bit ecc code.
+***************************************
+mail reply with ok:
+    It is duly noted. Thank you.
+    Yes, I have taken note of it. Thanks
+    Thank you for the reminder. I will look into it and let you know the findings.
+    I look forward to it. Thanks.
+    I have no issues with the matter. Please proceed.
+    That sounds great, thank you!
+    Great Plan, looking forward do it!
+    Okay that sounds great to me, let me know if anything changes in the mean time.
+    Perfect! Thank you for your work on this!
+    Okay that sounds great! See you then!
+    Okay, that works for me. Thanks again!
+    Okay, thank you for letting me know.
+    Okay, I agree.
+    Okay, that works for me. Please let me know if you need anything else.
+    Okay sounds good, have a great rest of your day.
+    Okay, will do. Keep me updated.
+    Thank you for looking into this, it sounds great
+
+Just some examples! Of course this depends on the content of the correspondence! :)
+
+***********************************************************
+rtl driver
+
+https://www.digikey.lt/en/maker/projects/intro-to-embedded-linux-part-7-enable-wifi-networking-with-yocto/2e490a896a424a12b796ae60fef52937
+***********************************************************'
+sudo dhclient -r eth0/wlp0  remove
+sudo dhclient eth0/wlp0     renew
+************************************************************
+start enable ssh using systemctl
+1 edit the file /etc/ssh/sshd_config 
++ PermitRootLogin yes
+
+2 restart the sshd service
+$ systemctl restart sshd.socket
+*********************************************************
+
+ext4load mmc 1:3 ${kernel_addr_r} boot/Image
+ext4load mmc 1:3 ${fdt_addr_r} boot/nb2-pearl-mipi.dtb
+setenv bootargs 'console=ttyS0,115200n8 root=/dev/mmcblk1p3 rootwait rw rdinit=/sbin/init'
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+save env in fat partition:
+CONFIG_SAVEENV=y
+CONFIG_ENV_IS_IN_FAT=y
+CONFIG_ENV_FAT_DEVICE_AND_PART="0:1"
+CONFIG_ENV_SIZE=0x20000
+*********************************************************
+memory representation :
+4GB memory => 4G x 1B == (no of cells is 4G)x(capacity of each cell is 1byte).
+
+calculate how many bits adds is required for 4GB memory
+No of cells => 4G == (2^2)x(2^30) == 2^32
+formula of adds size => if no of cells 2^x then x is the adds size,so
+adds size => 32 bits for 4GB memory
+
+note :
+1)byte addrsable memory means on each adds location we can store 1 byte data
+2)word addrsable memory means on each adds location we can strore 1 word
+
+##primay memroy:
+CPU registers and cache memroy
+
+## main memory 
+RAM,ROM(BOOT ROM)
+
+## seconday memory 
+qspi 
+emmc
+mmc(sd card)
+**************************************************************
+cache memory:
+
+cache will be utizing by some perposes :
+1 increase the speed of cpu for performance
+2 for size will be be more then cpu registors to store more data
+
+cache hit:
+if cpu find the data in cache that is called as cache hit.
+
+cache miss:
+if cpu didnt get data in cache that is called as cache miss. 
+************************************************************** 
+DMA tranfer process:
+1 io device send the dma request to dmac (dma controller/dma chip).
+2 dma will send the bus request to cpu 
+3 cpu will tell two things to dmac
+	a how to much data
+	b starting adds in RAM
+4 cpu will give the system bus control to dmac
+5 data will tranfer from io device to memory with the help of dmac
+
+*****************************************************************
+## erase/format  the mmc :
+wipefs -a /dev/mmcblk1  
+
+********************************************************************
+
+mender from emmc:
+MENDER_STORAGE_DEVICE = "/dev/mmcblk1"  for kernel command line root=/dev/mmcblk1(emmc) or /dev/mmcblk0(sd)
+MENDER_UBOOT_STORAGE_DEVICE = "1"   0(sd) 1(emmc)
+
+CORE_IMAGE_EXTRA_INSTALL_append = " packagegroup-base-wifi"
+
+*********************************************************************
+Error:
+
+fatal error: Killed signal terminated program cc1plus 
+occurs when the Linux kernel's Out-Of-Memory (OOM) killer terminates the compiler process because it has exhausted all available system memory.
+
+solution :
+
+need to reduce task 
+# Limit threads for the entire build
+BB_NUMBER_THREADS = "4"
+PARALLEL_MAKE = "-j 4"
+
+or 
+
+# limit ONLY onnxruntime if you want other recipes to build fast
+PARALLEL_MAKE:pn-onnxruntime = "-j 1"
+
+
+**********************************************************************
