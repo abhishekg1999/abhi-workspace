@@ -1,13 +1,3 @@
-/***************************************************************************//**
-*  \file       test_app.c
-*
-*  \details    Userspace application to test the Device driver
-*
-*  \author     EmbeTronicX
-*
-*  \Tested with Linux raspberrypi 5.10.27-v7l-embetronicx-custom+
-*
-*******************************************************************************/
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -23,8 +13,7 @@ int8_t read_buf[buf_size];
 int main()
 {
         int fd, option;
-        printf("*********************************\n");
-        printf("*******WWW.EmbeTronicX.com*******\n");
+        printf("*******driver test app*******\n");
         fd = open("/dev/my_device", O_RDWR);
         if(fd < 0) {
                 printf("Cannot open device file...\n");
@@ -35,22 +24,17 @@ int main()
                 printf("        1. Write               \n");
                 printf("        2. Read                 \n");
                 printf("        3. Exit                 \n");
-                printf("*********************************\n");
                 scanf("%d", &option);
-                printf("Your Option = %d\n", option);
                 
                 switch(option) {
                         case 1:
                                 printf("Enter the string to write into driver :");
                                 scanf("  %[^\t\n]s", write_buf);
-                                printf("Data Writing ...");
                                 write(fd, write_buf, strlen(write_buf)+1);
                                 printf("Done!\n");
                                 break;
                         case 2:
-                                printf("Data Reading ...");
                                 read(fd, read_buf, buf_size);
-                                printf("Done!\n\n");
                                 printf("Data = %s\n\n", read_buf);
                                 break;
                         case 3:
