@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registers base="0xA4000000">
+
+    <signal name="PROT_INPUT_CURR_HL" offset="0x000C" bit_pos="16" bit_size="16" access="RW" value="200"/>
+    <signal name="PROT_OUTPUT_VOLT_LL" offset="0x000C" bit_pos="0" bit_size="16" access="RW" value="200"/>
+
+    <signal name="PROT_OUTPUT_VOLT_HL" offset="0x0010" bit_pos="16" bit_size="16" access="RW" value="300"/>
+    <signal name="PROT_DCLINK_VOLT_LL" offset="0x0010" bit_pos="0" bit_size="16" access="RW" value="400"/>
+
+    <signal name="PROT_DCLINK_VOLT_HL" offset="0x0014" bit_pos="16" bit_size="16" access="RW" value="500"/>
+    <signal name="PROT_INPUT_VOLT_LL" offset="0x0014" bit_pos="0" bit_size="16" access="RW" value="600"/>
+
+    <signal name="PROT_INPUT_VOLT_HL" offset="0x0018" bit_pos="16" bit_size="16" access="RW" value="700"/>
+    <signal name="DELAY_OUTPUT_VOLT_HL" offset="0x0018" bit_pos="0" bit_size="16" access="RW" value="800"/>
+
+    <signal name="DELAY_OUTPUT_VOLT_LL" offset="0x001C" bit_pos="16" bit_size="16" access="RW" value="900"/>
+    <signal name="DELAY_INPUT_VOLT_HL" offset="0x001C" bit_pos="0" bit_size="16" access="RW" value="1000"/>
+
+    <signal name="DELAY_INPUT_VOLT_LL" offset="0x0020" bit_pos="16" bit_size="16" access="RW" value="1100"/>
+    <signal name="DELAY_DCLINK_VOLT_LL_1" offset="0x0020" bit_pos="0" bit_size="16" access="RW" value="1200"/>
+
+    <signal name="DELAY_DCLINK_VOLT_LL_2" offset="0x0024" bit_pos="16" bit_size="16" access="RW" value="1300"/>
+    <signal name="DELAY_DCLINK_VOLT_HL_1" offset="0x0024" bit_pos="0" bit_size="16" access="RW" value="1400"/>
+
+    <signal name="DELAY_DCLINK_VOLT_HL_2" offset="0x0028" bit_pos="16" bit_size="16" access="RW" value="1500"/>
+    <signal name="REF_DCLINK_VOLT" offset="0x0028" bit_pos="0" bit_size="16" access="RW" value="1600"/>
+
+    <signal name="DELAY_LIFESIGN_FAIL" offset="0x002C" bit_pos="16" bit_size="16" access="RW" value="10"/>
+    <signal name="SYS_START_FREQ" offset="0x002C" bit_pos="0" bit_size="16" access="RW" value="50"/>
+
+    <signal name="SYS_CMD_FREQ" offset="0x0030" bit_pos="16" bit_size="16" access="RW" value="60"/>
+    <signal name="PROT_DCLINK_OV_TRIP" offset="0x0030" bit_pos="0" bit_size="16" access="RW" value="1700"/>
+
+    <signal name="TRIP_COUNT" offset="0x0034" bit_pos="16" bit_size="16" access="RW" value="5"/>
+    <signal name="Current_unbalance_limit" offset="0x0034" bit_pos="0" bit_size="16" access="RW" value="1800"/>
+
+    <signal name="output_current_inst_trip_limit" offset="0x0038" bit_pos="16" bit_size="16" access="RW" value="1900"/>
+    <signal name="output_current_rms_trip_limit" offset="0x0038" bit_pos="0" bit_size="16" access="RW" value="2000"/>
+
+    <signal name="TRIP_COUNT_Reset_time" offset="0x003C" bit_pos="16" bit_size="16" access="RW" value="20"/>
+    <signal name="Spare_L" offset="0x003C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="BUR_Isolation_Flag" offset="0x0040" bit_pos="3" bit_size="1" access="RW" value="0"/>
+    <signal name="SYS_MODE_SIMULATION" offset="0x0040" bit_pos="2" bit_size="1" access="RW" value="0"/>
+    <signal name="SYS_CMD_RECT_ENABLE" offset="0x0040" bit_pos="1" bit_size="1" access="RW" value="1"/>
+    <signal name="SYS_CMD_INV_ENABLE" offset="0x0040" bit_pos="0" bit_size="1" access="RW" value="1"/>
+
+    <signal name="Spare_0044_H" offset="0x0044" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="Spare_0044_L" offset="0x0044" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="reserved_0048_H" offset="0x0048" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="reserved_0048_L" offset="0x0048" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="reserved_004C_H" offset="0x004C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="reserved_004C_L" offset="0x004C" bit_pos="0" bit_size="16" access="RW" value="100"/>
+    
+    <signal name="abhi" offset="0x004C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+</registers>

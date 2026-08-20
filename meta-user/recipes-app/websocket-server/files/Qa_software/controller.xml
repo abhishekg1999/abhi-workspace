@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<registers base="0xA4100000">
+
+    <signal name="LC1_REG0_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG0" offset="0x7100" abs_addr="0xA4107100" bit_pos="16" bit_size="16" access="RW" value="100"/>
+    <signal name="LC1_REG0_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG0" offset="0x7100" abs_addr="0xA4107100" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG1_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG1" offset="0x7104" abs_addr="0xA4107104" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG1_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG1" offset="0x7104" abs_addr="0xA4107104" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG2_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG2" offset="0x7108" abs_addr="0xA4107108" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG2_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG2" offset="0x7108" abs_addr="0xA4107108" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG3_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG3" offset="0x710C" abs_addr="0xA410710C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG3_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG3" offset="0x710C" abs_addr="0xA410710C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG4_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG4" offset="0x7110" abs_addr="0xA4107110" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG4_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG4" offset="0x7110" abs_addr="0xA4107110" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG5_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG5" offset="0x7114" abs_addr="0xA4107114" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG5_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG5" offset="0x7114" abs_addr="0xA4107114" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG6_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG6" offset="0x7118" abs_addr="0xA4107118" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG6_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG6" offset="0x7118" abs_addr="0xA4107118" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG7_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG7" offset="0x711C" abs_addr="0xA410711C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG7_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG7" offset="0x711C" abs_addr="0xA410711C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG8_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG8" offset="0x7120" abs_addr="0xA4107120" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG8_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG8" offset="0x7120" abs_addr="0xA4107120" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG9_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG9" offset="0x7124" abs_addr="0xA4107124" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG9_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG9" offset="0x7124" abs_addr="0xA4107124" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG10_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG10" offset="0x7128" abs_addr="0xA4107128" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG10_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG10" offset="0x7128" abs_addr="0xA4107128" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG11_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG11" offset="0x712C" abs_addr="0xA410712C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG11_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG11" offset="0x712C" abs_addr="0xA410712C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG12_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG12" offset="0x7130" abs_addr="0xA4107130" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG12_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG12" offset="0x7130" abs_addr="0xA4107130" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG13_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG13" offset="0x7134" abs_addr="0xA4107134" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG13_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG13" offset="0x7134" abs_addr="0xA4107134" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG14_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG14" offset="0x7138" abs_addr="0xA4107138" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG14_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG14" offset="0x7138" abs_addr="0xA4107138" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG15_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG15" offset="0x713C" abs_addr="0xA410713C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG15_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG15" offset="0x713C" abs_addr="0xA410713C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG16_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG16" offset="0x7140" abs_addr="0xA4107140" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG16_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG16" offset="0x7140" abs_addr="0xA4107140" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG17_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG17" offset="0x7144" abs_addr="0xA4107144" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG17_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG17" offset="0x7144" abs_addr="0xA4107144" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG18_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG18" offset="0x7148" abs_addr="0xA4107148" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG18_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG18" offset="0x7148" abs_addr="0xA4107148" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG19_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG19" offset="0x714C" abs_addr="0xA410714C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG19_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG19" offset="0x714C" abs_addr="0xA410714C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG20_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG20" offset="0x7150" abs_addr="0xA4107150" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG20_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG20" offset="0x7150" abs_addr="0xA4107150" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG21_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG21" offset="0x7154" abs_addr="0xA4107154" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG21_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG21" offset="0x7154" abs_addr="0xA4107154" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG22_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG22" offset="0x7158" abs_addr="0xA4107158" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG22_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG22" offset="0x7158" abs_addr="0xA4107158" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG23_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG23" offset="0x715C" abs_addr="0xA410715C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG23_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG23" offset="0x715C" abs_addr="0xA410715C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG24_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG24" offset="0x7160" abs_addr="0xA4107160" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG24_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG24" offset="0x7160" abs_addr="0xA4107160" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC1_REG25_HI" register="CAN_OUT_TCU1LC1_WRPARA_REG25" offset="0x7164" abs_addr="0xA4107164" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC1_REG25_LO" register="CAN_OUT_TCU1LC1_WRPARA_REG25" offset="0x7164" abs_addr="0xA4107164" bit_pos="0" bit_size="16" access="RW" value="0"/>
+    
+    <signal name="LC2_REG0_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG0" offset="0x7400" abs_addr="0xA4107400" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG0_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG0" offset="0x7400" abs_addr="0xA4107400" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG1_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG1" offset="0x7404" abs_addr="0xA4107404" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG1_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG1" offset="0x7404" abs_addr="0xA4107404" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG2_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG2" offset="0x7408" abs_addr="0xA4107408" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG2_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG2" offset="0x7408" abs_addr="0xA4107408" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG3_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG3" offset="0x740C" abs_addr="0xA410740C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG3_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG3" offset="0x740C" abs_addr="0xA410740C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG4_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG4" offset="0x7410" abs_addr="0xA4107410" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG4_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG4" offset="0x7410" abs_addr="0xA4107410" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG5_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG5" offset="0x7414" abs_addr="0xA4107414" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG5_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG5" offset="0x7414" abs_addr="0xA4107414" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG6_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG6" offset="0x7418" abs_addr="0xA4107418" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG6_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG6" offset="0x7418" abs_addr="0xA4107418" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG7_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG7" offset="0x741C" abs_addr="0xA410741C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG7_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG7" offset="0x741C" abs_addr="0xA410741C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG8_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG8" offset="0x7420" abs_addr="0xA4107420" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_RE.G8_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG8" offset="0x7420" abs_addr="0xA4107420" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG9_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG9" offset="0x7424" abs_addr="0xA4107424" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG9_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG9" offset="0x7424" abs_addr="0xA4107424" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG10_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG10" offset="0x7428" abs_addr="0xA4107428" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG10_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG10" offset="0x7428" abs_addr="0xA4107428" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG11_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG11" offset="0x742C" abs_addr="0xA410742C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG11_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG11" offset="0x742C" abs_addr="0xA410742C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG12_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG12" offset="0x7430" abs_addr="0xA4107430" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG12_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG12" offset="0x7430" abs_addr="0xA4107430" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG13_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG13" offset="0x7434" abs_addr="0xA4107434" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG13_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG13" offset="0x7434" abs_addr="0xA4107434" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG14_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG14" offset="0x7438" abs_addr="0xA4107438" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG14_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG14" offset="0x7438" abs_addr="0xA4107438" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG15_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG15" offset="0x743C" abs_addr="0xA410743C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG15_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG15" offset="0x743C" abs_addr="0xA410743C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG16_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG16" offset="0x7440" abs_addr="0xA4107440" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG16_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG16" offset="0x7440" abs_addr="0xA4107440" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG17_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG17" offset="0x7444" abs_addr="0xA4107444" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG17_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG17" offset="0x7444" abs_addr="0xA4107444" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG18_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG18" offset="0x7448" abs_addr="0xA4107448" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG18_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG18" offset="0x7448" abs_addr="0xA4107448" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG19_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG19" offset="0x744C" abs_addr="0xA410744C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG19_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG19" offset="0x744C" abs_addr="0xA410744C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG20_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG20" offset="0x7450" abs_addr="0xA4107450" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG20_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG20" offset="0x7450" abs_addr="0xA4107450" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG21_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG21" offset="0x7454" abs_addr="0xA4107454" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG21_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG21" offset="0x7454" abs_addr="0xA4107454" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG22_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG22" offset="0x7458" abs_addr="0xA4107458" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG22_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG22" offset="0x7458" abs_addr="0xA4107458" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG23_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG23" offset="0x745C" abs_addr="0xA410745C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG23_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG23" offset="0x745C" abs_addr="0xA410745C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG24_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG24" offset="0x7460" abs_addr="0xA4107460" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG24_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG24" offset="0x7460" abs_addr="0xA4107460" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="LC2_REG25_HI" register="CAN_OUT_TCU1LC2_WRPARA_REG25" offset="0x7464" abs_addr="0xA4107464" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="LC2_REG25_LO" register="CAN_OUT_TCU1LC2_WRPARA_REG25" offset="0x7464" abs_addr="0xA4107464" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG0_H" register="CAN_OUT_TCU1MC1_WRPARA_REG0" offset="0x7700" abs_addr="0xA4107700" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG0_L" register="CAN_OUT_TCU1MC1_WRPARA_REG0" offset="0x7700" abs_addr="0xA4107700" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG1_H" register="CAN_OUT_TCU1MC1_WRPARA_REG1" offset="0x7704" abs_addr="0xA4107704" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG1_L" register="CAN_OUT_TCU1MC1_WRPARA_REG1" offset="0x7704" abs_addr="0xA4107704" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG2_H" register="CAN_OUT_TCU1MC1_WRPARA_REG2" offset="0x7708" abs_addr="0xA4107708" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG2_L" register="CAN_OUT_TCU1MC1_WRPARA_REG2" offset="0x7708" abs_addr="0xA4107708" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG3_H" register="CAN_OUT_TCU1MC1_WRPARA_REG3" offset="0x770C" abs_addr="0xA410770C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG3_L" register="CAN_OUT_TCU1MC1_WRPARA_REG3" offset="0x770C" abs_addr="0xA410770C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG4_H" register="CAN_OUT_TCU1MC1_WRPARA_REG4" offset="0x7710" abs_addr="0xA4107710" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG4_L" register="CAN_OUT_TCU1MC1_WRPARA_REG4" offset="0x7710" abs_addr="0xA4107710" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG5_H" register="CAN_OUT_TCU1MC1_WRPARA_REG5" offset="0x7714" abs_addr="0xA4107714" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG5_L" register="CAN_OUT_TCU1MC1_WRPARA_REG5" offset="0x7714" abs_addr="0xA4107714" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG6_H" register="CAN_OUT_TCU1MC1_WRPARA_REG6" offset="0x7718" abs_addr="0xA4107718" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG6_L" register="CAN_OUT_TCU1MC1_WRPARA_REG6" offset="0x7718" abs_addr="0xA4107718" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG7_H" register="CAN_OUT_TCU1MC1_WRPARA_REG7" offset="0x771C" abs_addr="0xA410771C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG7_L" register="CAN_OUT_TCU1MC1_WRPARA_REG7" offset="0x771C" abs_addr="0xA410771C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG8_H" register="CAN_OUT_TCU1MC1_WRPARA_REG8" offset="0x7720" abs_addr="0xA4107720" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG8_L" register="CAN_OUT_TCU1MC1_WRPARA_REG8" offset="0x7720" abs_addr="0xA4107720" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG9_H" register="CAN_OUT_TCU1MC1_WRPARA_REG9" offset="0x7724" abs_addr="0xA4107724" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG9_L" register="CAN_OUT_TCU1MC1_WRPARA_REG9" offset="0x7724" abs_addr="0xA4107724" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG10_H" register="CAN_OUT_TCU1MC1_WRPARA_REG10" offset="0x7728" abs_addr="0xA4107728" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG10_L" register="CAN_OUT_TCU1MC1_WRPARA_REG10" offset="0x7728" abs_addr="0xA4107728" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG11_H" register="CAN_OUT_TCU1MC1_WRPARA_REG11" offset="0x772C" abs_addr="0xA410772C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG11_L" register="CAN_OUT_TCU1MC1_WRPARA_REG11" offset="0x772C" abs_addr="0xA410772C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG12_H" register="CAN_OUT_TCU1MC1_WRPARA_REG12" offset="0x7730" abs_addr="0xA4107730" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG12_L" register="CAN_OUT_TCU1MC1_WRPARA_REG12" offset="0x7730" abs_addr="0xA4107730" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG13_H" register="CAN_OUT_TCU1MC1_WRPARA_REG13" offset="0x7734" abs_addr="0xA4107734" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG13_L" register="CAN_OUT_TCU1MC1_WRPARA_REG13" offset="0x7734" abs_addr="0xA4107734" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG14_H" register="CAN_OUT_TCU1MC1_WRPARA_REG14" offset="0x7738" abs_addr="0xA4107738" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG14_L" register="CAN_OUT_TCU1MC1_WRPARA_REG14" offset="0x7738" abs_addr="0xA4107738" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG15_H" register="CAN_OUT_TCU1MC1_WRPARA_REG15" offset="0x773C" abs_addr="0xA410773C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG15_L" register="CAN_OUT_TCU1MC1_WRPARA_REG15" offset="0x773C" abs_addr="0xA410773C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG16_H" register="CAN_OUT_TCU1MC1_WRPARA_REG16" offset="0x7740" abs_addr="0xA4107740" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG16_L" register="CAN_OUT_TCU1MC1_WRPARA_REG16" offset="0x7740" abs_addr="0xA4107740" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG17_H" register="CAN_OUT_TCU1MC1_WRPARA_REG17" offset="0x7744" abs_addr="0xA4107744" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG17_L" register="CAN_OUT_TCU1MC1_WRPARA_REG17" offset="0x7744" abs_addr="0xA4107744" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG18_H" register="CAN_OUT_TCU1MC1_WRPARA_REG18" offset="0x7748" abs_addr="0xA4107748" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG18_L" register="CAN_OUT_TCU1MC1_WRPARA_REG18" offset="0x7748" abs_addr="0xA4107748" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG19_H" register="CAN_OUT_TCU1MC1_WRPARA_REG19" offset="0x774C" abs_addr="0xA410774C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG19_L" register="CAN_OUT_TCU1MC1_WRPARA_REG19" offset="0x774C" abs_addr="0xA410774C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG20_H" register="CAN_OUT_TCU1MC1_WRPARA_REG20" offset="0x7750" abs_addr="0xA4107750" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG20_L" register="CAN_OUT_TCU1MC1_WRPARA_REG20" offset="0x7750" abs_addr="0xA4107750" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG21_H" register="CAN_OUT_TCU1MC1_WRPARA_REG21" offset="0x7754" abs_addr="0xA4107754" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG21_L" register="CAN_OUT_TCU1MC1_WRPARA_REG21" offset="0x7754" abs_addr="0xA4107754" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG22_H" register="CAN_OUT_TCU1MC1_WRPARA_REG22" offset="0x7758" abs_addr="0xA4107758" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG22_L" register="CAN_OUT_TCU1MC1_WRPARA_REG22" offset="0x7758" abs_addr="0xA4107758" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG23_H" register="CAN_OUT_TCU1MC1_WRPARA_REG23" offset="0x775C" abs_addr="0xA410775C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG23_L" register="CAN_OUT_TCU1MC1_WRPARA_REG23" offset="0x775C" abs_addr="0xA410775C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG24_H" register="CAN_OUT_TCU1MC1_WRPARA_REG24" offset="0x7760" abs_addr="0xA4107760" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG24_L" register="CAN_OUT_TCU1MC1_WRPARA_REG24" offset="0x7760" abs_addr="0xA4107760" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC1_REG25_H" register="CAN_OUT_TCU1MC1_WRPARA_REG25" offset="0x7764" abs_addr="0xA4107764" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC1_REG25_L" register="CAN_OUT_TCU1MC1_WRPARA_REG25" offset="0x7764" abs_addr="0xA4107764" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG0_H" register="CAN_OUT_TCU1MC2_WRPARA_REG0" offset="0x7A00" abs_addr="0xA4107A00" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG0_L" register="CAN_OUT_TCU1MC2_WRPARA_REG0" offset="0x7A00" abs_addr="0xA4107A00" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG1_H" register="CAN_OUT_TCU1MC2_WRPARA_REG1" offset="0x7A04" abs_addr="0xA4107A04" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG1_L" register="CAN_OUT_TCU1MC2_WRPARA_REG1" offset="0x7A04" abs_addr="0xA4107A04" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG2_H" register="CAN_OUT_TCU1MC2_WRPARA_REG2" offset="0x7A08" abs_addr="0xA4107A08" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG2_L" register="CAN_OUT_TCU1MC2_WRPARA_REG2" offset="0x7A08" abs_addr="0xA4107A08" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG3_H" register="CAN_OUT_TCU1MC2_WRPARA_REG3" offset="0x7A0C" abs_addr="0xA4107A0C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG3_L" register="CAN_OUT_TCU1MC2_WRPARA_REG3" offset="0x7A0C" abs_addr="0xA4107A0C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG4_H" register="CAN_OUT_TCU1MC2_WRPARA_REG4" offset="0x7A10" abs_addr="0xA4107A10" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG4_L" register="CAN_OUT_TCU1MC2_WRPARA_REG4" offset="0x7A10" abs_addr="0xA4107A10" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG5_H" register="CAN_OUT_TCU1MC2_WRPARA_REG5" offset="0x7A14" abs_addr="0xA4107A14" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG5_L" register="CAN_OUT_TCU1MC2_WRPARA_REG5" offset="0x7A14" abs_addr="0xA4107A14" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG6_H" register="CAN_OUT_TCU1MC2_WRPARA_REG6" offset="0x7A18" abs_addr="0xA4107A18" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG6_L" register="CAN_OUT_TCU1MC2_WRPARA_REG6" offset="0x7A18" abs_addr="0xA4107A18" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG7_H" register="CAN_OUT_TCU1MC2_WRPARA_REG7" offset="0x7A1C" abs_addr="0xA4107A1C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG7_L" register="CAN_OUT_TCU1MC2_WRPARA_REG7" offset="0x7A1C" abs_addr="0xA4107A1C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG8_H" register="CAN_OUT_TCU1MC2_WRPARA_REG8" offset="0x7A20" abs_addr="0xA4107A20" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG8_L" register="CAN_OUT_TCU1MC2_WRPARA_REG8" offset="0x7A20" abs_addr="0xA4107A20" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG9_H" register="CAN_OUT_TCU1MC2_WRPARA_REG9" offset="0x7A24" abs_addr="0xA4107A24" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG9_L" register="CAN_OUT_TCU1MC2_WRPARA_REG9" offset="0x7A24" abs_addr="0xA4107A24" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG10_H" register="CAN_OUT_TCU1MC2_WRPARA_REG10" offset="0x7A28" abs_addr="0xA4107A28" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG10_L" register="CAN_OUT_TCU1MC2_WRPARA_REG10" offset="0x7A28" abs_addr="0xA4107A28" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG11_H" register="CAN_OUT_TCU1MC2_WRPARA_REG11" offset="0x7A2C" abs_addr="0xA4107A2C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG11_L" register="CAN_OUT_TCU1MC2_WRPARA_REG11" offset="0x7A2C" abs_addr="0xA4107A2C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG12_H" register="CAN_OUT_TCU1MC2_WRPARA_REG12" offset="0x7A30" abs_addr="0xA4107A30" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG12_L" register="CAN_OUT_TCU1MC2_WRPARA_REG12" offset="0x7A30" abs_addr="0xA4107A30" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG13_H" register="CAN_OUT_TCU1MC2_WRPARA_REG13" offset="0x7A34" abs_addr="0xA4107A34" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG13_L" register="CAN_OUT_TCU1MC2_WRPARA_REG13" offset="0x7A34" abs_addr="0xA4107A34" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG14_H" register="CAN_OUT_TCU1MC2_WRPARA_REG14" offset="0x7A38" abs_addr="0xA4107A38" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG14_L" register="CAN_OUT_TCU1MC2_WRPARA_REG14" offset="0x7A38" abs_addr="0xA4107A38" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG15_H" register="CAN_OUT_TCU1MC2_WRPARA_REG15" offset="0x7A3C" abs_addr="0xA4107A3C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG15_L" register="CAN_OUT_TCU1MC2_WRPARA_REG15" offset="0x7A3C" abs_addr="0xA4107A3C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG16_H" register="CAN_OUT_TCU1MC2_WRPARA_REG16" offset="0x7A40" abs_addr="0xA4107A40" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG16_L" register="CAN_OUT_TCU1MC2_WRPARA_REG16" offset="0x7A40" abs_addr="0xA4107A40" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG17_H" register="CAN_OUT_TCU1MC2_WRPARA_REG17" offset="0x7A44" abs_addr="0xA4107A44" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG17_L" register="CAN_OUT_TCU1MC2_WRPARA_REG17" offset="0x7A44" abs_addr="0xA4107A44" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG18_H" register="CAN_OUT_TCU1MC2_WRPARA_REG18" offset="0x7A48" abs_addr="0xA4107A48" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG18_L" register="CAN_OUT_TCU1MC2_WRPARA_REG18" offset="0x7A48" abs_addr="0xA4107A48" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG19_H" register="CAN_OUT_TCU1MC2_WRPARA_REG19" offset="0x7A4C" abs_addr="0xA4107A4C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG19_L" register="CAN_OUT_TCU1MC2_WRPARA_REG19" offset="0x7A4C" abs_addr="0xA4107A4C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG20_H" register="CAN_OUT_TCU1MC2_WRPARA_REG20" offset="0x7A50" abs_addr="0xA4107A50" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG20_L" register="CAN_OUT_TCU1MC2_WRPARA_REG20" offset="0x7A50" abs_addr="0xA4107A50" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG21_H" register="CAN_OUT_TCU1MC2_WRPARA_REG21" offset="0x7A54" abs_addr="0xA4107A54" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG21_L" register="CAN_OUT_TCU1MC2_WRPARA_REG21" offset="0x7A54" abs_addr="0xA4107A54" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG22_H" register="CAN_OUT_TCU1MC2_WRPARA_REG22" offset="0x7A58" abs_addr="0xA4107A58" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG22_L" register="CAN_OUT_TCU1MC2_WRPARA_REG22" offset="0x7A58" abs_addr="0xA4107A58" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG23_H" register="CAN_OUT_TCU1MC2_WRPARA_REG23" offset="0x7A5C" abs_addr="0xA4107A5C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG23_L" register="CAN_OUT_TCU1MC2_WRPARA_REG23" offset="0x7A5C" abs_addr="0xA4107A5C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG24_H" register="CAN_OUT_TCU1MC2_WRPARA_REG24" offset="0x7A60" abs_addr="0xA4107A60" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG24_L" register="CAN_OUT_TCU1MC2_WRPARA_REG24" offset="0x7A60" abs_addr="0xA4107A60" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC2_REG25_H" register="CAN_OUT_TCU1MC2_WRPARA_REG25" offset="0x7A64" abs_addr="0xA4107A64" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC2_REG25_L" register="CAN_OUT_TCU1MC2_WRPARA_REG25" offset="0x7A64" abs_addr="0xA4107A64" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG0_H" register="CAN_OUT_TCU1MC3_WRPARA_REG0" offset="0x7D00" abs_addr="0xA4107D00" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG0_L" register="CAN_OUT_TCU1MC3_WRPARA_REG0" offset="0x7D00" abs_addr="0xA4107D00" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG1_H" register="CAN_OUT_TCU1MC3_WRPARA_REG1" offset="0x7D04" abs_addr="0xA4107D04" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG1_L" register="CAN_OUT_TCU1MC3_WRPARA_REG1" offset="0x7D04" abs_addr="0xA4107D04" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG2_H" register="CAN_OUT_TCU1MC3_WRPARA_REG2" offset="0x7D08" abs_addr="0xA4107D08" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG2_L" register="CAN_OUT_TCU1MC3_WRPARA_REG2" offset="0x7D08" abs_addr="0xA4107D08" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG3_H" register="CAN_OUT_TCU1MC3_WRPARA_REG3" offset="0x7D0C" abs_addr="0xA4107D0C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG3_L" register="CAN_OUT_TCU1MC3_WRPARA_REG3" offset="0x7D0C" abs_addr="0xA4107D0C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG4_H" register="CAN_OUT_TCU1MC3_WRPARA_REG4" offset="0x7D10" abs_addr="0xA4107D10" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG4_L" register="CAN_OUT_TCU1MC3_WRPARA_REG4" offset="0x7D10" abs_addr="0xA4107D10" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG5_H" register="CAN_OUT_TCU1MC3_WRPARA_REG5" offset="0x7D14" abs_addr="0xA4107D14" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG5_L" register="CAN_OUT_TCU1MC3_WRPARA_REG5" offset="0x7D14" abs_addr="0xA4107D14" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG6_H" register="CAN_OUT_TCU1MC3_WRPARA_REG6" offset="0x7D18" abs_addr="0xA4107D18" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG6_L" register="CAN_OUT_TCU1MC3_WRPARA_REG6" offset="0x7D18" abs_addr="0xA4107D18" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG7_H" register="CAN_OUT_TCU1MC3_WRPARA_REG7" offset="0x7D1C" abs_addr="0xA4107D1C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG7_L" register="CAN_OUT_TCU1MC3_WRPARA_REG7" offset="0x7D1C" abs_addr="0xA4107D1C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG8_H" register="CAN_OUT_TCU1MC3_WRPARA_REG8" offset="0x7D20" abs_addr="0xA4107D20" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG8_L" register="CAN_OUT_TCU1MC3_WRPARA_REG8" offset="0x7D20" abs_addr="0xA4107D20" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG9_H" register="CAN_OUT_TCU1MC3_WRPARA_REG9" offset="0x7D24" abs_addr="0xA4107D24" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG9_L" register="CAN_OUT_TCU1MC3_WRPARA_REG9" offset="0x7D24" abs_addr="0xA4107D24" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG10_H" register="CAN_OUT_TCU1MC3_WRPARA_REG10" offset="0x7D28" abs_addr="0xA4107D28" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG10_L" register="CAN_OUT_TCU1MC3_WRPARA_REG10" offset="0x7D28" abs_addr="0xA4107D28" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG11_H" register="CAN_OUT_TCU1MC3_WRPARA_REG11" offset="0x7D2C" abs_addr="0xA4107D2C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG11_L" register="CAN_OUT_TCU1MC3_WRPARA_REG11" offset="0x7D2C" abs_addr="0xA4107D2C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG12_H" register="CAN_OUT_TCU1MC3_WRPARA_REG12" offset="0x7D30" abs_addr="0xA4107D30" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG12_L" register="CAN_OUT_TCU1MC3_WRPARA_REG12" offset="0x7D30" abs_addr="0xA4107D30" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG13_H" register="CAN_OUT_TCU1MC3_WRPARA_REG13" offset="0x7D34" abs_addr="0xA4107D34" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG13_L" register="CAN_OUT_TCU1MC3_WRPARA_REG13" offset="0x7D34" abs_addr="0xA4107D34" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG14_H" register="CAN_OUT_TCU1MC3_WRPARA_REG14" offset="0x7D38" abs_addr="0xA4107D38" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG14_L" register="CAN_OUT_TCU1MC3_WRPARA_REG14" offset="0x7D38" abs_addr="0xA4107D38" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG15_H" register="CAN_OUT_TCU1MC3_WRPARA_REG15" offset="0x7D3C" abs_addr="0xA4107D3C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG15_L" register="CAN_OUT_TCU1MC3_WRPARA_REG15" offset="0x7D3C" abs_addr="0xA4107D3C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG16_H" register="CAN_OUT_TCU1MC3_WRPARA_REG16" offset="0x7D40" abs_addr="0xA4107D40" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG16_L" register="CAN_OUT_TCU1MC3_WRPARA_REG16" offset="0x7D40" abs_addr="0xA4107D40" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG17_H" register="CAN_OUT_TCU1MC3_WRPARA_REG17" offset="0x7D44" abs_addr="0xA4107D44" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG17_L" register="CAN_OUT_TCU1MC3_WRPARA_REG17" offset="0x7D44" abs_addr="0xA4107D44" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG18_H" register="CAN_OUT_TCU1MC3_WRPARA_REG18" offset="0x7D48" abs_addr="0xA4107D48" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG18_L" register="CAN_OUT_TCU1MC3_WRPARA_REG18" offset="0x7D48" abs_addr="0xA4107D48" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG19_H" register="CAN_OUT_TCU1MC3_WRPARA_REG19" offset="0x7D4C" abs_addr="0xA4107D4C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG19_L" register="CAN_OUT_TCU1MC3_WRPARA_REG19" offset="0x7D4C" abs_addr="0xA4107D4C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG20_H" register="CAN_OUT_TCU1MC3_WRPARA_REG20" offset="0x7D50" abs_addr="0xA4107D50" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG20_L" register="CAN_OUT_TCU1MC3_WRPARA_REG20" offset="0x7D50" abs_addr="0xA4107D50" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG21_H" register="CAN_OUT_TCU1MC3_WRPARA_REG21" offset="0x7D54" abs_addr="0xA4107D54" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG21_L" register="CAN_OUT_TCU1MC3_WRPARA_REG21" offset="0x7D54" abs_addr="0xA4107D54" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG22_H" register="CAN_OUT_TCU1MC3_WRPARA_REG22" offset="0x7D58" abs_addr="0xA4107D58" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG22_L" register="CAN_OUT_TCU1MC3_WRPARA_REG22" offset="0x7D58" abs_addr="0xA4107D58" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG23_H" register="CAN_OUT_TCU1MC3_WRPARA_REG23" offset="0x7D5C" abs_addr="0xA4107D5C" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG23_L" register="CAN_OUT_TCU1MC3_WRPARA_REG23" offset="0x7D5C" abs_addr="0xA4107D5C" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG24_H" register="CAN_OUT_TCU1MC3_WRPARA_REG24" offset="0x7D60" abs_addr="0xA4107D60" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG24_L" register="CAN_OUT_TCU1MC3_WRPARA_REG24" offset="0x7D60" abs_addr="0xA4107D60" bit_pos="0" bit_size="16" access="RW" value="0"/>
+
+    <signal name="MC3_REG25_H" register="CAN_OUT_TCU1MC3_WRPARA_REG25" offset="0x7D64" abs_addr="0xA4107D64" bit_pos="16" bit_size="16" access="RW" value="0"/>
+    <signal name="MC3_REG25_L" register="CAN_OUT_TCU1MC3_WRPARA_REG25" offset="0x7D64" abs_addr="0xA4107D64" bit_pos="0" bit_size="16" access="RW" value="100"/>
+
+</registers>

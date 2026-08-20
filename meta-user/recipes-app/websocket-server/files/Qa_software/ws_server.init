@@ -1,0 +1,38 @@
+#!/bin/sh
+
+DAEMON=/usr/local/bin/ws_server
+DAEMON_NAME=ws_server
+PIDFILE=/var/run/$DAEMON_NAME.pid
+DAEMON_OPTS=""
+
+case "$1" in
+  start)
+    echo "Starting $DAEMON_NAME..."
+    start-stop-daemon --start --quiet --background \
+        --pidfile $PIDFILE --make-pidfile \
+        --exec $DAEMON -- $DAEMON_OPTS
+    ;;
+  stop)
+    echo "Stopping $DAEMON_NAME..."
+    start-stop-daemon --stop --quiet --pidfile $PIDFILE --retry TERM/30/KILL/5
+    ;;
+  restart)
+    $0 stop
+    $0 start
+    ;;
+  status)
+    if [ -f "$PIDFILE" ] && kill -0 $(cat "$PIDFILE") 2>/dev/null; then
+        echo "$DAEMON_NAME is running (pid $(cat $PIDFILE))"
+        exit 0
+    else
+        echo "$DAEMON_NAME is not running"
+        exit 1
+    fi
+    ;;
+  *)
+    echo "Usage: $0 {start|stop|restart|status}"
+    exit 1
+    ;;
+esac
+
+exit 0
