@@ -1,0 +1,1520 @@
+vvdn windows PC => vvdn@123
+
+## VM credentials:
+ssh vvdn@172.24.6.16 -p 10025
+passward => vvdn@123
+
+## amd credentials:
+username => vvdn email
+passd => Walia@12345
+
+## HRMS 
+username : akumar672
+password : Abhi@jul@12345
+
+## vvdn mail:
+mail : abhishek.kumar2@vvdntech.in
+pass : Abhi@aug@2026
+
+TCN => train communication network
+ESD => electrical short distance  (MVB)
+EMD => electrical middle distance (MVB)
+
+## gitlab:
+username => akumar672
+password => Walia@12345
+token => glpat-PtyACthLMWw0oXfpbg2o4G86MQp1OjJsOAk.01.0z0m3h57z
+
+****************************************************
+what is redundancy 
+being ideal because of not in use or usefull as longer , As the redundency should be minimize 
+
+TCU => driving the motors 
+ACU => powring all auxillary loads 
+VCU => For control logic and driver display unit for pilot user interface ,signal will go from vcu to io card via CAN and pushed the sensor data over MVB
+
+DDU  => ddu will take the data avilable on MVB bus upload by io card
+DSP => it used to generate PWM and send it to IGBT/motor driver
+
+## RMS (remote monitoring system) 
+
+defination:
+RMS in locomotive stands for Remote Monitoring System. It's a system that monitors a locomotive's status and faults in real time and sends the information to a base station. 
+
+working :
+1.An RMS unit is connected to the locomotive's computer, GPS receiver, and GSM/CDMA communication devices 
+
+2.The unit continuously monitors the locomotive's internal status 
+3.When it detects a fault or alert, it sends the information to a base station server 
+4.The RMS unit can also be used as an emergency voice communication device for the driver 
+
+what it monitors :
+Temperature
+High voltage
+Software version
+Isolation
+
+what it does:
+The RMS sends the information to a base station server in real time 
+The RMS can send alerts to concerned authorities via email or SMS 
+The RMS can provide a map view of the location of all locomotives fitted with RDS 
+
+## gateway:
+connect on MVB bus it used to provide MVB to ethernet interface 
+
+
+Management and interface card :
+it is a dedicated electronic component that acts as a central hub for communication, allowing various systems within the locomotive to exchange data with external applications like train control systems, monitoring platforms, and diagnostic tools, effectively managing the flow of information between different parts of the locomotive and outside systems.
+
+###############################################################################
+
+## Protocols :
+# CAN  
+for internal communication between VCU and IO cards & DSP 
+
+# MVB
+used for the communication between independent blocks like VCU to TCU & VCU to ACU
+
+# RS485
+used to upgrade the firmware in each module 
+
+###############################################################################
+
+VVDN: 
+developing all electronics, CPLD/FPGA & software development of all these systems
+
+Sigma Rail:
+electrical power conversion design & mechanical/thermal design of the overall system
+
+
+The detailed architecture will be updated in individual system design documents.
+
+locomotive vs automotive 
+In essence, automotive vehicles are designed for flexibility and varied use on roads, while locomotives are specialized vehicles meant for efficient mass transport on railways.
+
+Username: akumar672
+Password: CB9Mvng2
+
+
+## what is MVB(Multifunction vehicle bus)
+The MVB (Multifunction Vehicle Bus) protocol operates as a communication system primarily used in railway applications, 
+where a designated "master" device controls data transmission to multiple "slave" devices within a train by sending periodic frames that define specific time slots for each slave to send their data, ensuring real-time and deterministic communication with a fixed data rate, 
+typically utilizing a single master-to-multiple slave communication structure; 
+
+it offers two access modes: periodic (for regularly polled data) and sporadic (for event-based data transmission) to manage different types of information on the bus
+
+
+##  need to install on ubuntu machine 
+1. mate-terminal    //its an command line terminal
+
+	
+## VCU
+connected with IO processor card x 4
+
+##TCU
+connected with IO processor card x 1
+connected with DSP x 5
+
+##ACU 
+connected with IO processor card x 1
+connected with DSP x 1
+
+
+## How the RS485 to USB converter works 
+
+
+this module is used to convert RS485 data to USB data 
+
+it conatins lots of components few usefull are bellow
+1. RS485 transceiver  chip //take A & B differential voltage signals and convert to serial data (uart data , start bit ,data bit ,parity bit ,stop bits)
+2. UART-to-USB chip        // used to check errors in serial data 
+3. USB-to-UART  chip       // take error free serial data and convert into USB data 
+
+## How RS485 protocol works 
+
+Basically we need TTL to RS485 converter for RS485 communication which needs uart input from microcontroller and convert it to RS485 data (A&B voltage differential signals)
+
+connections 
+microcontroller			RS485
+
+TX	<----->				DI
+
+RX  <----->				RO
+
+GPIO x	<---->			RE (recieve enable)
+
+GPIO y	<----->			DE (data enable)
+
+ouput :
+A & B differential signals will be at output end
+
+## Locomotive diagnostic system 
+
+gateway:
+connect on MVB bus it used to provide MVB to ethernet interface 
+
+###############################################################################
+
+what is 5W1H method to write documnets about any task 
+1 what
+2 who 
+3 where
+4 when
+5 how 
+6 Why
+
+What?: What is the project? What are the objectives?
+Who?: Who is the client? Who are the users? Who are the members of the team ?
+Where?: Where will the project take place?
+When?: What is the date of the consignment? When will it start? How long will it last?
+How:? Which financial, HR and technical means have been put in place to create the project? By what means will you progress?
+
+Why: Why has the project been started? What are the reasons? What is the goal?
+
+###############################################################################
+
+what is memory map
+
+Mapping I/O (Input/Output) registers in RAM refers to the process of linking hardware peripherals (like GPIO pins, timers, UARTs, etc.) to specific memory addresses in a microcontroller's RAM address space. In most embedded systems, I/O registers are memory-mapped rather than accessed through specialized I/O instructions, meaning you can interact with them as if they are regular memory addresses.
+
+When you want to "map" I/O registers in RAM, what you're essentially doing is defining a range of memory addresses where the registers of peripherals are stored, so that your code can interact with them directly using standard memory access operations (like read and write).
+ 
+ 
+In embedded systems, mmap() can be used to map hardware device registers into the program's address space, providing a simple and efficient way to interact with hardware devices.
+
+/dev/mem: To access physical memory (for devices, etc.), you typically need to open the /dev/mem device in Linux. However, some systems may restrict access to /dev/mem for security reasons.
+Permissions: Accessing physical memory or devices may require root (administrator) privileges. On Linux, mmap() with /dev/mem often requires sudo or root access.
+Efficiency: mmap() allows direct access to memory and is much more efficient than traditional file I/O because it avoids copying data between user space and kernel space.
+
+
+Prototype of mmap()
+void* mmap(void* addr, size_t length, int prot, int flags, int fd, off_t offset);
+
+exlanation:
+addr: The desired starting address for the memory mapping. If NULL, the system chooses the address.
+length: The length (in bytes) of the memory to map.
+prot: The desired memory protection (e.g., PROT_READ, PROT_WRITE, PROT_EXEC).
+flags: Modifies the behavior of the mapping (e.g., MAP_SHARED, MAP_PRIVATE).
+fd: File descriptor (e.g., a file or device you want to map).
+offset: The offset within the file/device to start the mapping.
+
+
+
+###############################################################################
+
+primary processor     	     MPSOC  petalinux
+digital io controller 	     APSOC  petalinux
+analog io controller  	     APSOC  petalinux
+management & interface card  APSOC  petalinux
+MVB admin & distribution     APSOC  petalinux
+
+
+## object dictionary of CANopen
+index: 16-bit base address of the object
+object name: Manufacturer device name
+object code: array, variable, record
+data type: VISIBLE_STRING, UNSIGNED32 or record name
+Acess: r/w, read-only, write-only
+category: indicates if this parameters is mandetory/optinal
+
+
+###############################################################################
+
+how to enable root access with login password in ubuntu
+
+1. open the file vi /etc/sudoers
+2. add bellow line 
+ALL ALL=PASSWD: /usr/bin/su
+ALL ALL=NOPASSWD: /usr/bin/minicom
+
+3. test it with bellow command 
+sudo su  //this will ask password so provide login password
+
+# change the permission:
+chmod 440 /etc/sudoers
+chown root:root /etc/sudoers
+
+########################################################
+To Switch between sysv and systemd use the following config:
+
+steps:
+petalinux-config -c rootfs, select Image Features -→ Init-manager (systemd) save and exit.
+Run petalinux-build.
+
+###############################################################################
+
+## build petalinux image
+
+1.shh in VM 
+$ ssh akumar672@172.16.100.7
+pass => Abhi@123
+
+2.create work space directory 
+$ mkdir ZC702-board && cd ZC702-board
+
+3.execute settings.sh script to setup env and commands 
+$ source /home/vvdn/petalinux/petalinux_2024_02/settings.sh
+
+4.download .bsp file from amd website/downloads for target board and keep in work space directory 
+
+5.create a tmp directory in work space directory
+
+6.create project using bellow command 
+$ petalinux-create -t project --template zynqMP -n Project_zc702 -s <path_to_bsp_file> --tmpdir <tmp_directory_path>
+eg. $ petalinux-create -t project --template zynqMP -n Project_zc702 -s /home/akumar672/ZC702-board/BSP_File/xilinx-zc702-v2024.2-11110212.bsp
+
+7.build sources using bellow command 
+$ petalinux-build   
+
+8.create required boot files 
+$ petalinux-package --force --boot --format BIN --fsbl images/linux/zynq_fsbl.elf --u-boot images/linux/u-boot.elf --fpga images/linux/system.bit
+
+
+9.copy bootable files from images/linux/ to sd card
+	-BOOT.bin
+	-boot.scr
+	-image.ub
+	
+10. now attach the sd card to board and boot it
+11. connect to minicom using bellow command to see the boot logs 
+$sudo minicom -D /dev/ttyUSB0 -b 115200
+
+
+## build petalinux for ZCU106 board using XSA
+
+1.create work space directory 
+$ mkdir ZC702-board && cd ZC702-board
+
+2.execute settings.sh script to setup petalinux commands  
+$ source /home/vvdn/petalinux/petalinux_2024_02/settings.sh
+
+3.create a tmp directory in work space directory
+
+4.create project 
+petalinux-create -t project --template zynqMP -n Project_zcu106 
+
+5.import the XSA to project
+petalinux-config --get-hw-description=/home/akumar672/ZCU106-xsa-project/XSA_File/zcu_104_axi_gpio_zync_ps.xsa
+
+6.Need to set few things in menuconfig 
+	Go to DTG Settings->MACHINE_NAME and change the name for “zcu106-reva”
+
+7.build the petalinux using bellow command 
+$ petalinux-build 
+
+Errors:
+
+1.
+ERROR: Nothing RPROVIDES 'libvcu-omxil' 
+libvcu-omxil was skipped: missing required machine feature 'vcu' (not in MACHINE_FEATURES)
+libvcu-omxil was skipped: missing required machine feature 'vcu' (not in MACHINE_FEATURES)
+	
+solution:
+add the following to project-spec/meta-user/conf/petalinuxbsp.conf
+
+MACHINE_FEATURES:append = " vcu"
+	
+ref link :
+https://fpgalover.com/index.php/boards/39-zcu106/97-build-petalinux-for-zcu106-ps-and-pl-based-10g-ethernet#:~:text=In%20petalinux%2Dconfig%20DTG%20Settings,to%20use%20the%20tftp%20server.&text=You%20need%20to%20modify%20the,are%20many%20types%20of%20boards.
+
+#2 build petalinux using XSA with BSP file
+
+1.create work space directory 
+$ mkdir ZC702-board && cd ZC702-board
+
+2.execute settings.sh script to setup env and commands 
+$ source /home/vvdn/petalinux/petalinux_2024_02/settings.sh
+
+3.create a tmp directory in work space directory
+
+4.create project using bellow command
+petalinux-create -t project --template zynqMP -s /home/akumar672/ZCU106-xsa-project/BSP_File/xilinx-zcu106-xsct-v2024.2-11110212.bsp -n Project_zcu106
+
+5.petalinux-config --get-hw-description=/home/akumar672/ZCU106-xsa-project/XSA_File/zcu_106_axi_gpio_zync_ps.xsa
+
+6.build the petalinux using bellow command 
+$ petalinux-build 
+
+
+## build petalinux for MYD-Y7Z020-V2 board
+
+1.create work space directory 
+$ mkdir MYD-Y7Z020-V2 && cd MYD-Y7Z020-V2
+
+2.execute settings.sh script to setup env and commands 
+$ source /home/vvdn/petalinux/petalinux_2024_02/settings.sh
+
+3.create a tmp directory in work space directory (optional)
+
+4.create project using bellow command
+petalinux-create -t project --template zynq -n Project_mydz070
+
+5. import hardware XSA
+petalinux-config --get-hw-description=/home/vvdn/new_disk/abhi/MYD/Project_mydz070/XSA/myd_top_usb_test.xsa
+
+6. build image 
+petalinux-build
+
+7. pack the binary
+petalinux-package --force --boot --format BIN --fsbl images/linux/zynq_fsbl.elf --u-boot images/linux/u-boot.elf --fpga images/linux/system.bit
+
+8. copy all files to sd card 
+	FAT  (partition1) : BOOT.BIN(fsbl + u-boot + dtb + bit file), boot.scr, image.ub(kernel + dtb)
+	ext4 (partition2) : rootfs
+
+########################################################
+petalinux commands :
+
+if you change only system.dtsi 
+
+1. build only dtb file 
+petalinux-build -c device-tree -x clean
+petalinux-build -c device-tree
+
+2. build u-boot with new dtsi
+petalinux-build -c device-tree -x clean
+petalinux-build -c device-tree
+petalinux-package --force --boot --format BIN --fsbl images/linux/zynq_fsbl.elf --u-boot images/linux/u-boot.elf --fpga images/linux/system.bit   //Update BOOT.BIN with the new DTB
+
+3. build kernel with new dtsi
+petalinux-build -c device-tree -x clean
+petalinux-build -c device-tree
+petalinux-build -c kernel -x do_deploy   //Update image.ub with the new DTB
+
+########################################################################
+
+BUR functinalities:
+controlling the inverter and rectifiier in VCU
+
+Input/outputs for BUR validation:
+1. take input and write to parameter registers 
+2. get the output from debug/monitor registers
+
+questions for BUR:
+1. for BUR1 we have 7 FG but for rest BUR2 and BUR3 how many FG will be their are those same as BUR1 or different.
+2. To set the register values do we need to scan the input from use or we can fix in API itself.
+3. 
+a.​ md.l 0xA630_0000 - 0x0 ( Initially it will be one)
+b.​ md.l 0xA630_0004 - 0x0( Pulse cannot be detected via register)
+c.​ md.l 0xA630_0008 - 0x0 ( Initially it will be one)
+
+here is this adds 0xA630_0000 is register adds and if it is then do we need to write the value on some bits or in full 32 bits of register
+
+########################################################################
+## extract dtb to dts
+
+dtc -I dtb -O dts -o system.dts system.dtb
+##########################################################################
+=> A9 break/ auto break
+=> SA9 break/ independent break
+=> "TE" refers to Tractive Effort (power for forward movement) 
+=> "BE" refers to Braking Effort (power for stopping or slowing down)
+=> LT mode focuses on simulating the physical movement and forces within a train, including interactions between vehicles
+=> ST(simulator) mode refers to a training or testing environment that mimics real-world locomotive operations, 
+=> LSAF chain pulling indicator 
+ZPT => this confirms "Is it safe to touch the wire?"
+BLDJ => this will raise the pantograph if their is no issue after ZPT press
+LSDJ => isolates the locomotive from the overhead power line (ON=> MCB ckt open, off=> MCB ckt close)
+LSVW => indicates a vigilance warning light that illuminates if the vigilance conditions are not met within the stipulated time (60 seconds). 
+BPCS => switch to make the speed constant 
+
+
+Q.How to change into simulation mode 
+> attach simulation key in SM1 and press VCU reset or do reset using BL key (D - off and off - D)
+
+pentograph raise:
+1.initially after BL key move to D position LSDJ is on (MCB open/power disconnected) 
+2.press ZPT-> up -> LSDJ still on (MCB/VCB open)
+3.press BLDJ -> ON  -> LSDJ off(MCB/VCB close) 
+
+now you can check U meter for the voltage coming from overhead line
+
+Test BE
+1. set the reverser to R
+2.make sure A9 & SA9 break should be released 
+3.increase throttle value toward TE (0 t0 TEmax)  
+
+check now locomotive should move as per TE given 
+
+Test high speed warning 
+1. set the reverser to R
+2.make sure A9 & SA9 break should be released 
+3.increase throttle value toward TEmax full
+4.once the speed cross the limit then LSVW lamp glow which indicates high speed 
+5.now you can acknowledge it using vigilance foot switch so LSVW turn off
+
+
+A9 applied with throttle applied then KN should ne 0
+
+if throttle applied toward BE then after apply A9 & Sa9 it should affect 
+
+if throttle move then BPCS will turn off
+
+setenv bootargs "earlycon console=ttyPS0,115200 root=/dev/ram0 rw init_fatal_sh=1 clk_ignore_unused"
+setenv bootargs "earlycon console=ttyPS0,115200 root=/dev/mmcblk0p2 rw init_fatal_sh=1 clk_ignore_unused"
+
+## check pl clocks 
+cat /sys/kernel/debug/clk/clk_summary | grep pl0
+
+## check PCAP_DONE register for bit file programmed or not
+devmem 0xFFCA0044  (if 1 programmed, 0 / core dump not programmed)
+
+########################################################################
+test curl on winodws pc
+
+1. open terminal 
+2. curl -s "http://172.24.111.211/cgi-bin/app?API=write_to_FG_reg&value=456"   //for write 
+3. curl -s "http://172.24.111.211/cgi-bin/app?API=read_from_FG_reg"            //for read
+
+########################################################################
+
+## Enable the python3 in petalinux
+
+petalinux-config -c roofs -> filesystem -> misc 
+petalinux-config -c roofs -> filesystem -> devil
+
+########################################################################
+
+## enable the kernel debug option in filesystem petalinux
+
+petalinux-config -c kernel -> kernel hacking -> Generic Kernel Debugging Instruments -> Debug Filesystem
+
+########################################################################
+
+mmc list -> show the device list enabled
+mmc part -> lists available partition on current mmc device
+fatls mmc 0:1 ->  show the data in fat partion which is first partion 
+
+sf probe 0 0 0  -> detect the qspi
+
+load mmc 0:1 0x1000000 BOOT.BIN  -> load BOOT.BIN in ram
+
+sf erase 0 0x1000000  -> erase full qspi memory
+
+sf write 0x1000000 0x0 ${filesize}  -> write in qspi
+
+load mmc 0:1 0x1000000 image.ub  -> load kernel into ram
+sf erase 0x00500000 0x00B00000         # erase ~11MB in QSPI
+sf write 0x1000000 0x00500000 ${filesize}  # write image.ub to QSPI
+
+setenv bootcmd 'sf probe 0; sf read 0x1000000 0x00500000 0x00b00000; bootm 0x1000000'
+saveenv
+
+#########################################
+mmc list
+sf probe 0 0 0
+load mmc 0:1 0x1000000 BOOT.BIN
+sf erase 0 0x1000000
+sf write 0x1000000 0x0 ${filesize}
+
+############################################
+
+## compile code with cc 
+cc main.c apis.c   //just compile
+cc -Wall -O2 main.c apis.c   //compile with cflags (which will tell if any variable is unsed)
+cflags = -Wall -O2
+
+################################################
+## How to setup and run hello world using html 
+
+1. install lighttpd 
+2. create directory 
+$ mkdir -p /var/www/html/upgrade
+
+3. create index.html and keep in path
+$ echo "<h1>Hello from upgrade page</h1>" | sudo tee /var/www/html/upgrade/index.html
+
+4. change the permission 
+$ chmod -R 755 /var/www
+
+5. add html path to lighttpd configuration file  in /etc/lighttpd/lighttpd.conf
+$ server.document-root = "/var/www/html"
+
+6. restart the lighttpd 
+$ service lighttpd restart
+
+7. try 
+	on browser => http://172.24.8.31/upgrade/index.html
+	on terminal => http://localhost/upgrade/
+
+##########################################################
+
+## How to add new layer in petalinux
+
+1. put ur layer into Project_spec/meta-hello
+
+2. Run petalinux-config > Yocto Settings > User Layers.
+3. Enter the following:
+	${PROOT}/project-spec/meta-hello
+
+4. Save and exit.
+
+#################################################
+
+## install websocat in linux 
+
+cd /usr/local/bin
+sudo wget https://github.com/vi/websocat/releases/download/v1.12.0/websocat.x86_64-unknown-linux-musl
+sudo chmod +x websocat.x86_64-unknown-linux-musl
+sudo mv websocat.x86_64-unknown-linux-musl websocat
+
+## install libweb socket library for websocket API 
+
+sudo apt-get install libwebsockets-dev 
+
+## install json 
+apt-get install jq   //to see the output in json formate
+
+####################################################
+# server
+cc server.c -o ws_server -lwebsockets
+./ws_server
+
+# client
+websocat ws://172.16.100.7:9000
+
+###################################################
+
+IMAGE_INSTALL:append = " libwebsockets libwebsockets-dev"
+
+#########################################
+
+## check the running service 
+
+ps aux | grep ws_server
+or
+pgrep -a ws_server
+
+##########################################
+
+## enable virtual CAN to send and recieve msg
+
+modprobe vcan
+ip link add dev can0 type vcan
+ip link set up can0
+ip link show can0
+
+##########################################
+#!/bin/bash
+
+SERVER="ws://localhost:9000"
+
+while true; do
+    echo "get_can_data 1" | websocat "$SERVER" | jq
+    sleep 0.1
+done
+
+###############################################################
+
+### build yocto image for imx 8mplus(sch-46370 rev b2) board
+
+$: repo init -u https://github.com/nxp-imx/imx-manifest.git -b imx-linux-walnascar -m imx-6.12.34-2.1.0.xml
+$: repo sync
+
+$: MACHINE=imx8mpevk DISTRO=fsl-imx-xwayland source ./imx-setup-release.sh -b build
+
+$: cd ../
+$: source ./setup-environment build/
+$: bitbake imx-image-full
+
+copy image to sd card :
+sudo dd if=imx-image-full.wic of=/dev/sda bs=4M status=progress conv=fsync
+
+
+result on sd card :
+	raw partition: u-boot-spl.bin(fsbl), u-boot.itb(actual uboot + dtb), .elf (some ARM firmware)
+	FAT  : Image , dtb 
+	ext4 : rootfs
+############################################################
+
+## tmux use
+
+1.start new session with name 
+tmux new -s session_name
+
+2. attach session 
+tmux attach -t session_name
+
+3. detach session 
+Press Ctrl+B then D
+
+
+## sdk build for "imx8mp-evk"
+
+change in local.conf
+IMAGE_INSTALL:append = " qtbase qtbase-plugins"
+TOOLCHAIN_HOST_TASK:append = " nativesdk-qtbase-tools nativesdk-qttools nativesdk-qtbase nativesdk-qtshadertools nativesdk-qtbase-dev nativesdk-qttools-dev"
+TOOLCHAIN_TARGET_TASK:append = " qtbase qtbase-plugins qtbase-dev"
+SDKIMAGE_FEATURES:append = " dev-pkgs staticdev-pkgs"
+
+1) build sdk
+bitbake core-image-minimal -c populate_sdk
+
+2) find sdk script under /tmp/deploy/images/fsl-imx-xwayland-glibc-x86_64-core-image-minimal-armv8a-imx8mpevk-toolchain-6.12-walnascar.sh
+
+3) extact the sdk 
+./fsl-imx-xwayland-glibc-x86_64-core-image-minimal-armv8a-imx8mpevk-toolchain-6.12-walnascar.sh 
+	- enter the install path (default/user)
+
+4) change in env.sh
+export PATH=/home/vvdn/imx-toolchain/sysroots/x86_64-pokysdk-linux/usr/libexec:$PATH
+
+5) soure the script
+source ~/imx-toolchain/environment-setup-armv8a-poky-linux 
+cmake .. -DCMAKE_TOOLCHAIN_FILE=/home/vvdn/imx-toolchain/sysroots/x86_64-pokysdk-linux/usr/share/cmake/OEToolchainConfig.cmake
+
+6) compile 
+make
+
+
+## sdk build for "myd-y7z020-v2"
+
+# generate sdk
+$petalinux-build --sdk  //it will generate sdk.sh under images/linux/sdk.sh
+
+# create one folder at home
+mkdir -p ~/new_disk/abhi/project-myd/sdk-mydz070
+
+# copy this sdk.sh to created folder "~/new_disk/abhi/project-myd/" && cd ~/new_disk/abhi/project-myd
+
+# extract sdk 
+./sdk.sh -d ~/new_disk/abhi/project-myd/sdk-mydz070
+
+# source the environment script 
+
+source /home/vvdn/new_disk/abhi/project-myd/sdk-mydz070/environment-setup-cortexa9t2hf-neon-xilinx-linux-gnueabi
+
+
+note make sure to check bellow things after environment script
+printenv CC    
+printenv CROSS_COMPILE
+printenv ARCH
+which ${CROSS_COMPILE}gcc
+${CROSS_COMPILE}gcc --version
+printenv SDKTARGETSYSROOT   
+
+expected output :
+=> CC=arm-xilinx-linux-gnueabi-gcc
+=> arm-xilinx-linux-gnueabi-
+=>/home/vvdn/new_disk/abhi/project-myd/sdk-mydz070/sysroots/x86_64-petalinux-linux/usr/bin/arm-xilinx-linux-gnueabi/arm-xilinx-linux-gnueabi-gcc
+=>arm-xilinx-linux-gnueabi-gcc (GCC) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+=> /home/vvdn/new_disk/abhi/project-myd/sdk-mydz070/sysroots/cortexa9t2hf-neon-xilinx-linux-gnueabi
+
+####### compile kernel #########
+
+# copy kernel from petalinux 
+cp -a build/tmp/work-shared/zynq-generic-7z020/kernel-source ~/new_disk/abhi/project-myd/kernel-mydz070  //kernel source code
+cp build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/linux-zynq_generic_7z020-standard-build/.config ~/new_disk/abhi/project-myd/kernel-mydz070  //working .config
+
+# cd kernel-mydz070
+
+export ARCH=arm
+export CROSS_COMPILE=arm-xilinx-linux-gnueabi
+
+make olddefconfig    //configure default configuration 
+make -j4 zImage      //build kernel image
+
+
+
+## check content of image.ub
+mkimage -l image.ub
+
+## check kernel release using make
+make kernelreleasels
+
+#####################################################
+
+now i connected 
+j21(imx8plus) 	tca8414 
+vcc pin1 -> 	vcc (pin24)
+GND pin39 -> 	gnd (pin12)
+sda pin3 -> 	sda (pin23)
+scl pin5 -> 	scl (pin22)
+gpio pin40 -> 	INT (pin21)
+
+J21 (i.MX8MP)      → TCA8418
+--------------------------------
+VCC  (pin 1)       → VCC
+GND  (pin 39)      → GND
+SDA  (pin 3)       → SDA
+SCL  (pin 5)       → SCL
+GPIO (pin 40)      → INT#
+RESET#             → VCC (pull-up)
+
+            
+          ┌───────u───────┐
+   ROW0 1 │               │ 24 VCC
+   ROW1 2 │               │ 23 SDA
+   ROW2 3 │               │ 22 SCL
+   ROW3 4 │   	          │ 21 INT
+   ROW4 5 │               │ 20 RESET
+   ROW5 6 │               │ 19 COL0
+   ROW6 7 │    TCA8418    │ 18 COL1
+   ROW7 8 │               │ 17 COL2
+   ROW8 9 │               │ 16 COL3
+   ROW9 10│               │ 15 COL4
+  ROW10 11│               │ 14 COL5
+   GND 12 │               │ 13 COL6
+          └───────────────┘
+
+#####################################################
+
+## create a patch in git repo
+ 
+git restore --staged
+arch/arm64/boot/dts/freescale/imx8mp-evk.dts
+git add arch/arm64/boot/dts/freescale/imx8mp-evk.dts
+git commit -s -m "arm64: dts: imx8mp: add lvds support Upstream-Status: Inappropriate [board specific]"
+
+git format-patch -1
+dtb
+#######################################################
+
+###### test the keypad ###### 
+
+1. run bellow command on board 
+
+evtest /dev/input/event1
+
+2. press keyboad keys you will see the values with interrupt 
+
+logs:
+
+root@imx8mpevk:~# evtest /dev/input/event1 
+Input driver version is 1.0.1 
+Input device ID: bus 0x18 vendor 0x1 product 0x1 version 0x1 
+Input device name: "tca8418"
+
+Supported events: 
+Event type 0 (EV_SYN) 
+Event type 1 (EV_KEY) 
+Event code 2 (KEY_1) 
+Event type 4 (EV_MSC) 
+Event code 4 (MSC_SCAN) Properties: 
+
+Properties: Testing ... (interrupt to exit) 
+Event: time 1766139268.811796, type 4 (EV_MSC), code 4(MSC_SCAN), value 00 
+Event: time 1766139268.811796, type 1 (EV_KEY), code 2 (KEY_1), value 1
+
+Event: time 1766139268.811796, -------------- SYN_REPORT ------------ 
+Event: time 1766139269.018904, type 4 (EV_MSC), code 4 (MSC_SCAN), value 00
+Event: time 1766139269.018904, type 1 (EV_KEY), code 2 (KEY_1), value 0
+
+
+#####################################################
+
+## build just dtb in yocto
+>> make changes in dts patch and follow below steps to build dtb only
+
+bitbake virtual/kernel -c cleansstate
+bitbake virtual/kernel -c configure
+bitbake virtual/kernel -c devshell
+make ARCH=arm64 dtbs
+
+###################################################
+
+Interface	Data Path (SoC Internal → Board External)	Final Output
+Native LVDS	LCDIF2 → LDB (LVDS Bridge) → LDB PHY → J21 (Mini-SAS)	LVDS
+
+Breakdown of your Chain:
+LCDIF2 (Display Controller): The internal engine that generates the raw pixels and timing (the 1024x768 @ 75MHz you configured).
+LDB (LVDS Display Bridge): The internal SoC logic that takes those pixels and formats them into the VESA-24 bit-stream.
+LDB PHY (Physical Layer): The actual hardware pins and high-speed differential drivers inside the i.MX8M Plus.
+
+###################################################
+
+## load image and boot 
+
+fatload mmc 0:1 0x3000000 image.ub
+setenv bootargs "console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait"
+saveenv
+bootm 0x3000000
+ 
+###################################################
+&spi0 {
+    status = "okay";
+    num-cs = <2>;                  /* Total Chip Selects enabled in Vivado */
+
+    adc0: ads8638@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;                 /* CS0 */
+        spi-max-frequency = <20000000>; /* ADS8638 max 20MHz recommended */
+    };
+
+    adc1: ads8638@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;                 /* CS1 */
+        spi-max-frequency = <20000000>;
+    };
+};
+
+
+&spi1 {
+    status = "okay";
+    num-cs = <2>;                  /* Total Chip Selects enabled in Vivado */
+
+    dac0: dac61404@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;                 /* CS0 */
+        spi-max-frequency = <50000000>; /* DAC61404 supports up to 50MHz */
+    };
+
+    dac1: dac61404@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;                 /* CS1 */
+        spi-max-frequency = <50000000>;
+    };
+};
+
+
+&spi0 {
+    status = "okay";
+    num-cs = <2>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    adc@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;                     /* CS0 */
+        spi-max-frequency = <20000000>;
+    };
+
+    adc@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;                     /* CS1 */
+        spi-max-frequency = <20000000>;
+    };
+};
+
+&spi1 {
+    status = "okay";
+    num-cs = <2>;
+    #address-cells = <1>;
+    #size-cells = <0>;
+
+    dac@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;                     /* CS0 */
+        spi-max-frequency = <50000000>;
+    };
+
+    dac@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;                     /* CS1 */
+        spi-max-frequency = <50000000>;
+    };
+};
+
+&spi0 {
+    status = "okay";
+    num-cs = <2>;
+    
+    adc0: ads8638@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;
+        spi-max-frequency = <20000000>;
+    };
+
+    adc1: ads8638@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;
+        spi-max-frequency = <20000000>;
+    };
+};
+
+&spi1 {
+    status = "okay";
+    num-cs = <2>;
+
+    dac0: dac61404@0 {
+        compatible = "rohm,dh2228fv";
+        reg = <0>;
+        spi-max-frequency = <25000000>; /* Safe limit for Zynq EMIO */
+    };
+
+    dac1: dac61404@1 {
+        compatible = "rohm,dh2228fv";
+        reg = <1>;
+        spi-max-frequency = <25000000>;
+    };
+};
+
+######################################
+calulate the pll and divider
+
+note: IMX PLL range is 600MHz to 1300MHz
+
+## for 51Mhz Pixel clock : 
+
+Pixel clock = 51 MHz
+Choose integer divider = 20
+PLL frequency = 51 × 20 = 1020 MHz
+
+now we can calculate for driver :
+
+Fout = Fin x (mdiv+kdiv/65536)
+	     _________________
+	      pdiv x 2^sdiv
+	      
+	​
+We have:
+Fout = 1020
+Fin = 24
+
+assume:
+pdiv = 3
+sdiv =1
+
+solve:
+
+1020 = 24 x (mdiv+kdiv/65536)
+	     _________________
+	      3 x 2^1
+	      
+mdiv + kdiv​  = 1020 x 3 x 2^1
+       ____    ______________
+       65536	     24
+
+mdiv + kdiv​  = 255
+       ____   
+       65536	  
+       
+now => split and compare for mdiv amd kdiv
+
+mdiv + kdiv​  = 255 + 0
+       ____   
+       65536	
+       
+so now  
+mdiv = 255
+kdiv = 0
+
+
+confirm by values:
+
+Fout = 24 x (255+0)
+	    ________   = 1020 
+	     3 x 2^1
+
+final parameters:
+
+mdiv = 255
+kdiv = 0
+pdiv = 3
+sdiv = 1
+
+PLL_1443X_RATE(rate, mdiv, pdiv, sdiv, kdiv)
+PLL_1443X_RATE(1020000000U, 255, 3, 1, 0)  //for 51Mhz
+
+in dts:
+assigned-clock-rates = <1020000000>, <1020000000>, <51000000>;
+
+## for 71MHz:
+
+Pixel clock = 71 MHz
+Choose integer divider = 14
+PLL frequency = 71 × 14 = 994 MHz
+
+now we can calculate for driver :
+
+Fout = Fin x (mdiv+kdiv/65536)
+	     _________________
+	      pdiv x 2^sdiv
+	      
+	​
+We have:
+Fout = 1020
+Fin = 24
+
+assume:
+pdiv = 3
+sdiv =1
+
+solve:
+
+994 = 24 x (mdiv+kdiv/65536)
+	     _________________
+	      3 x 2^1
+	      
+mdiv + kdiv​  = 994 x 3 x 2^1
+       ____    ______________
+       65536	     24
+
+mdiv + kdiv​  = 248.5
+       ____   
+       65536	  
+       
+now => split and compare for mdiv amd kdiv
+
+mdiv + kdiv​  = 248 + 0.5
+       ____   
+       65536	
+       
+kdiv = 0.5 x 65536 = 32768
+       
+so now  
+mdiv = 248
+kdiv = 32768
+
+
+confirm by values:
+
+Fout = 24 x (248+32768)
+	    ________   = 994 
+	     3 x 2^1
+
+final parameters:
+
+mdiv = 248
+kdiv = 32768
+pdiv = 3
+sdiv = 1
+
+PLL_1443X_RATE(rate, mdiv, pdiv, sdiv, kdiv)
+PLL_1443X_RATE(994000000U, 248, 3, 1, 32768)  //for 71Mhz
+
+in dts:
+assigned-clock-rates = <994000000>, <994000000>, <71000000>;
+
+##########################################
+
+Abhishek ALL=(root) NOPASSWD: \
+/bin/mkdir -p /usr/local/bin, \
+/bin/cp * /usr/local/bin/ws_server, \
+/bin/chmod +x /usr/local/bin/ws_server, \
+/bin/cp * /etc/init.d/ws_server, \
+/bin/chmod +x /etc/init.d/ws_server, \
+/usr/sbin/service ws_server start
+
+or 
+
+/bin/mkdir -p /usr/local/bin
+/bin/cp ws_server /usr/local/bin/ws_server
+/bin/chmod +x /usr/local/bin/ws_server
+/bin/cp ws_server.init /etc/init.d/ws_server
+/bin/chmod +x /etc/init.d/ws_server
+/usr/sbin/service ws_server start
+
+
+###########################################
+
+change the ownership of the folder to your user 
+chown -R vvdn:vvdn /home/vvdn/abhi    //change for the folder abhi
+
+############################################
+
+## yocto settings 
+
+# set task limit
+BB_NUMBER_THREADS = "4" 
+PARALLEL_MAKE = "-j 4"
+
+# reduce the parallel jobs for selected packages  
+PARALLEL_MAKE:pn-onnxruntime = "-j 1"
+PARALLEL_MAKE:pn-tensorflow-lite = "-j 2"
+
+INHERIT += "rm_work"
+
+# disable the KLEIDIAI support for bellow packages
+EXTRA_OECMAKE:append:pn-litert = " -DXNNPACK_ENABLE_KLEIDIAI=OFF"                                                                                                                                                                    
+EXTRA_OECMAKE:append:pn-litert-vx-delegate = " -DXNNPACK_ENABLE_KLEIDIAI=OFF"
+EXTRA_OECMAKE:append:pn-tensorflow-lite = " -DXNNPACK_ENABLE_KLEIDIAI=OFF"
+EXTRA_OECMAKE:append:pn-tensorflow-lite-vx-delegate = " -DXNNPACK_ENABLE_KLEIDIAI=OFF"
+
+###################################################
+
+apt-get install gcc-12
+apt-get install --reinstall linux-headers-$(uname -r)
+
+####################################
+lwipopts.h
+
+#define LWIP_DHCP 0 
+#define LWIP_AUTOIP 0 
+
+
+Zynq TX  → TM4C PB0 (UART1 RX)
+Zynq RX  → TM4C PB1 (UART1 TX)
+GND      → GND
+
+#####################################
+1. copy BOOT.BIN boot.scr image.ub and rootfs to board under /home/petalinux/boot
+
+2. copy BOOT.BIN to qspi:
+cat /proc/mtd   //check the qspi
+flash_erase /dev/mtd0 0 0  //clean the qspi
+dd if=/home/petalinux/boot/BOOT.BIN of=/dev/mtd0 bs=1M   //copy BOOT.BIN to qspi
+
+3. copy [boot.scr, image.ub ,rootfs] to emmc :
+cd /home/petalinux/boot/ 
+cp boot.scr image.ub /run/media/mmcblk0p1/
+tar -xf rootfs.tar.gz -C /run/media/mmcblk0p3/
+sync
+reboot
+
+#######################################
+setup the tcu1 proc card petalinux build :
+
+git clone https://gitlab.vvdntech.com:8081/sgri_elps/sgri_elps.git && cd sgri_elps
+git checkout tcu1_proc_card
+source /home/vvdn/petalinux/petalinux_1/settings.sh
+petalinux-config --get-hw-description=/home/vvdn/abhi/sgri_elps/XSA_File/sgri_elps_tcu1_proc_card_qspi_emmc_09_16_14hrs_17_Oct_2025_timing_pass.xsa
+petalinux-build
+
+########################################
+CONFIG_gpio-demo
+CONFIG_peekpoke
+#CONFIG_mac-sn-eeprom
+CONFIG_post
+CONFIG_ethup
+#CONFIG_tcnlib
+#CONFIG_testapp
+#CONFIG_vcu-init
+#CONFIG_mvb-app
+#CONFIG_stress-ng
+CONFIG_lighttpd
+#CONFIG_multiboot
+#CONFIG_mvb-app-tcu1-proc
+#CONFIG_can-application-layer
+#CONFIG_tcu-init
+
+can device driver:
+	Networking support → CAN bus subsystem support  [enable as M]
+	
+setenv bootargs "console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait ignore_loglevel initcall_debug log_buf_len=10M"
+
+setenv bootargs "console=ttyPS0,115200 root=/dev/mmcblk0p4 rw rootwait rootfstype=ext4 uio_pdrv_genirq.of_id=generic-uio"
+fatload mmc 0:1 0x10000000 test/image.ub
+bootm 0x10000000
+
+#####################################
+check service cpu usage :
+
+top -p $(pgrep -d',' ws_server)
+
+###########################################
+
+## optimize kernel boot for eth0 
+
+#1 cusmtom processor board 
+&gem1 {
+    status = "okay";
+    local-mac-address = [52 54 00 12 34 57];  // MAC address in hex
+    phy-mode = "rgmii-id"; 
+    phy-handle = <&phy1>;
+
+    mdio {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        phy1: ethernet-phy@1 {
+            reg = <1>;
+        };
+    };
+};
+
+&gem0 {
+    status = "disabled";
+};
+
+#2 myd-y7z020-v2 board
+
+&gem0 {
+    status = "okay";
+    local-mac-address = [52 54 00 12 34 57];  // MAC address in hex
+    phy-mode = "rgmii-id";
+    phy-handle = <&phy0>;
+
+    mdio {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        phy0: ethernet-phy@0 {
+            reg = <0>;
+        };
+    };
+};
+
+&gem1 {
+    status = "disabled";
+};  
+
+root cause:
+MDIO auto-scan (MAC driver starts -> It does MDIO bus scan for phy(0–31 addresses) -> spent ~40sec if not found phy)
+
+fix:
+provided exact PHY address (it will not go and scan for 40sec)
+
+
+################################################
+
+open vitis:
+
+source vitis_install/Vitis/2022.2/settings64.sh
+
+include/ "system-conf.dtsi"                                                                                                                                                                                
+/ {
+};
+
+############################################	
+
+## boot command for MYD-y7z020v2 board
+
+#1 sd boot
+mmc dev 0   //detect sd card
+setenv bootargs 'console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait clk_ignore_unused'
+fatload mmc 0:1 0x3000000 image.ub
+bootm 0x3000000
+
+#1. USB boot
+
+usb start  //start usb 
+setenv bootargs 'console=ttyPS0,115200 root=/dev/sda2 rw rootwait clk_ignore_unused'
+fatload usb 0:1 0x10000000 image.ub
+bootm 0x10000000
+
+###################################
+USB boot changes :
+
+## 1.
+File : project-spec/meta-user/recipes-bsp/u-boot/files/bsp.cfg
+
+CONFIG_USE_PREBOOT=y
+CONFIG_PREBOOT="gpio clear 7; gpio set 7"
+
+## 2.
+File : project-spec/meta-user/recipes-bsp/device-tree/files/system-user.dtsi
+
+/ {
+    /* Define a standalone generic USB transceiver node */
+    usb_phy0: usb_phy0 {
+        compatible = "usb-nop-xceiv";
+        #phy-cells = <0>;
+    };
+};
+
+&usb0 {
+    status = "okay";
+    dr_mode = "host";
+    phy_type = "ulpi";
+    usb-phy = <&usb_phy0>;
+
+    phy-reset-gpios = <&gpio0 7 1>;
+    u-boot,dm-pre-reloc;
+};
+
+#######################################
+
+## Imx8mp-evk baord boot in diu
+
+#1 usb boot
+usb start
+setenv bootargs 'console=ttymxc0,115200 root=/dev/sda2 rootwait rw'
+fatload usb 0:1 ${kernel_addr_r} Image
+fatload usb 0:1 ${fdt_addr_r} imx8mp-evk.dtb
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+
+#2 sd boot
+mmc dev 2
+setenv bootargs 'console=ttymxc0,115200 root=/dev/mmcblk2p3 rootwait rw'
+fatload mmc 2:1 ${kernel_addr_r} Image-initramfs-ddiu-imx8mp.bin
+fatload mmc 2:1 ${fdt_addr_r} imx8mp-evk.dtb
+booti ${kernel_addr_r} - ${fdt_addr_r}
+
+########################################
+
+## ethernet bringup vai usb-to-ethernet adapter on DIU custom board
+
+add changes in local.conf
+
+1)
+IMAGE_INSTALL:append = " linux-firmware-rtl-nic net-tools"
+LICENSE_FLAGS_ACCEPTED:append = " firmware_realtek"
+
+IMAGE_FEATURES:append = " ssh-server-dropbear"                                                                                                                                                              
+EXTRA_IMAGE_FEATURES:append = " allow-empty-password allow-root-login"
+
+2) Boot the Board
+
+Boot the board using the updated root filesystem.
+
+3) Configure Static IP Addresses
+
+Configure static IP addresses on both the board and the Ubuntu host.
+
+### Board
+ip addr add 192.168.1.10/24 dev eth1
+ip link set eth1 up
+
+### Ubuntu Host
+sudo ip addr add 192.168.1.20/24 dev enp2s0
+sudo ip link set enp2s0 up
+
+4) Verify Network Connectivity
+
+Verify that the board and Ubuntu host can communicate with each other.
+
+### From the Board
+ping 192.168.1.20
+
+### Or from the Ubuntu Host
+ping 192.168.1.10
+
+5) Connect to the Board via SSH
+
+From the Ubuntu host, connect to the board using SSH:
+ssh root@192.168.1.10
+
+#########################################
+
+## ethernet bringup vai usb-to-ethernet adapter on MYD-y7z020v2 board
+
+1) enable driver for realtek device
+
+Device Drivers 
+	->Network Device Support
+	 	-> USB Network Adapters
+	 		-> Realtek RTL8152/RTL8153 Based USB Ethernet Adapters
+	 		-> Multi-purpose USB Networking Framework
+
+
+2) Boot the Board
+
+Boot the board using the updated root filesystem.
+
+3) Configure Static IP Addresses
+
+Configure static IP addresses on both the board and the Ubuntu host.
+
+### Board
+ip addr add 192.168.1.10/24 dev eth1
+ip link set eth1 up
+
+### Ubuntu Host
+sudo ip addr add 192.168.1.20/24 dev enp2s0
+sudo ip link set enp2s0 up
+
+4) Verify Network Connectivity
+
+Verify that the board and Ubuntu host can communicate with each other.
+
+### From the Board
+ping 192.168.1.20
+
+### Or from the Ubuntu Host
+ping 192.168.1.10
+
+5) Connect to the Board via SSH
+
+From the Ubuntu host, connect to the board using SSH:
+ssh root@192.168.1.10
+
+debug keys:
+dmesg | tail -n 20
+lsusb 
+ip a
+
+###########################################
+
+make path short instaed of full path
+
+export PS1="\u@\h:\W$ "
+
+########################################
+https://github.com/vi/websocat/releases/download/v1.14.1/websocat.arm-unknown-linux-musleabi
+
+
+arm sdk :
+source /home/vvdn/myd-arm-tools/install/environment-setup-cortexa9t2hf-neon-xilinx-linux-gnueabi
+$CC --version
+
+########################################
+fuser 9000/tcp
+kill -9 $(fuser 9000/tcp)
+
+
+#######################################
+
+## push your changes on git
+
+git clone https://gitlab.vvdntech.com:8081/sgri_elps/sgri_elps.git && cd sgri_elps
+git checkout simulator/websocket-api-tcu 
+
+# update your changes
+
+git add .
+git commit -m "Fg-09 missing addresses fix in dump api"
+git push origin simulator/websocket-api-tcu
+
+#####################################
+
+workQ			tasklet
+process context		interrupt context
+can sleep		can not sleep
+can be slow		faster than
+proirity is normal	higher 
+
+
+#####################################
+
+add logo in psplash :
+
+1. first convert logo image .jpeg to .png
+
+convert traintech_logo.jpeg traintech_logo.png
+
+2. create .h file using script 
+
+git clone https://git.yoctoproject.org/psplash && cd psplash
+./make-image-header.sh ../traintech_logo.png POKY_SPLASH   //this is will create traintech_logo-img.h
+mv traintech_logo-img.h psplash-poky-img.h
+
+3. copy this psplash-poky-img.h to yocto recipe 
+
+yocto path => sources/poky/meta-poky/recipes-core/psplash/files
+
+4. build in yocto 
+
+bibake psplash -c cleanall
+bitbake core-image-minimal
+
+#######################################
+
+
+Q10 value = raw 32-bit value	= raw value
+	   ----------------	  ---------
+	   	2^10		      1024
+	​
+
+	​
+char* CANIn_tcu1mc3_wrpara_reg21_status(void)
+{
+    static char buf[256];
+    uint32_t value = 0;
+    double q10_value = 0.0;
+    status_code_t fault = STATUS_SUCCESS;
+
+    if (reg_read(0xA3106000, 0xD54, &value) != 0) {
+        value = 0;
+        fault = STATUS_ERR_HW_FAILED;
+    }
+
+    q10_value = (double)value / 1024.0;
+
+    snprintf(buf, sizeof(buf),
+             "{ \"id\": 21, \"status\": %d, \"value\": %.3f }",
+             fault, q10_value);
+
+    return buf;
+}
+
+###########################################
+command: dmesg -n 1
+
+It tells the kernel to send only panic/emergency messages to your terminal screen. 
+Your pr_info messages will stay perfectly hidden from your screen but will show up inside dmesg.
+
