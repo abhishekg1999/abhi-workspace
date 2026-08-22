@@ -7,5 +7,5 @@ int main()
 	int *const p=&x;
 
 	*p=10;
-	p=&y;
+	p=&y; //error
 }

@@ -7,10 +7,10 @@
 int main(){
 
 
-        int id = shmget(key, size, IPC_CREAT|0666);  //create shared memory sagment
+        int shmid = shmget(key, size, IPC_CREAT|0666);  //create shared memory sagment
         perror("shmget");
 
-        char *p = shmat(id, 0, 0);  //attached shared memory with process virtual adds space
+        char *p = shmat(shmid, 0, 0);  //attached shared memory with process virtual adds space
         perror("shmat");
 
         printf("Enter data:\n");

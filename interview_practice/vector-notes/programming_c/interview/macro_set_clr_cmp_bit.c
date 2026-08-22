@@ -1,7 +1,7 @@
 #include <stdio.h>
-#define SETBIT(num,pos) num|=(1<<pos)
-#define CLRBIT(num,pos) num&=~(1<<pos)
-#define TOGBIT(num,pos) num^=(1<<pos)
+#define SETBIT(num, pos) num|=(1<<pos)
+#define CLRBIT(num, pos) num&=~(1<<pos)
+#define TOGBIT(num, pos) num^=(1<<pos)
 
 void printbits(int num)
 {

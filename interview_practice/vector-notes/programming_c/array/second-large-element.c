@@ -48,7 +48,7 @@ int main()
 	      sec_large=large;
 	      large = a[i];
 	   }
-	   else if(a[i]>sec_large && a[i]!=large)
+	   else if(a[i]>sec_large && a[i]<large)
               sec_large = a[i];
 	}
 

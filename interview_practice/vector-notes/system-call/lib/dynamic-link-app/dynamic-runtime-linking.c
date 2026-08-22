@@ -2,6 +2,13 @@
 #include <dlfcn.h>
 // #include "mylib.h"  //optional because loading library at run time
 
+/*
+ * APIs used: 
+ * handler = dlopen("./mylib.so", RTLD_LAZY);
+ * fptr=dlsym(handler, "my_sum");
+ * dlclose(handler);
+ */
+
 int main(){
 
         int a=10, b=20, ret, op;
