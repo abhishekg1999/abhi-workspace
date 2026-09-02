@@ -433,3 +433,195 @@ petalinux-create	Create a project/component		Create
 petalinux-config	Configure the project			Configure
 petalinux-build		Build recipes/kernel/rootfs		Build
 petalinux-package	Create bootable/package artifacts	Package
+
+##### Memory allocation using malloc and kalloc:
+
+Your system has physical RAM:
+                 Physical RAM
+        ┌─────────────────────────────┐
+        │  Physical Address 0x00000000│
+        │                             │
+        │   Kernel memory             │
+        │                             │
+        │   User process memory       │
+        │                             │
+        │   Page cache                │
+        │                             │
+        │   Free memory               │
+        │                             │
+        │   Physical Address ...      │
+        └─────────────────────────────┘
+        
+But neither your application nor the kernel normally works directly with physical addresses.
+They work with virtual addresses.
+
+### malloc();
+int *p = malloc(4096);
+
+malloc() gives to your process a virtual address.
+p = 0x7f12345000
+
+
+User Process 
+Virtual Address
+0x7f12345000
+       │
+       │ MMU + Page Tables
+          ▼
+Physical Address
+0x12345000
+       │
+          ▼
+      RAM
+ 
+So    
+malloc()
+   ↓
+User virtual memory
+   ↓
+MMU / page table
+   ↓
+Physical RAM pages
+
+#### kalloc();
+int *p = kmalloc(4096, GFP_KERNEL);
+
+kmalloc() allocates kernel memory, You get a kernel virtual address:
+p = 0xffff800012345000
+
+Kernel
+Virtual Address
+0xffff800012345000
+        │
+        │ MMU + Kernel page tables
+           ▼
+Physical Address
+0x12345000
+        │
+           ▼
+       RAM
+       
+       
+So both can ultimately use RAM:
+malloc()                  kmalloc()
+   │                         │
+    ▼                                     ▼
+User Virtual Address     Kernel Virtual Address
+   │                         │
+   └──────────┬──────────────┘
+                     ▼
+             MMU
+              │
+                    ▼
+       Physical RAM
+       
+## how /dev/mem works :
+
+- /dev/mem does not contain a list of physical addresses. It is a Linux device interface that lets you access the physical address space.
+- Think of /dev/mem as a window into physical address space.
+- /dev/mem + mmap() is generally mapping an existing physical address, not allocating new memory.
+
+see this :
+fd = open("/dev/mem", O_RDWR | O_SYNC);
+ptr = mmap(NULL,
+           4096,
+           PROT_READ | PROT_WRITE,
+           MAP_SHARED,
+           fd,
+           0xA3106000);
+
+mmap Map the physical address starting at 0xA3106000 into my process's virtual address space.
+Linux creates the appropriate page-table mappings.
+
+Process Virtual Address       Physical Address
+
+0x7F12345000  ──────────────►  0xA3106000
+                                  │
+                                                   ▼
+                            Hardware register
+
+Now when your program accesses:
+value = *(volatile uint32_t *)ptr;
+
+## processor address space :
+
+Conceptually, a processor has a physical address space:
+Processor Physical Address Space
+──────────────────────────────────────────────
+
+0x00000000 ────────────────┐
+                           │
+                           │ RAM
+                           │
+0x80000000 ────────────────┘
+
+0x80000000 ────────────────┐
+                           │ Peripheral registers
+                           │ UART
+                           │ SPI
+                           │ GPIO
+                           │ Timer
+                           │ etc.
+0xA0000000 ────────────────┘
+
+Other ranges ──────────────
+                           │ Flash
+                           │ PCIe
+                           │ reserved
+                           │ other devices
+                           │
+                           
+The actual addresses and layout depend on the SoC.
+
+/dev/mem is a Linux character device that provides access to physical memory addresses. It doesn't mean that every address corresponds to RAM.
+
+For example, if a system has:
+Physical address 0x10000000 → RAM
+Physical address 0x40000000 → UART registers
+Physical address 0x50000000 → GPIO registers
+
+then /dev/mem can potentially be used to map those physical ranges.
+/dev/mem
+   │
+   │ physical address = 0x40000000
+   ▼
+Physical address space
+   │
+   ▼
+UART hardware registers
+
+important points:
+Physical address space:	 Addresses the CPU/SoC can generate for physical resources
+RAM		      :  One resource occupying some portion of that address space
+/dev/mem	      :  Linux interface that can provide userspace access to physical address ranges
+
+##################################################
+
+# can we use volatile and const at same time :
+
+Yes, you can use const and volatile at the same time.
+const, is a promise to the compiler that your code will not attempt to modify the variable.
+volatile, is a warning to the compiler that the value can change due to factors outside your code, so it must never cache the value.
+
+What is the need? (Real-World Use Cases):
+
+Imagine a microcontroller hooked up to a physical button or a network card. The hardware updates a specific memory address to reflect the current state (e.g., 0 for button released, 1 for button pressed).
+
+Why const? :
+Your code should never try to write to a button. Writing to it makes no sense and could cause a hardware error. The compiler will catch it if you accidentally try.
+
+Why volatile? :
+If you loop while waiting for the button to be pressed, the compiler might optimize the loop away, assuming the value never changes because your code never modifies it. volatile forces it to check the hardware register on every loop iteration.
+
+example:
+// A read-only hardware register at memory address 0x40001000
+volatile const unsigned int *button_status_reg = (volatile const unsigned int *)0x40001000;
+
+void wait_for_button_press(void) {
+    // Without volatile, this loop becomes infinite because the register is cached!
+    while (*button_status_reg == 0) {
+        // Do nothing, just wait for hardware to change the value to 1
+    }
+    printf("Button pressed!\n");
+}
+
