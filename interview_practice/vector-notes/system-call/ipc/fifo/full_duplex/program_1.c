@@ -16,7 +16,6 @@ int main(){
 	mkfifo("f1", 0666);
 	mkfifo("f2", 0666);
 	perror("mkfifo");
-	printf("waiting for read\n");
 
 	fd1 = open("f1", O_WRONLY); //for write
 	fd2 = open("f2", O_RDONLY);  // for read

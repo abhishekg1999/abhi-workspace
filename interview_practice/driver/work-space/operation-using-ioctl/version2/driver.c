@@ -12,12 +12,11 @@
 #define WR_VALUE _IOW('a','a',int32_t*)
 #define RD_VALUE _IOR('a','b',int32_t*)
 
-int32_t value = 0;
-
-dev_t dev=0;
+dev_t dev;
+static struct cdev cdev_var;
 static struct class *class_ptr;
 static struct device *device_ptr;
-static struct cdev cdev_var;
+int32_t value;
 
 static int __init my_init(void);
 static void __exit my_exit(void);

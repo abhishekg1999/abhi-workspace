@@ -4,7 +4,7 @@
 #include <fcntl.h>
 
 #define key   2   //semaphore key
-#define nsem  5  //create array of 5 semaphore
+#define nsem  5  //no of semaphore
 
 void sem_wait(int semid, int semno) {
     
@@ -33,18 +33,12 @@ int main()
 	char ch;
 
 	int fd=open("file",O_WRONLY|O_CREAT|O_APPEND,0666);
-	if(fd<0) {
-		perror("open");
-		return 1;
-	}
+	perror("open");
 	
-	int semid=semget(key, nsem, IPC_CREAT|0666);  //creat 5 semaphores
-	if(semid<0) {
-		perror("semget");
-		return 1;
-	}
+	int semid=semget(key, nsem, IPC_CREAT|0666);  //create 5 semaphores
+	perror("semget");
 
-	sem_wait(semid, 2);  //wait for p1 to finish to lock p2
+	sem_wait(semid, 2);  //waiting for p1, p1 holding semaphore 2
 	printf("p2 writing data\n");
 	for(ch='A';ch<='Z';ch++) {
 		

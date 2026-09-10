@@ -42,4 +42,4 @@ $ ar -r mylib.a sum.o
 
 ####### or ###########
 
-you can go for Makefile , every steps mentioned in MAkefile to generate static library "mylib.a"
+you can go for Makefile , every steps mentioned in Makefile to generate static library "mylib.a"

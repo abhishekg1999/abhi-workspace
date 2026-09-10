@@ -10,9 +10,11 @@ int main(){
 	
 	for(i=0; i<size; i++){	
 	   if(s[i] == ch){
+
 	   	for(j=i; j<size; j++)
 	   	    s[j]=s[j+1];
-	   	i--;
+	   	
+		i--;  //for consicutive character
 	   }
 	}
 	

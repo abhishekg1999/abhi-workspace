@@ -8,9 +8,10 @@ msgbuf v = {
     .data= "embedded"
 };
 
-int mid = msgget(1, IPC_CREAT|0666);
-msgsnd(mid, &v, strlen(v.data)+1, 0);
-msgrcv(mid, &v, sizeof(v.data), v.mtype, 0);
+int mid = msgget(1, IPC_CREAT|0666);  //create
+msgsnd(mid, &v, strlen(v.data)+1, 0);  //send
+msgrcv(mid, &v, sizeof(v.data), v.mtype, 0);  //recieve
+msgctl(mid, IPC_RMID, NULL);    //delete
 
 ## check the msg Q 
 

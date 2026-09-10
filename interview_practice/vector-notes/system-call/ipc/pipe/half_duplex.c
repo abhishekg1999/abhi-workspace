@@ -7,7 +7,7 @@ int main() {
 	int p[2];
 	pipe(p);
 	perror("pipe");
-	printf("p[0]=%d\tp[1]=%d\n",p[0],p[1]);
+	printf("p[0]=%d\tp[1]=%d\n",p[0], p[1]);
 
 	if(fork()==0) {
 		
@@ -16,7 +16,7 @@ int main() {
 		close(p[1]);  //close write end 
 			      
 		while(1) {
-			read(p[0],b,sizeof(b));   //reading pipe data
+			read(p[0], b, sizeof(b));   //reading pipe data
 			printf("data=%s\n",b);
 		}
 
@@ -28,8 +28,8 @@ int main() {
 			      
 		while(1) {
 			printf("enter the data\n");
-			scanf("%19s",a);   //only scan 19 characters as size of a is 20 [19 char +\0]
-			write(p[1],a,sizeof(a));
+			scanf("%19s", a);   //only scan 19 characters as size of a is 20 [19 char +\0]
+			write(p[1], a, strlen(a)+1);
 		}
 	}
 

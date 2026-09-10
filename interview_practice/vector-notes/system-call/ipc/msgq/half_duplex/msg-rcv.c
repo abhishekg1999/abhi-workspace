@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <sys/msg.h>
 
+#define key 1
+
 typedef struct {
 	long mtype;
 	char data[20];
@@ -11,14 +13,8 @@ int main(){
 	msgbuf v;
 	v.mtype = 10; //same as sender
 
-	int mid = msgget(1, IPC_CREAT|0666);
-	if(mid<0){
-
-		perror("msgget");
-		return 1;
-	}
-
-	printf("received data ...\n");
+	int mid = msgget(key, IPC_CREAT|0666);
+	perror("msgget");
 
 	while(1){
 
@@ -26,5 +22,6 @@ int main(){
 		printf("data=%s\n",v.data);
 	}
 
+	msgctl(mid, IPC_RMID, NULL);  //delete msgQ
 	return 0;
 }

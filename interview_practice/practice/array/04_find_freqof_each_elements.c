@@ -28,8 +28,8 @@ void array_freq(int a[], int ele){
 		int count=1;
 		for(j=i+1; j<ele; j++){
 			if(a[i] == a[j]) {
-				seen[j]=1;   //set 1 , if element seen
 				count++;
+				seen[j]=1;   //set 1 , if element seen
 			}
 		}
 

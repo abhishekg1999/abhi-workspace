@@ -14,74 +14,74 @@ Consumer prints:
 
 */
 
-#include <stdio.h>
-#include <stdlib.h>
 #include <pthread.h>
+#include <unistd.h>
+#include <stdio.h>
 
 #define size 5
-
-int buffer[size];
-int count =0;
-int in =0;
-int out =0;
+int a[size];   //ring buffer
+int head = 0;  //ring buffer head
+int tail = 0;  //ring buffer tail
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t cond1 = PTHREAD_COND_INITIALIZER;
-pthread_cond_t cond2 = PTHREAD_COND_INITIALIZER;
+pthread_cond_t send = PTHREAD_COND_INITIALIZER;
+pthread_cond_t recv = PTHREAD_COND_INITIALIZER;
 
-void* producer(void *p){
+void* producer(void *arg){
 
-	for(int i=0; i<=9; i++){
+	for(int i=0; i<10; i++){
+		
+		pthread_mutex_lock(&lock);
+		while( (head+1)%size == tail) {
+			
+			printf("buffer is full !! waiting ..\n");
+			pthread_cond_wait(&send, &lock);   //put producer in sleep, wait for consumer
+		} 
+			
+		a[head] = i;
+		printf("producer push : %d\n", i);
+		head = (head+1)% size;  //ring buffer logic  head[0-1-2-3-4 0-1--- ]
 
-		pthread_mutex_lock(&lock);   //lock thread1
-		while(count == size)
-			pthread_cond_wait(&cond1, &lock);  //wait if buffer full, wait for thread2
-
-		buffer[in] = i;
-		in = (in+1)%size;
-		count++;
-
-		pthread_cond_signal(&cond2);   //wake up thread2
-		pthread_mutex_unlock(&lock);   //unlock thread1
+		pthread_mutex_unlock(&lock);
+		pthread_cond_signal(&recv);  //wakeup consumer
+		usleep(100000);
 	}
 
 	return 0;
 }
 
+void* consumer(void *arg) {
 
-void* consumer(void *p){
-
-        for(int i=0; i<=9; i++){
+	for(int i=0; i<10; i++){
 		
-		pthread_mutex_lock(&lock);  //lock thread2
-                while(count == 0)
-                        pthread_cond_wait(&cond2, &lock); //wait if buffer empty, wwait for thread1
+		pthread_mutex_lock(&lock);
+		while(tail == head) {
 
-                int item = buffer[out];
-                out = (out+1)%size;
-                count--;
+			printf("buffer is empty !! waiting..\n");
+			pthread_cond_wait(&recv, &lock);  //put consumer in sleep, wait for producer
+		}
 		
-		printf("item = %d\n", item);
+		int data = a[tail];
+		printf("consumer pop :%d\n", data);
+		tail = (tail+1)% size;   //ring buffer logic tail[0-1-2-3-4 0-1--- ]
 
-                pthread_cond_signal(&cond1);   //wake up thread1
-                pthread_mutex_unlock(&lock);   //unlock thread2
-        }
+		pthread_mutex_unlock(&lock);
+		pthread_cond_signal(&send);   //wakeup producer
+		usleep(100000);
+	}
 
-        return 0;
+	return 0;
 }
 
 int main(){
 
 	pthread_t tid[2];
-	pthread_create(&tid[0], 0, consumer, 0);
-	pthread_create(&tid[1], 0, producer, 0);
+
+	pthread_create(&tid[0], 0, producer, 0);
+	pthread_create(&tid[1], 0, consumer, 0);
 
 	pthread_join(tid[0], 0);
 	pthread_join(tid[1], 0);
-
-	pthread_mutex_destroy(&lock);
-	pthread_cond_destroy(&cond1);
-	pthread_cond_destroy(&cond2);
 
 	return 0;
 }

@@ -16,11 +16,13 @@ void find_pair(int a[], int ele){
 	int i,j;
 	for(i=0; i<ele; i++){
 
-		for(j=0; j<ele; j++){
-			if( (a[i]+a[j] ==9) && a[i]!=a[j]){   //check sum and number should not be same
+		for(j=i+1; j<ele; j++){
+			
+			if( (a[i]+a[j] ==9)){   //check sum
+				
 				printf("%d %d", a[i], a[j]);
 				i=ele;   //increment i to last, to terminate outer loop
-				break;  
+				break;   //terminate inner loop
 			}
 		}
 	}

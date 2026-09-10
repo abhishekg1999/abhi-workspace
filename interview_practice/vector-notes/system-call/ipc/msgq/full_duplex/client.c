@@ -2,6 +2,8 @@
 #include <sys/msg.h>
 #include <string.h>
 
+#define key 1
+
 typedef struct {
 	long mtype;
 	char data[20];
@@ -12,12 +14,8 @@ int main(){
 	msgbuf v;
 	v.mtype = 10;
 
-	int mid = msgget(1, IPC_CREAT|0666);
-	if(mid<0){
-
-		perror("msgget");
-		return 1;
-	}
+	int mid = msgget(key, IPC_CREAT|0666);
+	perror("msgget");
 
 	while(1){
 	

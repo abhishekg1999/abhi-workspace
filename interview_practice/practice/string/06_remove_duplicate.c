@@ -1,6 +1,24 @@
 
 #include <stdio.h>
 
+
+void remove_dup(char s[]){
+
+        for(int i=0; s[i]; i++){
+
+                for(int j=i+1; s[j]; j++){
+
+                        if(s[i]==s[j]){
+
+                                for(int k=j; s[k]; k++)
+                                        s[k]=s[k+1];
+                                i--;
+                        }
+                }
+        }
+}
+
+#if 0
 void remove_dup(char s[]){
 
 	int i, j;
@@ -19,6 +37,7 @@ void remove_dup(char s[]){
 
 	s[j] = '\0';
 }
+#endif
 
 int main(){
 

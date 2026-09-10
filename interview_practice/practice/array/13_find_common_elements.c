@@ -1,5 +1,5 @@
 /*
-Find common elements
+Find common elements or intersection
 
 input:
 int a[] = {1, 2, 3, 4, 5};
@@ -12,6 +12,7 @@ output:
 
 #include <stdio.h>
 
+#if 0
 void find_common(int a[], int ele1, int b[], int ele2){
 
 	int i;
@@ -31,6 +32,36 @@ void find_common(int a[], int ele1, int b[], int ele2){
 			
 			printf("%d ", val);
 			seen[val] = 0;   //once seen, make it 0
+		}
+
+	}
+}
+#endif
+
+void find_common(int a[], int ele1, int b[], int ele2){
+
+	int i, j, k;
+	for(i=0; i<ele1; i++){
+
+		/* store already checked element */
+		int checked=0;
+		for(k=0; k<i; k++){
+
+			if(a[i]==a[k])
+				checked=1;
+		}
+
+		/* if already checked element, skip it */
+		if(checked)
+			continue;
+
+		/* print matched elements just once */
+		for(j=0; j<ele2; j++) {
+
+			if(a[i] == b[j]){
+				printf("%d ", a[i]);
+				break;
+			}
 		}
 
 	}

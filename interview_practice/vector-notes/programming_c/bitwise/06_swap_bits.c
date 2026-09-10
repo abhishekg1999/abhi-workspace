@@ -19,6 +19,7 @@ void swap_nibble(int *ptr){
 	*cp = (*cp)>>4|(*cp)<<4;
 }
 
+/* swap byte0 and byte1 */
 void swap_8bit(int *ptr){
 
 	unsigned char *cp1 = (char*)ptr;
@@ -30,6 +31,7 @@ void swap_8bit(int *ptr){
 	*cp2 = temp;
 }
 
+/* swap byte0 & byte1 with byte2 & byte3 */
 void swap_16bit(int *ptr){
 
         unsigned short int *p1 = (short int*)ptr;

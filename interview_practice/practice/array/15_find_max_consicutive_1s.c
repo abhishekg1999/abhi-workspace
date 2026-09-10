@@ -13,7 +13,8 @@ output:
 int find_max_1s(int a[], int ele){
 
 	int i;
-	int temp=0, count=0;
+	int temp=0;
+	int count=0;
 
 	for(i=0; i<ele; i++){
 

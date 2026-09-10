@@ -10,10 +10,10 @@
 #include <linux/string.h>
 
 #define mem_size 1024
-dev_t dev=0;
+dev_t dev;
+static struct cdev my_cdev;
 static struct class *class_ptr;
 static struct device *device_ptr;
-static struct cdev my_cdev;
 static uint8_t *kbuf;
 
 static int __init my_init(void);

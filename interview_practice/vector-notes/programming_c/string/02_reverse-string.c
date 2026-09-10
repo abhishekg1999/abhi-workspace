@@ -8,10 +8,10 @@ int main()
 	scanf("%s",s);
 
 	printf("before=%s\n",s);
-	for(i=0;s[i];i++);
+	for(j=0;s[j];j++);
 
-	for(j=0,i=i-1;j<i;j++,i--)
-		s[j]=s[j]+s[i]-(s[i]=s[j]);
+	for(i=0,j=j-1;i<j;i++,j--)
+		s[i]=s[i]+s[j]-(s[j]=s[i]);
 
 	printf("after=%s\n",s);
 }

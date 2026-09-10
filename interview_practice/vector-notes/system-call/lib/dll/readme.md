@@ -25,7 +25,7 @@ make sure to Include the header while compiling with mylib.so
 
 $ cc main.c ./mylib.so -o main
 
-######## or ############3
+######## or ############
 
 you can follow the Makefile for compilation , it will create mylib.so 
 

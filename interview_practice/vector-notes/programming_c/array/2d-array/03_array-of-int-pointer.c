@@ -7,9 +7,9 @@
 int main(){
 	
 	int a[r][c] = {{1,2,3},{4,5,6}};
-	//int *p[r] = {{1,2,3},{4,5,6}};   /* incorrect */
-	int *p[r];
+	//int *p[r] = {{1,2,3},{4,5,6}};   // incorrect
 	
+	int *p[r];
 	p[0]=a[0];
 	p[1]=a[1];
 	

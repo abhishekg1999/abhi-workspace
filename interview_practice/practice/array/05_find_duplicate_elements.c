@@ -12,6 +12,7 @@ output:
 #include <stdio.h>
 #include <string.h>
 
+/* 
 void find_duplicate(int a[], int ele){
 
 	int i, j;
@@ -36,6 +37,31 @@ void find_duplicate(int a[], int ele){
 			printf("%d ", a[i]);
 	}
 }
+*/
+
+void find_duplicate(int a[], int ele){
+
+        int i;
+        int count[256]={0};  // Array to hold the count of all 256 possible ASCII characters
+
+        /* count many times each character appear */
+        for(i=0; i<ele; i++){
+
+                int val = a[i];  //store each character ascii
+                count[val]++;   //increment count for every ascii
+        }
+
+        for(i=0; i<ele; i++){
+
+                int val = a[i];
+                if(count[val] > 1) {
+
+                        printf("%d \n", a[i]);
+                        count[val] = 0;   //make it 0, dont print same character freq again
+                }
+        }
+}
+
 
 int main(){
 

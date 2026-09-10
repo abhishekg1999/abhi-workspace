@@ -6,7 +6,7 @@ take count =0,  thread1 should print even, thread 2 should print odd
 consider:
 count only 0 to 10
 
-note : but here its not possible so go for mutex_advance condition 
+note : but here its not possible so go for condition variables 
 */
 
 #include <stdio.h>

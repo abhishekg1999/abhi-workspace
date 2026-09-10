@@ -19,7 +19,7 @@ void count_even_odd(int a[], int ele){
 
 		if(a[i]%2==0)
 			even++;
-		else
+		else if(a[i]%2 !=0)
 			odd++;
 	}
 	

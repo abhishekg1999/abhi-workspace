@@ -9,12 +9,12 @@ int main()
 	int fd;
 	char buff[10];
 
-	fd=open("f1",O_RDONLY);
+	fd=open("f1", O_RDONLY);
 	perror("open");
 
 	while(1)
 	{
-		read(fd,buff,sizeof(buff));
+		read(fd, buff, sizeof(buff));
 		printf("read data=%s\n",buff);
 	}
 

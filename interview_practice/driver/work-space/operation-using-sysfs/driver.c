@@ -11,14 +11,11 @@
 #include <linux/kobject.h>
 #include <linux/err.h>
 
-volatile int etx_value = 0;
+volatile int etx_value;
 struct kobject *kobj_ref;
-/*
-kobject** Function Prototypes
-*/
+
 static int      __init etx_driver_init(void);
 static void     __exit etx_driver_exit(void);
-
 /* sysfs Functions for read and write */
 static ssize_t  sysfs_show(struct kobject *kobj,struct kobj_attribute *attr, char *buf);  /* for reading the value from sysfs file */
 static ssize_t  sysfs_store(struct kobject *kobj,struct kobj_attribute *attr,const char *buf, size_t count); /* for writig the value into the sysfs file */

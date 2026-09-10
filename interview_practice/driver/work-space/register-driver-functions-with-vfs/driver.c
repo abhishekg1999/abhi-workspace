@@ -22,10 +22,10 @@
 10. remove device from kernel
 */
 
-dev_t dev=0;	/* device Id */
+dev_t dev;	/* device Id */
+static struct cdev cdev_var;	/* for cdev_init(),cdev_add() */
 static struct class *class_ptr; /* for class_create() */
 static struct device *dev_ptr;  /* for device_create() */
-static struct cdev cdev_var;	/* for cdev_init(),cdev_add() */
 
 static int __init my_init(void);
 static void __exit my_exit(void);

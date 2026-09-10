@@ -53,3 +53,25 @@ counter++;
 pthread_mutex_unlock(&counter_mutex);
 
 
+## Why do we use while instead of if with pthread_cond_wait()?
+
+#1 with if():
+if (count == 0)
+    pthread_cond_wait();
+
+read buffer;       // WRONG possibility
+
+if condition "if (count == 0)" will not check again 
+
+#2 with while():
+while (count == 0)
+    pthread_cond_wait();
+
+read buffer;       // SAFE
+
+condition "while (count ==0)" will be checked again to make sure , read only if count !=0
+
+Explanation:
+We use while because waking from pthread_cond_wait() does not guarantee that the condition is still true. Another thread may have consumed or modified the resource, and spurious wakeups are also possible. Therefore, we always recheck the condition after waking up.  
+
+

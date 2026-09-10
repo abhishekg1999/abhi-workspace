@@ -161,7 +161,7 @@ After linking:
 
 mylib.so is needed when the application runs.
 
-what if multiple app use same static lib:
+what if multiple app use same dynamic lib:
                mylib.so
               /   |   |   \
              /    |   |    \

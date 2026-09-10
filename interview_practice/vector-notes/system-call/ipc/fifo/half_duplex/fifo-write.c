@@ -12,15 +12,15 @@ int main() {
 	mkfifo("f1",0666);
 	perror("mkfifo");
 	printf("waiting for read\n");
-	fd=open("f1",O_WRONLY);  //If no reader has opened the FIFO, this call blocks.
+	fd=open("f1", O_WRONLY);  //If no reader has opened the FIFO, this call blocks.
 
-	do
-	{
+	
+	while(1){
 		printf("enter the data\n");
-		scanf("%s",buff);
-		write(fd,buff,strlen(buff)+1);
+		scanf("%s", buff);
+		write(fd, buff, strlen(buff)+1);
 
-	}while(1);
+	}
 
 	close(fd);
 	return 0;

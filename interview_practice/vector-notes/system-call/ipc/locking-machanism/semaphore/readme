@@ -6,3 +6,34 @@ struct sembuf
 	short sem_op;	//operation to be performed
 	short sem_flg;		//operation flags
 };
+
+#define key   2   //semaphore key
+#define nsem  5  //no of semaphore
+
+void sem_wait(int semid, int semno) {
+    
+    struct sembuf op = { 
+    	.sem_num = semno,   //semaphore number
+    	.sem_op = -1,       // set operation
+    	.sem_flg = 0    
+    };
+    
+    semop(semid, &op, 1);
+}
+
+void sem_signal(int semid, int semno) {
+
+    struct sembuf op = { 
+    	.sem_num = semno, //semaphore number
+    	.sem_op = 1,      // set operation
+    	.sem_flg = 0 
+    };
+    
+    semop(semid, &op, 1);
+}
+
+int semid=semget(key, nsem, IPC_CREAT|0666);  //creat 5 semaphores
+semctl(semid, 2, SETVAL, 1);	/* intialize semaphore 2 with value 1, only in p1*/
+sem_wait(semid, 2);  //lock p1
+sem_signal(semid, 2);  //unlock p1
+

@@ -12,7 +12,7 @@ int fd;
 void record_lock(void){
 	
 	struct flock v = {
-		.l_type = F_WRLCK,    //set lock flag
+		.l_type = F_WRLCK,    //writelock flag
         	.l_whence = SEEK_SET, //set fd to begining
         	.l_start =0,
         	.l_len = 0
@@ -24,7 +24,7 @@ void record_lock(void){
 void record_unlock(void){
 
         struct flock v = {
-        	.l_type = F_UNLCK,   //clear lock flag
+        	.l_type = F_UNLCK,   //unlock flag
         	.l_whence = SEEK_SET, //set fd to begining
         	.l_start =0,
         	.l_len = 0

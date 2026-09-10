@@ -113,12 +113,12 @@ void delete_node(ST **ptr){
 
 	while(temp){
 
-		if(temp->roll == roll){
+		if(temp->roll == roll){   //if roll matched with roll of node
 
-			if(temp == *ptr)  //if roll matched with node
+			if(temp == *ptr)  //if it is first node
 				*ptr = temp->next;
 			else
-				temp1->next = temp->next;
+				temp1->next = temp->next;   //if it is other node
 
 			free(temp);
 			return;
@@ -185,12 +185,16 @@ void print_rec_rev(ST *p)
 
 void rev_data(ST *ptr) {
 	
-	ST **p, *temp, buffer;
-	int i, j, count=3;  //lets take 3 nodes
+	ST **p;   //hold array of pointer
+	ST *temp,  //for traverse the list
+	ST buffer;  //swap buffer
+	 
+	int i, j, count=3;  //lets take 3 nodes or you can use "count_node()"
 
-	p = malloc(sizeof(ST*)*count);
+	p = malloc(sizeof(ST*)*count);  //create array of pointer, 
 	temp = ptr;
 
+	/* fill array of pointer with nodes */
 	i=0;
 	while(temp){
 
@@ -198,6 +202,7 @@ void rev_data(ST *ptr) {
 		temp = temp->next;
 	}
 
+	/* swap the nodes */
 	for(i=0, j=count-1; i<j; i++, j--) {
 		
 		buffer.roll = p[i]->roll;
@@ -216,7 +221,9 @@ void rev_data(ST *ptr) {
 
 void rev_link(ST **ptr){
 
-	ST *p, *q, *r;
+	ST *p;  //traverse the list
+	ST *q;  //hold current node
+	ST *r;  //hold privous node
 
 	p=*ptr;
 	q=0;
@@ -245,14 +252,18 @@ void save_file(ST *p){
 
 void read_file(ST **ptr){
 
-	ST buffer, *new, *temp;
+	ST buffer;  //scan data from file into buffer
+	ST *new;    //new node 
+	ST *temp;   //hold previous node
+	
 	FILE *fp = fopen("file", "r");
-
 	while(fscanf(fp, "%d %s %f ", &buffer.roll, buffer.name, &buffer.marks) != -1) {
 
-		new = malloc(sizeof(ST));  //allocate new node
-		*new = buffer;             //copy data to new node
+		/* create new node and copy buffer data into new node */
+		new = malloc(sizeof(ST)); 
+		*new = buffer;
 
+		/* make link list add_at_end*/
 		if(*ptr == 0){
 
 			new->next =0;    //make null to end of new node

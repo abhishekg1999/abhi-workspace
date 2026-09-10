@@ -7,11 +7,13 @@
 #include<linux/uaccess.h>              /* copy_to/from_user() */
 #include<linux/proc_fs.h>     /* proc_mkdir() & proc_create() */ 
 #include <linux/err.h>
+
 #define LINUX_KERNEL_VERSION  504
  
-char etx_array[20]="try_proc_array";  /* kernel buffer */ 
-dev_t dev = 0;
+dev_t dev;
+char etx_array[20];  /* kernel buffer */ 
 static struct proc_dir_entry *parent;
+
 /*
 ** Function Prototypes
 */
@@ -23,10 +25,8 @@ static int      release_proc(struct inode *inode, struct file *file);
 static ssize_t  read_proc(struct file *filp, char __user *buffer, size_t length,loff_t * offset);
 static ssize_t  write_proc(struct file *filp, const char *buff, size_t len, loff_t * off);
 
+//procfs operation sturcture
 #if ( LINUX_KERNEL_VERSION > 505 )
-/*
-** procfs operation sturcture
-*/
 static struct proc_ops proc_fops = {
         .proc_open = open_proc,
         .proc_read = read_proc,
@@ -34,10 +34,7 @@ static struct proc_ops proc_fops = {
         .proc_release = release_proc
 };
 
-#else //LINUX_KERNEL_VERSION > 505
-/*
-** procfs operation sturcture
-*/
+#else
 static struct file_operations proc_fops = {
         .open = open_proc,
         .read = read_proc,
@@ -45,28 +42,23 @@ static struct file_operations proc_fops = {
         .release = release_proc
 };
 
-#endif //LINUX_KERNEL_VERSION > 505
-/*
-** This function will be called when we open the procfs file
-*/
+#endif
+
+//This function will be called when we open the procfs file
 static int open_proc(struct inode *inode, struct file *file)
 {
     pr_info("proc file opend.....\t");
     return 0;
 }
 
-/*
-** This function will be called when we close the procfs file
-*/
+//this function will be called when we close the procfs file
 static int release_proc(struct inode *inode, struct file *file)
 {
     pr_info("proc file released.....\n");
     return 0;
 }
 
-/*
-** This function will be called when we read the procfs file
-*/
+//This function will be called when we read the procfs file
 static ssize_t read_proc(struct file *filp, char __user *buffer, size_t length,loff_t * offset)
 {
 
@@ -78,9 +70,7 @@ static ssize_t read_proc(struct file *filp, char __user *buffer, size_t length,l
     	return length;
 }
 
-/*
-** This function will be called when we write the procfs file
-*/
+//This function will be called when we write the procfs file
 static ssize_t write_proc(struct file *filp, const char *buff, size_t len, loff_t * off)
 {   
 	if( copy_from_user(etx_array,buff,len) ) /* copy from etx_array(kernel) to buff(app) */
@@ -91,9 +81,8 @@ static ssize_t write_proc(struct file *filp, const char *buff, size_t len, loff_
    	return len;
 }
 
-/*
-** Module Init function
-*/
+
+//Module Init function
 static int __init etx_driver_init(void)
 {
         /*Allocating Major number*/
@@ -114,9 +103,7 @@ static int __init etx_driver_init(void)
         return 0;
 }
  
-/*
-** Module exit function
-*/
+//Module exit function
 static void __exit etx_driver_exit(void)
 {
         /* Removes single proc entry */

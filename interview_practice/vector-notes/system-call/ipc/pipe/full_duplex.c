@@ -4,6 +4,7 @@
 
 #include <stdio.h>
 #include <unistd.h>
+#include <string.h>
 
 int main() {
 
@@ -22,14 +23,14 @@ int main() {
 		
 		while(1) {
 
-			/* child read from parent */
+			/* child read from pipe1 */
 			read(p1[0], c_buf, sizeof(c_buf));
 			printf("Child received: %s\n", c_buf);
 
-			/* child write to parent */
+			/* child write to pipe2 */
 			printf("Enter message from child:\n");
 			scanf("%19s", c_buf);
-			write(p2[1], c_buf, sizeof(c_buf));
+			write(p2[1], c_buf, strlen(c_buf)+1);
 		}
 
 		close(p1[0]);  //close read end for p1
@@ -42,12 +43,12 @@ int main() {
 
 		while(1){
 			
-			/* parent write to child */
+			/* parent write to pipe1 */
 			printf("Enter message from parent:\n");
                         scanf("%19s", p_buf);
-                        write(p1[1], p_buf, sizeof(p_buf));
+                        write(p1[1], p_buf, strlen(p_buf)+1);
 
-			/* parent read from child */
+			/* parent read from pipe2 */
 			read(p2[0], p_buf, sizeof(p_buf));
                         printf("parent received: %s\n", p_buf);
 

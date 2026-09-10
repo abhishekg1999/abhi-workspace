@@ -9,6 +9,16 @@
 #include <linux/uaccess.h>              //copy_to/from_user()
 #include <linux/string.h>
 
+dev_t dev;
+static struct cdev cdev_var;
+static struct class *class_ptr;
+static struct device *dev_ptr;
+static uint8_t *kbuf;
+
+#define mem_size 1024
+#define WR_VALUE _IOW('a', 'a', int32_t*)
+#define RD_VALUE _IOR('a', 'b', int32_t*)
+
 static int my_open(struct inode *inode, struct file *file);
 static int my_release(struct inode *inode, struct file *file);
 static ssize_t my_read(struct file *filp, char __user *buf, size_t len, loff_t *off);
@@ -24,16 +34,6 @@ static struct file_operations fops = {
 	.unlocked_ioctl=my_ioctl,
 	.release=my_release
 };
-
-dev_t dev=0;
-static struct class *class_ptr;
-static struct device *dev_ptr;
-static struct cdev cdev_var;
-
-#define mem_size 1024
-static uint8_t *kbuf;
-#define WR_VALUE _IOW('a', 'a', int32_t*)
-#define RD_VALUE _IOR('a', 'b', int32_t*)
 
 static int my_open(struct inode *inode, struct file *file){
 

@@ -10,7 +10,6 @@ pthread_spin_destroy(&lock);
 
 #include <stdio.h>
 #include <pthread.h>
-#include <stdlib.h>  //exit(1)
 #include <unistd.h>  //read, write
 #include <fcntl.h>   //open
 
@@ -46,7 +45,7 @@ int main(){
 	fd = open("file", O_CREAT|O_WRONLY|O_APPEND, 0666);
 	if(fd<0){
 		perror("open");
-		exit(1);
+		return -1;
 	}
 
 	/* spin lock init */
