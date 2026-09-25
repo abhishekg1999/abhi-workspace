@@ -1,0 +1,38 @@
+Using .kernel-meta/configs///defconfig as base
+Merging .kernel-meta/configs//./user_2026-06-23-07-00-00.cfg
+Merging .kernel-meta/configs//./user_2026-07-07-07-00-00.cfg
+Merging .kernel-meta/configs//./bsp.cfg
+Merging .kernel-meta/configs//cfg/fs/vfat.cfg
+Merging .kernel-meta/configs//cfg/openamp.cfg
+Value of CONFIG_UIO_PDRV_GENIRQ is redefined by fragment .kernel-meta/configs//cfg/openamp.cfg:
+Previous value: CONFIG_UIO_PDRV_GENIRQ=y
+New value: CONFIG_UIO_PDRV_GENIRQ=m
+
+Merging .kernel-meta/configs//./bsp.cfg
+make[1]: Entering directory '/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/linux-zynq_generic_7z020-standard-build'
+  GEN     Makefile
+  HOSTCC  scripts/basic/fixdep
+  HOSTCC  scripts/kconfig/conf.o
+  HOSTCC  scripts/kconfig/confdata.o
+  HOSTCC  scripts/kconfig/expr.o
+  LEX     scripts/kconfig/lexer.lex.c
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/menu.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTCC  scripts/kconfig/util.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+make[1]: Leaving directory '/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/linux-zynq_generic_7z020-standard-build'
+Value requested for CONFIG_ZYNQ_REMOTEPROC not in final .config
+Requested value:  CONFIG_ZYNQ_REMOTEPROC=m
+Actual value:     
+
+Value requested for CONFIG_VIRTIO not in final .config
+Requested value:  CONFIG_VIRTIO=m
+Actual value:     CONFIG_VIRTIO=y
+

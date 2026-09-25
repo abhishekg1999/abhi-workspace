@@ -1,0 +1,26 @@
+#
+# scc v0.8
+# processed: Tue Jul  7 07:04:49 AM UTC 2026
+#
+# This is a scc output file, do not edit
+#
+# _reloc_dir /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git
+# _reloc_dir /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git
+# _reloc_dir /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git
+# _reloc_dir /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git
+# _reloc_dir /home/vvdn/new_disk/abhi/MYD/Project_mydz070/project-spec/meta-user/recipes-kernel/linux
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/defconfig # non-hardware
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/project-spec/meta-user/recipes-kernel/linux/linux-xlnx/user_2026-06-23-07-00-00.cfg # non-hardware
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/project-spec/meta-user/recipes-kernel/linux/linux-xlnx/user_2026-07-07-07-00-00.cfg # non-hardware
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/project-spec/meta-user/recipes-kernel/linux/linux-xlnx/bsp.cfg # non-hardware
+# _mark vfat.scc start
+# _define KFEATURE_DESCRIPTION 'Enable VFAT support'
+# _define KFEATURE_COMPATIBILITY 'all'
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/yocto-kmeta/cfg/fs/vfat.cfg # non-hardware
+# _mark vfat.scc end
+# _mark openamp.scc start
+# _define KFEATURE_DESCRIPTION 'OpenAMP Kernel Support'
+# _define KFEATURE_COMPATIBILITY 'arch'
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work/zynq_generic_7z020-xilinx-linux-gnueabi/linux-xlnx/6.6.40+git/openamp-kmeta/cfg/openamp.cfg # non-hardware
+# _mark openamp.scc end
+kconf /home/vvdn/new_disk/abhi/MYD/Project_mydz070/project-spec/meta-user/recipes-kernel/linux/linux-xlnx/bsp.cfg # non-hardware

@@ -1,0 +1,6 @@
+config HELLO_WORLD
+	tristate "hello world module"
+	default m
+	help
+	simple hello world module.
+	print massage on load and unload.

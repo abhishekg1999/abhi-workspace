@@ -1,0 +1,3 @@
+
+[INFO]: the following symbols were not found in the active configuration:
+     - CONFIG_ZYNQ_REMOTEPROC

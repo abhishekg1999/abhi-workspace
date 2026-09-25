@@ -1,0 +1,17 @@
+[INFO]: redefined configuration option report:
+
+    - option CONFIG_UIO_PDRV_GENIRQ is defined more than once
+       - configs///defconfig (y)
+       - configs//cfg/openamp.cfg (m)
+    - option CONFIG_REMOTEPROC is defined more than once
+       - configs///defconfig (y)
+       - configs//cfg/openamp.cfg (y)
+    - option CONFIG_VFAT_FS is defined more than once
+       - configs///defconfig (y)
+       - configs//cfg/fs/vfat.cfg (y)
+    - option CONFIG_NLS_CODEPAGE_437 is defined more than once
+       - configs///defconfig (y)
+       - configs//cfg/fs/vfat.cfg (y)
+    - option CONFIG_NLS_ISO8859_1 is defined more than once
+       - configs///defconfig (y)
+       - configs//cfg/fs/vfat.cfg (y)

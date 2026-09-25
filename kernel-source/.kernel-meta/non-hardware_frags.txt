@@ -1,0 +1,7 @@
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs///defconfig
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//./user_2026-06-23-07-00-00.cfg
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//./user_2026-07-07-07-00-00.cfg
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//./bsp.cfg
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//cfg/fs/vfat.cfg
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//cfg/openamp.cfg
+/home/vvdn/new_disk/abhi/MYD/Project_mydz070/build/tmp/work-shared/zynq-generic-7z020/kernel-source/.kernel-meta/configs//./bsp.cfg

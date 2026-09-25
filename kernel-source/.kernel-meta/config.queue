@@ -1,0 +1,7 @@
+configs///defconfig # non-hardware
+configs//./user_2026-06-23-07-00-00.cfg # non-hardware
+configs//./user_2026-07-07-07-00-00.cfg # non-hardware
+configs//./bsp.cfg # non-hardware
+configs//cfg/fs/vfat.cfg # non-hardware
+configs//cfg/openamp.cfg # non-hardware
+configs//./bsp.cfg # non-hardware
