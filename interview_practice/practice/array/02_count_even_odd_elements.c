@@ -12,10 +12,10 @@ Odd  = 3
 
 void count_even_odd(int a[], int ele){
 
-	int i;
-	int even=0, odd=0;
+	int even = 0;
+	int odd = 0;
 
-	for(i=0; i<ele; i++){
+	for(int i=0; i<ele; i++){
 
 		if(a[i]%2==0)
 			even++;

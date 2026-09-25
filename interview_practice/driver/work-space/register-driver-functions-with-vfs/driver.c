@@ -32,8 +32,8 @@ static void __exit my_exit(void);
 
 static int      my_open(struct inode *inode, struct file *file);
 static int      my_release(struct inode *inode, struct file *file);
-static ssize_t  my_read(struct file *filp, char __user *buf, size_t len,loff_t * off);
-static ssize_t  my_write(struct file *filp, const char *buf, size_t len, loff_t * off);
+static ssize_t  my_read(struct file *filp, char __user *buf, size_t len, loff_t * off);
+static ssize_t  my_write(struct file *filp, const char __user *buf, size_t len, loff_t * off);
 
 /* register All created functions with file operations structure */
 static struct file_operations fops=
@@ -47,9 +47,9 @@ static struct file_operations fops=
 
 /*
 ** This function will be called when we open the Device file
-open() --> sys_open() --> my_open()
+open() --> sys_open() --> vfs_open() --> my_open()
 */
-static int my_open(struct inode *inode,struct file *file)
+static int my_open(struct inode *inode, struct file *file)
 {
 	pr_info("driver open called\n");
 	return 0;
@@ -57,9 +57,9 @@ static int my_open(struct inode *inode,struct file *file)
 
 /*
 ** This function will be called when we close the Device file
-close() --> sys_close() --> my_release()
+close() --> sys_close() --> vfs_close() --> my_release()
 */
-static int my_release(struct inode *inode,struct file *file)
+static int my_release(struct inode *inode, struct file *file)
 {
 	pr_info("driver release called \n");
 	return 0;
@@ -67,9 +67,9 @@ static int my_release(struct inode *inode,struct file *file)
 
 /*
 ** This function will be called when we read the Device file
-read() --> sys_read() --> my_read()
+read() --> sys_read() --> vfs_close() --> my_read()
 */
-static ssize_t my_read(struct file *filp,char __user *buf,size_t len,loff_t *off)
+static ssize_t my_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
 	pr_info("driver read called \n");
 	return 0;
@@ -77,9 +77,9 @@ static ssize_t my_read(struct file *filp,char __user *buf,size_t len,loff_t *off
 
 /*
 ** This function will be called when we write the Device file
-write() --> sys_write()  --> my_write()
+write() --> sys_write() --> vfs_close() --> my_write()
 */
-static ssize_t my_write(struct file *filp,const char __user *buf,size_t len,loff_t *off)
+static ssize_t my_write(struct file *filp, const char __user *buf, size_t len, loff_t *off)
 {
 	pr_info("driver write function called \n");
 	return len;
@@ -88,7 +88,7 @@ static ssize_t my_write(struct file *filp,const char __user *buf,size_t len,loff
 static int __init my_init(void)
 {
 	/*Allocating Major number*/
-	if(alloc_chrdev_region(&dev,0,1,"my_device") <0){	/* entry in /proc/devices/ */
+	if(alloc_chrdev_region(&dev, 0, 1, "my_device") <0){	/* entry in /proc/devices/ */
 		pr_info("Cannot allocate major number for driver 1\n");
                 return -1;
 	} 
@@ -97,9 +97,9 @@ static int __init my_init(void)
 	cdev_init(&cdev_var,&fops);
 
 	/*Adding character device to the system*/
-	if(cdev_add(&cdev_var,dev,1) <0){
+	if(cdev_add(&cdev_var, dev, 1) <0){
 		pr_err("connot add device to system \n");
-		goto r_class;
+		goto r_cdev;
 	}
 
 	/*Creating struct class*/
@@ -110,7 +110,7 @@ static int __init my_init(void)
 	}
 
 	/*Creating device*/
-	dev_ptr = device_create(class_ptr,NULL,dev,NULL,"my_device");
+	dev_ptr = device_create(class_ptr, NULL, dev, NULL, "my_device");
 	if(IS_ERR(dev_ptr)){  /* entry in /dev/my_device */
 		pr_err("Can not create the Device file for device\n");
             	goto r_device;
@@ -123,16 +123,18 @@ static int __init my_init(void)
 r_device:
         class_destroy(class_ptr);
 r_class:
-        unregister_chrdev_region(dev,1);
+	cdev_del(&cdev_var);
+r_cdev:
+        unregister_chrdev_region(dev, 1);
         return -1;
 }
 
 static void __exit my_exit(void)
 {
-	device_destroy(class_ptr,dev); /* delete device file/destroy created device */
+	device_destroy(class_ptr, dev); /* delete device file/destroy created device */
 	class_destroy(class_ptr);  	/* delete struct class/destroy created class */
 	cdev_del(&cdev_var); 		/* removes the device when the module is unloaded */
-	unregister_chrdev_region(dev,1);  /* release major&minor number */
+	unregister_chrdev_region(dev, 1);  /* release major&minor number */
 	pr_info("Kernel Module Removed Successfully...\n");
 }
 

@@ -7,8 +7,8 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
  
-#define WR_VALUE _IOW('a','a',int32_t*)
-#define RD_VALUE _IOR('a','b',int32_t*)
+#define WR_VALUE _IOW('a', 'a', char[1024])
+#define RD_VALUE _IOR('a', 'b', char[1024])
  
 int main()
 {
@@ -33,11 +33,11 @@ int main()
                         case 1:
                                 printf("Enter the string to write into driver :");
                                 scanf("  %[^\t\n]s", ubuf);
-                                ioctl(fd, WR_VALUE, (unsigned long)ubuf);
+                                ioctl(fd, WR_VALUE, ubuf);
                                 printf("Done!\n");
                                 break;
                         case 2:
-                                ioctl(fd, RD_VALUE, (unsigned long)ubuf);
+                                ioctl(fd, RD_VALUE, ubuf);
                                 printf("Data = %s\n\n", ubuf);
                                 break;
                         case 3:

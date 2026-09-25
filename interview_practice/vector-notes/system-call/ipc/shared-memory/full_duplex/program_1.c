@@ -11,29 +11,29 @@ typedef struct {
     char buf2[20];
 } shm_t;
 
-int shm_id;
-int sem_id;
+int shmid;
+int semid;
 shm_t *p;
 
 /* function used to lock */
-void sem_wait(int semid, int semno) {
+void sem_wait(int id, int semno) {
 
     struct sembuf op = {semno, -1, 0};
-    semop(semid, &op, 1);
+    semop(id, &op, 1);
 }
 
 /* function used to unlock */
-void sem_signal(int semid, int semno) {
+void sem_signal(int id, int semno) {
 
     struct sembuf op = {semno, +1, 0};
-    semop(semid, &op, 1);
+    semop(id, &op, 1);
 }
 
 void clean_shm(int sig) {
 
     shmdt(p); //detach shared memory
-    shmctl(shm_id, IPC_RMID, NULL); // delete shared memory
-    semctl(sem_id, 0, IPC_RMID);  //delete semaphore 
+    shmctl(shmid, IPC_RMID, NULL); // delete shared memory
+    semctl(semid, 0, IPC_RMID);  //delete semaphore 
     
     printf("\nIPC deleted\n");
     exit(0);
@@ -43,21 +43,20 @@ int main() {
 
 	signal(SIGINT, clean_shm);
 
-	shm_id = shmget(key, sizeof(shm_t), IPC_CREAT|0666);
-	p = shmat(shm_id, NULL, 0);
+	shmid = shmget(key, sizeof(shm_t), IPC_CREAT|0666);
+	p = shmat(shmid, 0, 0);
 	
-	sem_id = semget(key, 2, IPC_CREAT|IPC_EXCL|0666);  //create semaphore
-	semctl(sem_id, 0, SETVAL, 0);  // Initialize semaphore 0 to 0
-	semctl(sem_id, 1, SETVAL, 0);  // Initialize semaphore 1 to 0
+	semid = semget(key, 2, IPC_CREAT|0666);  //create semaphore
+	semctl(semid, 0, SETVAL, 0);  // Initialize semaphore 0 to 0
+	semctl(semid, 1, SETVAL, 0);  // Initialize semaphore 1 to 0
 
 	while(1) {
 
 		printf("Enter the data\n");
 		scanf("%19s", p->buf1);
-
-		sem_signal(sem_id, 1);   //unlock P2
+		sem_signal(semid, 1);   //unlock P2
  
-		sem_wait(sem_id, 0);     //p1 waiting for p2
+		sem_wait(semid, 0);     //p1 waiting for p2
 		printf("Recived :%s\n", p->buf2);
 	}
 }

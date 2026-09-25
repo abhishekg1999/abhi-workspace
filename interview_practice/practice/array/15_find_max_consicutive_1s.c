@@ -10,13 +10,12 @@ output:
 */
 
 #include <stdio.h>
-int find_max_1s(int a[], int ele){
+void find_max_1s(int a[], int ele){
 
-	int i;
 	int temp=0;
 	int count=0;
 
-	for(i=0; i<ele; i++){
+	for(int i=0; i<ele; i++){
 
 		if(a[i] == 1)
 			temp++;
@@ -26,8 +25,8 @@ int find_max_1s(int a[], int ele){
 		}
 		
 	}
-
-	return count;
+	
+	printf("%d\n", count);
 }
 
 int main(){
@@ -35,8 +34,6 @@ int main(){
 	int a[] = {1, 1, 0, 1, 1, 1, 1, 0, 1};
 	int size = sizeof(a)/sizeof(a[0]);
 
-	int ret = find_max_1s(a, size);
-	printf("%d\n", ret);
-
+	find_max_1s(a, size);
 	return 0;
 }

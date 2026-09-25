@@ -12,32 +12,6 @@ output:
 
 #include <stdio.h>
 
-#if 0
-void find_common(int a[], int ele1, int b[], int ele2){
-
-	int i;
-	int seen[256] = {0};
-
-	/* set 1 for each element in array a */
-	for(i=0; i<ele1; i++){
-		int val = a[i];
-		seen[val] = 1;
-	}
-
-	/* find common */
-	for(i=0; i<ele2; i++){
-
-		int val = b[i];
-		if(seen[val] == 1){
-			
-			printf("%d ", val);
-			seen[val] = 0;   //once seen, make it 0
-		}
-
-	}
-}
-#endif
-
 void find_common(int a[], int ele1, int b[], int ele2){
 
 	int i, j, k;

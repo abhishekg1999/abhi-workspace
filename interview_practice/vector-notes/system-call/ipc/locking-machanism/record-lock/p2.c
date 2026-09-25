@@ -40,7 +40,7 @@ int main(){
 
 
 	record_lock();  //wait for lock p1 to lock to p2
-	printf("p1 writing data\n");
+	printf("p2 writing data\n");
 	for(ch='A'; ch <='Z'; ch++){
 		write(fd, &ch, 1);
 		sleep(1);

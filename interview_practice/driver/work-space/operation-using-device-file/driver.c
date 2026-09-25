@@ -35,7 +35,7 @@ static struct file_operations fops=
 /*
 ** This function will be called when we open the Device file
 */
-static int my_open(struct inode *inode,struct file *file)
+static int my_open(struct inode *inode, struct file *file)
 {
 	pr_info("driver open called\n");
 	return 0;
@@ -44,7 +44,7 @@ static int my_open(struct inode *inode,struct file *file)
 /*
 ** This function will be called when we close the Device file
 */
-static int my_release(struct inode *inode,struct file *file)
+static int my_release(struct inode *inode, struct file *file)
 {
 	pr_info("driver release called \n");
 	return 0;
@@ -53,11 +53,9 @@ static int my_release(struct inode *inode,struct file *file)
 /*
 ** This function will be called when we read the Device file
 */
-static ssize_t my_read(struct file *filp,char __user *ubuf,size_t len,loff_t *off)
-{
-	// buf >  pointer to user buffer
-	// kernel_buf > pointer to kernel buffer
-	if(copy_to_user(ubuf,kbuf,mem_size)){    /* copy to user space from kernel space */
+static ssize_t my_read(struct file *filp,char __user *ubuf, size_t len, loff_t *off) {
+
+	if(copy_to_user(ubuf, kbuf, len)){    /* copy to user space from kernel space */
 		return -EFAULT;
 	}
 
@@ -68,12 +66,12 @@ static ssize_t my_read(struct file *filp,char __user *ubuf,size_t len,loff_t *of
 /*
 ** This function will be called when we write the Device file
 */
-static ssize_t my_write(struct file *filp,const char __user *ubuf,size_t len,loff_t *off) {
+static ssize_t my_write(struct file *filp, const char __user *ubuf, size_t len, loff_t *off) {
 	
 	if (len > mem_size)
         	len = mem_size;
 
-	if(copy_from_user(kbuf,ubuf,len)){    /* copy to kernel space from user space */
+	if(copy_from_user(kbuf, ubuf, len)){    /* copy to kernel space from user space */
 		return -EFAULT;
 	}
 	
@@ -84,18 +82,18 @@ static ssize_t my_write(struct file *filp,const char __user *ubuf,size_t len,lof
 static int __init my_init(void)
 {
 	/*Allocating Major number*/
-	if((alloc_chrdev_region(&dev,0,1,"my_device"))<0){  /* entry in /proc/devices/ */
+	if((alloc_chrdev_region(&dev, 0, 1, "my_device"))<0){  /* entry in /proc/devices/ */
 		pr_info("Cannot allocate major number for driver 1\n");
                 return -1;
 	} 
 	
 	/*Creating cdev structure*/
-	cdev_init(&my_cdev,&fops);
+	cdev_init(&my_cdev, &fops);
 
 	/*Adding character device to the system*/
-	if((cdev_add(&my_cdev,dev,1))<0){
+	if((cdev_add(&my_cdev, dev, 1))<0){
 		pr_err("connot add device to system \n");
-		goto r_class;
+		goto r_cdev;
 	}
 
 	/*Creating struct class*/
@@ -106,40 +104,43 @@ static int __init my_init(void)
 	}
 
 	/*Creating device*/
-	device_ptr = device_create(class_ptr,NULL,dev,NULL,"my_device");
+	device_ptr = device_create(class_ptr, NULL, dev, NULL, "my_device");
 	if(IS_ERR(device_ptr)){  /* entry in /dev/auto_device */
 		pr_err("Cannot create the Device\n");
             	goto r_device;
 	}
 
 	/*Creating Physical memory*/
-	kbuf = kmalloc(mem_size,GFP_KERNEL);
+	kbuf = kmalloc(mem_size, GFP_KERNEL);
 	if(!kbuf){
 		pr_info("cannot allocate mr to kernel\n");
 		goto r_device;
 	}
 
 	/* copy default data to kernel_buf */
-	strcpy(kbuf,"hii abhishek");
+	strcpy(kbuf, "hii abhishek");
 	
-	pr_info("Major = %d Minor = %d \n",MAJOR(dev), MINOR(dev));
+	pr_info("Major = %d Minor = %d \n", MAJOR(dev), MINOR(dev));
         pr_info("Kernel Module Inserted Successfully...\n");
 	return 0;
+
 
 r_device:
         class_destroy(class_ptr);
 r_class:
-        unregister_chrdev_region(dev,1);
+	cdev_del(&my_cdev);
+r_cdev:
+        unregister_chrdev_region(dev, 1);
         return -1;
 }
 
 static void __exit my_exit(void)
 {
         kfree(kbuf);
-	device_destroy(class_ptr,dev); /* delete device file/destroy created device */
+	device_destroy(class_ptr, dev); /* delete device file/destroy created device */
 	class_destroy(class_ptr);  	/* delete struct class/destroy created class */
 	cdev_del(&my_cdev); 		/* delete cdev struct instance/variable  */ 
-	unregister_chrdev_region(dev,1);  /* release major&minor number */
+	unregister_chrdev_region(dev, 1);  /* release major&minor number */
 	pr_info("Kernel Module Removed Successfully...\n");
 }
 

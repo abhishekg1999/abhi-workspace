@@ -625,3 +625,250 @@ void wait_for_button_press(void) {
     printf("Button pressed!\n");
 }
 
+## I2C subsystem 
+
+Linux code that connects:
+Controller driver
+        ↔
+Device driver
+			Linux kernel 
+			  | 
+			I2C Subsystem
+                    ┌─────┴─────┐     
+                    │           │     
+        Controller driver    Device driver 
+
+## how I2C device get detected 
+
+supose we added I2C device node:
+&i2c2 {
+    tca8418@34 {
+        compatible = "ti,tca8418";
+        reg = <0x34>;
+    };
+};
+
+Now these things will happen:
+
+1. Kernel sees:
+i2c2
+   |
+   +--- device at address 0x34
+           compatible = "ti,tca8418"
+           
+2. Kernel search 
+
+a) Which driver supports: "ti,tca8418" ?
+
+b) It finds: TCA8418 driver
+note: (because inside the driver : .compatible = "ti,tca8418")
+
+c) TCA8418 driver probe will get called.
+
+
+3. read write data 
+
+TCA8418 Device Driver
+        |
+        | "Write 0x80 to register 0x01" or "read register 0x10"
+        ↓
+I²C Controller Driver
+        |
+        | Generates I²C transaction: (read/write)
+        | START
+        | Address 0x34  (7/10bit slave address)
+        | Register 0x01 (8bit memory address inside slave)
+        | Data 0x80     (8bit data)
+        | STOP
+        ↓
+   SDA / SCL
+        ↓
+     TCA8418
+
+remarks:
+The I²C controller driver handles the I²C bus/protocol operation, while the device driver knows which registers of the particular device need to be read or written.
+
+## USB subystem 
+
+* Common USB host controller drivers:
+
+USB Host Controller	Linux driver
+EHCI — USB 2.0		ehci-hcd
+OHCI — USB 1.1		ohci-hcd
+UHCI — USB 1.1		uhci-hcd
+xHCI — USB 3.x		xhci-hcd
+
+DWC3 — common in embedded SoCs dwc3
+
+* USB device-class driver:
+USB pendrive  → usb-storage
+USB keyboard  → usbhid
+USB mouse     → usbhid
+USB Ethernet  → usbnet / specific driver
+USB camera    → uvcvideo
+
+* For a modern embedded Linux board, you will very commonly see:
+
+USB controller hardware
+        ↓
+Host Controller Driver (HCD)
+        ↓
+USB Core
+        ↓
+USB device driver
+        ↓
+USB device
+
+* USB subsystem 
+
+USB subsystem = the complete USB framework in the Linux kernel
+USB core = the central/common part of that USB subsystem
+
+                     Linux Kernel
+                          │
+                    USB Subsystem
+                          │
+          ┌───────────────┼────────────────┐
+          │               │                │
+      USB Core       Host Controller     Device
+                      Drivers (HCD)      Drivers
+                          │                │
+                    ┌─────┴─────┐     ┌────┴─────┐
+                    │           │     │          │
+                  xHCI        DWC3  usb-storage usbhid
+                  EHCI        etc.     │          │
+                                      Pendrive  Keyboard
+                                      
+1. USB core:
+	USB device registration
+	USB bus management
+	Device enumeration
+	USB descriptors
+	Configuration/interface management
+	Matching USB devices with drivers
+	USB transfers/interface handling
+	Communication between HCD and USB device drivers
+	
+2. host controller driver:
+   	Controller-specific implementation
+   	Registers
+   	Rings/descriptors
+   	DMA
+   	Interrupts
+   	
+3. device driver:
+	registers the device with the SCSI/storage subsystem
+	read from USB device
+	write to USB device
+
+note : the block layer ultimately exposes the device as /dev/sda
+
+
+## how usb detected 
+
+USB has a built-in device-detection/enumeration mechanism.
+
+The USB host controller driver (HCD) continuously monitors the USB ports.
+
+You insert the pendrive.
+USB port
+   |
+   +---- D+
+   +---- D-
+   
+A USB device has pull-up signaling on one of the USB data lines.
+ |
+ V
+For example, a USB 2.0 device indicates its presence through the state of D+ or D-.
+ |
+ V
+The USB host controller driver (HCD) detects a change in the port state.
+ |
+ V
+Host controller driver generates an event/interrupt and report to USB core
+ |
+ V
+USB core will start enumeration/discovery 
+ |
+ 	get the device info (get descriptor)
+ 	find appropriate driver and call the probe
+ V
+USB device driver 
+ |
+ 	registers the device with the SCSI/storage subsystem
+ 	the block layer ultimately exposes the device as /dev/sda
+
+ 
+The Device Descriptor contains information such as:
+VID          → Who manufactured it
+PID          → Which product it is
+USB version
+Device class
+Manufacturer string
+Product string
+Serial number
+Number of configurations
+
+For example:
+VID = 0x0781
+PID = 0x5567
+Manufacturer = SanDisk
+Product = USB Flash Drive
+
+* how to read and write 
+
+1. write:
+usb-storage (device driver)
+     │
+     │ "I need to send this storage command"
+       ↓
+USB Core (code driver)
+     │
+     │ "Here's a USB transfer"
+       ↓
+HCD    (controller driver)
+     │
+     │ "I'll program the controller"
+       ↓
+Host Controller
+     │
+       ↓
+USB device	
+
+2. read:
+Pendrive
+   ↓
+Host Controller
+   ↓
+HCD
+   ↓
+USB Core
+   ↓
+usb-storage
+   ↓
+SCSI
+   ↓
+Block layer
+   ↓
+Filesystem / Application
+
+# During enumeration
+
+When the pendrive is connected:
+1. Host controller detects device connection
+                 ↓
+2. USB Core starts enumeration
+                 ↓
+3. USB Core asks for Device Descriptor
+                 ↓
+4. Request goes through USB controller driver
+                 ↓
+5. Controller hardware sends USB request
+                 ↓
+6. Pendrive receives request
+                 ↓
+7. Pendrive sends descriptor data back
+                 ↓
+8. Controller hardware receives it
+                 ↓
+9. USB controller driver gives data to USB Core

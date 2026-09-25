@@ -17,12 +17,10 @@ int main(){
 	int mid = msgget(key, IPC_CREAT|0666);
 	perror("msgget");
 
-	while(1) {
 		
-		printf("enter the data\n");
-        	scanf("%s", v.data);
-		msgsnd(mid, &v, strlen(v.data)+1, 0);
-	}
+	printf("enter the data\n");
+        scanf("%s", v.data);
+	msgsnd(mid, &v, strlen(v.data)+1, 0);
 
 	return 0;
 }

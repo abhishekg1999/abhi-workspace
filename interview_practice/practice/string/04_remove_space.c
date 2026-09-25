@@ -13,13 +13,13 @@ EmbeddedLinuxDeveloper
 
 void remove_space(char s[]){
 
-	int i,j;
+	for(int i=0; s[i]; i++){
 
-	for(i=0; s[i]; i++){
-
-		if(s[i] == ' ')
-		  for(j=i; s[j]; j++)
-			  s[j]=s[j+1];
+		if(s[i] == ' '){
+		  
+		   for(int j=i; s[j]; j++)
+		      s[j]=s[j+1];
+		}
 	}
 
 }

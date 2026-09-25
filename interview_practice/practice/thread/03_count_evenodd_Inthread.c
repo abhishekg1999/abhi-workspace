@@ -20,7 +20,7 @@ void* thread1(void *p){
 
 	while(1){
 		
-		pthread_mutex_lock(&lock);	
+		pthread_mutex_lock(&lock);
 		if(count%2==0)
 			printf("in thread1 = %d\n", count);
 

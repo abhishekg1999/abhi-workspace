@@ -72,6 +72,30 @@ read buffer;       // SAFE
 condition "while (count ==0)" will be checked again to make sure , read only if count !=0
 
 Explanation:
-We use while because waking from pthread_cond_wait() does not guarantee that the condition is still true. Another thread may have consumed or modified the resource, and spurious wakeups are also possible. Therefore, we always recheck the condition after waking up.  
+We use while because waking from pthread_cond_wait() does not guarantee that the condition is still true. Another thread may have consumed or modified the resource, and spurious wakeups are also possible. Therefore, we always recheck the condition after waking up.
+
+## what is race condition:
+
+defination :
+A race condition is an unwanted situation that happens when two or more threads try to access and modify shared data at the same time, and the final outcome depends entirely on the unpredictable order (the "race") in which the threads execute.
+
+what is atomic operation:
+atomic means an operation is completely uninterruptible. It either happens entirely, or it doesn't happen at all. To other threads, an atomic operation looks like a single instantaneous step—no other thread can see it in a "half-done" state.  
+
+## how both mutex + conditional variable works together
+
+How it wakes up :
+mutex => Automatically wakes up when the other thread releases the lock.
+conditional variable => Wakes up only when another thread explicitly alerts it via a signal.
+
+# how conditonal variable works :
+When your producer thread executes this line:
+pthread_cond_wait(&Prod, &lock);
+
+Under the hood, the operating system executes three steps atomically (all at the exact same time):
+1. It puts the Producer thread to sleep so it stops using the CPU
+2. It completely unlocks your &lock mutex.
+3. Because the mutex is now unlocked, the Consumer thread can instantly lock it, grab an item from the buffer, and call pthread_cond_signal(&Prod) to wake the producer back up.
+
 
 

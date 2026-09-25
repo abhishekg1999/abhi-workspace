@@ -9,8 +9,8 @@
 #include <linux/ioctl.h>   /* for ioctl */
 #include<linux/uaccess.h>  /* copy_to/from_user() */
 
-#define WR_VALUE _IOW('a','a',int32_t*)
-#define RD_VALUE _IOR('a','b',int32_t*)
+#define WR_VALUE _IOW('a', 'a', int32_t*)
+#define RD_VALUE _IOR('a', 'b', int32_t*)
 
 dev_t dev;
 static struct cdev cdev_var;
@@ -39,7 +39,7 @@ static struct file_operations fops=
 /*
 ** This function will be called when we open the Device file
 */
-static int my_open(struct inode *inode,struct file *file)
+static int my_open(struct inode *inode, struct file *file)
 {
 	pr_info("driver open called\n");
 	return 0;
@@ -48,7 +48,7 @@ static int my_open(struct inode *inode,struct file *file)
 /*
 ** This function will be called when we close the Device file
 */
-static int my_release(struct inode *inode,struct file *file)
+static int my_release(struct inode *inode, struct file *file)
 {
 	pr_info("driver release called \n");
 	return 0;
@@ -57,7 +57,7 @@ static int my_release(struct inode *inode,struct file *file)
 /*
 ** This function will be called when we read the Device file
 */
-static ssize_t my_read(struct file *filp,char __user *buf,size_t len,loff_t *off)
+static ssize_t my_read(struct file *filp, char __user *buf, size_t len, loff_t *off)
 {
 	pr_info("driver read called \n");
 	return 0;
@@ -72,20 +72,20 @@ static ssize_t my_write(struct file *filp,const char __user *buf,size_t len,loff
 	return len;
 }
 
-static long my_ioctl(struct file *file,unsigned int cmd,unsigned long buf)
+static long my_ioctl(struct file *file, unsigned int cmd, unsigned long buf)
 {
 	// value => kernel space variable
 	// buf => user space variable which constains adds of variable pass from application
 	switch(cmd){
 		case WR_VALUE:
-			if(copy_from_user(&value,(int32_t*)buf,sizeof(value))) /* copying from buf(user) to value(kernel) */
+			if(copy_from_user(&value, (int32_t*)buf, sizeof(value))) /* copying from buf(user) to value(kernel) */
 			{
 				pr_err("Data Write : Err!\n");
 			}
 				pr_info("write done \n");
 				break;
 		case RD_VALUE:
-			if(copy_to_user((int32_t*)buf,&value,sizeof(value))) /* copying from value(kernel) to buf(user) */
+			if(copy_to_user((int32_t*)buf, &value, sizeof(value))) /* copying from value(kernel) to buf(user) */
 			{
 				pr_err("Data Read : Err!\n");
 			}
@@ -101,7 +101,7 @@ static long my_ioctl(struct file *file,unsigned int cmd,unsigned long buf)
 static int __init my_init(void)
 {
 	/*Allocating Major number*/
-	if((alloc_chrdev_region(&dev,0,1,"my_device"))<0){  /* entry in /proc/devices/ */
+	if((alloc_chrdev_region(&dev, 0, 1, "my_device"))<0){  /* entry in /proc/devices/ */
 		pr_info("Cannot allocate major number for driver 1\n");
                 return -1;
 	} 
@@ -110,7 +110,7 @@ static int __init my_init(void)
 	cdev_init(&cdev_var,&fops);
 
 	/*Adding character device to the system*/
-	if((cdev_add(&cdev_var,dev,1))<0){
+	if((cdev_add(&cdev_var, dev, 1))<0){
 		pr_err("connot add device to system \n");
 		goto r_class;
 	}
@@ -123,7 +123,7 @@ static int __init my_init(void)
 	}
 
 	/*Creating device*/
-	device_ptr = device_create(class_ptr,NULL,dev,NULL,"my_device");  /* entry in /dev/auto_device */
+	device_ptr = device_create(class_ptr, NULL, dev, NULL, "my_device");  /* entry in /dev/auto_device */
 	if(IS_ERR(device_ptr)){
 		pr_err("Cannot create the Device\n");
             	goto r_device;
@@ -136,16 +136,16 @@ static int __init my_init(void)
 r_device:
         class_destroy(class_ptr);
 r_class:
-        unregister_chrdev_region(dev,1);
+        unregister_chrdev_region(dev, 1);
         return -1;
 }
 
 static void __exit my_exit(void)
 {
-	device_destroy(class_ptr,dev); /* delete device file/destroy created device */
+	device_destroy(class_ptr, dev); /* delete device file/destroy created device */
 	class_destroy(class_ptr);  	/* delete struct class/destroy created class */
 	cdev_del(&cdev_var); 		/* delete cdev struct instance/variable  */ 
-	unregister_chrdev_region(dev,1);  /* release major&minor number */
+	unregister_chrdev_region(dev, 1);  /* release major&minor number */
 	pr_info("Kernel Module Removed Successfully...\n");
 }
 

@@ -15,7 +15,6 @@ void find_nonrep(char s[]){
 
 	int size = strlen(s);
 	int seen[size];
-
 	memset(seen, 0, size);
 
 	for(int i=0; s[i]; i++){

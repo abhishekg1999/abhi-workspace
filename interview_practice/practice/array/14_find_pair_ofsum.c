@@ -21,8 +21,7 @@ void find_pair(int a[], int ele){
 			if( (a[i]+a[j] ==9)){   //check sum
 				
 				printf("%d %d", a[i], a[j]);
-				i=ele;   //increment i to last, to terminate outer loop
-				break;   //terminate inner loop
+				return;
 			}
 		}
 	}

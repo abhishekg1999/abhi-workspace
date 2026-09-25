@@ -14,11 +14,11 @@ consonants count ?
 
 void count_vowel_conso(char s[]){
 
-	int i;
-	int count1=0, count2=0;
+	int vow=0;
+	int cons=0;
 	char ch;
 
-	for(i=0; s[i]; i++){
+	for(int i=0; s[i]; i++){
 	
 		/* convert upper case to lower */	
 		if(s[i] >= 'A' && s[i]<= 'Z')
@@ -30,13 +30,13 @@ void count_vowel_conso(char s[]){
 		if( ch>= 'a' && ch <= 'z'){
 		   
 		   if( ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
-			   count1++;
+			   vow++;
 	           else
-			   count2++;
+			   cons++;
 		}
 	}
 
-	printf("vow =%d cons =%d\n", count1, count2);
+	printf("vow =%d cons =%d\n", vow, cons);
 }
 
 int main(){

@@ -12,6 +12,7 @@ output:
 #include <stdio.h>
 #include <string.h>
 
+/*
 void find_first_rep(int a[], int ele){
 
 	int seen[ele];
@@ -39,46 +40,43 @@ void find_first_rep(int a[], int ele){
 		}
 	}
 }
+*/
 
-#if 0
-void find_first_rep(int a[], int ele) {
+void find_first_rep(int a[], int ele){
 
-	int count[256] = {0};
-	int i,j;
 
-	for(i=0; i<ele; i++){
+        for(int i=0; i<ele; i++){
 
-		int val = a[i];
-		count[val]++;
-	}
+                /* check element already printed or not, if yes than skip in "if" condition */
+                int is_checked = 0;
+                for(int k=0; k<i; k++){
 
-	for(i=0; i<ele; i++){
+                        if(a[i] == a[k]){
+                                is_checked = 1;
+                        }
+                }
 
-		int val = a[i];
-		if(count[val] >1){
-			printf("%d\n", a[i]);
-			break;   //break loop after find first non repeated element
+                if(is_checked)
+                        continue;
+
+                /* check the duplicate */
+                int is_dup = 0;
+                for(int j=i+1; j<ele; j++){
+
+                        if(a[i]==a[j]){
+                                is_dup = 1;
+                                break;
+                        }
+                }
+
+                if(is_dup == 1){
+                        printf("%d ", a[i]);
+			break;
 		}
-	}
+        }
+
+        printf("\n");
 }
-
-void find_firstrep(int a[], int ele){
-
-	int i, j;
-	for(i=0; i<ele; i++){
-
-		for(j=i+1; j<ele; j++){
-			if(a[i] == a[j]){
-
-				printf("%d\n", a[i]);
-				i=ele;   //put i to last, to termnate outer loop, no more iteration
-				break;   //break
-			}
-		}
-	}
-
-}
-#endif
 
 int main(){
 

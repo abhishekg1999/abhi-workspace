@@ -10,13 +10,13 @@ int my_atoi(const char *p){
 		i=0;
 	for(; p[i]; i++){
 		if(p[i]>='0' && p[i]<='9')
-			num=num*10+(p[i]-48);
+			num = num*10 + (p[i]-48);
 		else
 			break;
 	}
 	
 	if(p[0] =='-')
-		num=num;
+		num = -num;
 		
 	return num;
 }

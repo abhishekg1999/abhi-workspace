@@ -15,7 +15,7 @@ Context Switch		Yes (swaps threads)		No (keeps the same thread)
 
 ## types of mutex 
 
-1. static (No init need to call init and destroy function)
+1. static (No need to call init and destroy function)
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
 
@@ -36,7 +36,7 @@ pthread_mutex_destroy(&lock);
 
 ## types spin lock
 
-it only support dynamic , No static support  
+note: it only support dynamic , No static support  
 
 pthread_spin_t lock;
 pthread_spin_init(&lock, 0);

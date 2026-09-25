@@ -11,14 +11,15 @@ output:
 */
 
 #include <stdio.h>
+#include <string.h>
+
 void array_freq(int a[], int ele){
 
 	int i, j;
 
 	/* take flag to monitor seen or unseen elements */
 	int seen[ele];
-	for(i=0; i<ele; i++)
-		seen[i]=0;    
+	memset(see, 0, ele);
 
 	for(i=0; i<ele; i++) {
 		

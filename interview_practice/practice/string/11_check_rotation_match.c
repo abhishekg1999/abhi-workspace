@@ -15,17 +15,15 @@ Yes
 
 int check_match(char a[], char b[]){
 
-	int i,j;
 	int len = strlen(a);
-
 	if(strlen(a) != strlen(b))
 		return -1;
 
-	for(i=0; a[i]; i++){
+	for(int i=0; a[i]; i++){
 
 		/* rotation */
 		char temp=a[0];
-		for(j=0; a[j]; j++)
+		for(int j=0; a[j]; j++)
 			a[j]=a[j+1];
 
 		a[len-1]= temp;

@@ -12,7 +12,7 @@ Modify the same array so that the unique elements are at the beginning:
 
 #include <stdio.h>
 
-
+#if 0
 void remove_dup(int a[], int *ele){
 
 	int i, j, k;
@@ -31,36 +31,43 @@ void remove_dup(int a[], int *ele){
 		}
 	}
 }
+#endif 
 
-#if 0
 void remove_dup(int a[], int *ele){
 
-	int i, j;
-	int seen[256]= {0};
 
-	for(i=0, j=0; i<(*ele); i++){
+	int j = 0;
+	for(int i=0; i<*ele; i++){
 
-		int val = a[i];
-		if(seen[val] == 0){
+                /* check element match, if yes than skip in "if" condition */
+                int is_matched = 0;
+                for(int k=0; k<i; k++){
 
-			a[j++] = a[i];  //copy value which is coming only once
-			seen[val]=1;   //set 1, if element seen
-		}
+                        if(a[i] == a[k]){
+                                is_matched = 1;
+                        }
+                }
+
+                if(is_matched)
+                        continue;
+
+		if(is_matched == 0)
+			a[j++] = a[i];
+
 	}
 
-	*ele = j;
+	*ele = j;  //update new size after remove duplicate
 }
-#endif
 
 int main(){
 
-	int a[] = {1, 1, 2, 2, 2, 3, 4, 4, 5};
+	int a[] = {1, 1, 2, 2, 1, 3, 4, 4, 5};
 	int size = sizeof(a)/sizeof(a[0]);
 
 	remove_dup(a, &size);
 	for(int i=0; i<size; i++)
 		printf("%d ", a[i]);
-
+	
 	printf("\n");
 	return 0;
 }

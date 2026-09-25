@@ -1,5 +1,5 @@
 /* 
- *  this program is using socketpair which is advance of pipe , pipe is one way communication meanwhile socketpair is two way communication
+ *  this program is using socketpair which is advance of pipe , pipe is one way communication meanwhile socketpair is two way communication or full duplex
  */
 
 #include <stdio.h>
@@ -16,38 +16,38 @@ int main() {
 
         if( fork()==0 ){
 
-                char c_buff[20];
+                char b[20];
                 close(fd[1]);   //close
 
                 while(1) {
 
                         /* child read from fd[0] */
-                        read(fd[0], c_buff, sizeof(c_buff));
-                        printf("child read =%s\n", c_buff);
+                        read(fd[0], b, sizeof(b));
+                        printf("child read =%s\n", b);
 
                         /* child write to fd[0] */
                         printf("scan data from child\n");
-                        scanf("%19s", c_buff);
-                        write(fd[0], c_buff, sizeof(c_buff));
+                        scanf("%19s", b);
+                        write(fd[0], b, sizeof(b));
                 }
 
                 close(fd[0]);  //close
 
         } else {
 
-                char p_buff[20];
+                char a[20];
                 close(fd[0]);   //close
 
                 while(1) {
 
                         /* parent write to fd[1] */
                         printf("scan data from parent\n");
-                        scanf("%19s", p_buff);
-                        write(fd[1], p_buff, sizeof(p_buff));
+                        scanf("%19s", a);
+                        write(fd[1], a, sizeof(a));
 
                         /* parent read from fd[1] */
-                        read(fd[1], p_buff, sizeof(p_buff));
-                        printf("parent read =%s\n", p_buff);
+                        read(fd[1], a, sizeof(a));
+                        printf("parent read =%s\n", a);
                 }
 
                 close(fd[1]);  //close

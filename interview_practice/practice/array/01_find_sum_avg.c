@@ -13,11 +13,10 @@ average =?
 #include <stdio.h>
 void find_sum_avg(int a[], int ele){
 
-	int i;
-	int sum;
+	int sum = 0;
 	double avg;
 
-	for(sum=0, i=0; i<ele; i++)
+	for(int i=0; i<ele; i++)
 		sum +=a[i];
 
 	avg =(double)sum/ele;	

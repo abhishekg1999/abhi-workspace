@@ -8,16 +8,18 @@
 #include <linux/slab.h>                 //kmalloc()
 #include <linux/uaccess.h>              //copy_to/from_user()
 #include <linux/string.h>
+#include <linux/ioctl.h>   /* _IOC_SIZE */
 
-dev_t dev;
+/* Make sure these match your user space app exactly */
+#define WR_VALUE _IOW('a', 'a', char[1024])
+#define RD_VALUE _IOR('a', 'b', char[1024])
+#define mem_size 1024
+
 static struct cdev cdev_var;
 static struct class *class_ptr;
 static struct device *dev_ptr;
+dev_t dev;
 static uint8_t *kbuf;
-
-#define mem_size 1024
-#define WR_VALUE _IOW('a', 'a', int32_t*)
-#define RD_VALUE _IOR('a', 'b', int32_t*)
 
 static int my_open(struct inode *inode, struct file *file);
 static int my_release(struct inode *inode, struct file *file);
@@ -49,7 +51,7 @@ static int my_release(struct inode *inode, struct file *file){
 
 static ssize_t my_read(struct file *filp, char __user *ubuf, size_t len, loff_t *off){
 
-	if(copy_to_user(ubuf, kbuf, mem_size))
+	if(copy_to_user(ubuf, kbuf, len))
 		return -EFAULT;
 
 	pr_info("data read: done\n");
@@ -68,19 +70,22 @@ static ssize_t my_write(struct file *filp, const char __user *ubuf, size_t len, 
 	return 0;
 }
 
-static long my_ioctl(struct file *filp, unsigned int cmd, unsigned long ubuf){
+static long my_ioctl(struct file *filp, unsigned int cmd, unsigned long buf){
 
+	char __user *ubuf = (char __user *)buf;
+	
 	switch(cmd){
 
 		case WR_VALUE:
-			if(copy_from_user(kbuf, (char __user*)ubuf, mem_size))
+			 /* Use _IOC_SIZE(cmd) to automatically extract '1024' from the macro */
+			if(copy_from_user(kbuf, ubuf, _IOC_SIZE(cmd)))
 				return -EFAULT;
 
 			pr_info("write :done\n");
 			break;
 
 		case RD_VALUE:
-			if(copy_to_user((char __user*)ubuf, kbuf, mem_size))
+			if(copy_to_user(ubuf, kbuf, _IOC_SIZE(cmd)))
                                 return -EFAULT;
 
                         pr_info("read :done\n");
@@ -119,14 +124,14 @@ static int __init auto_init(void){
 	}
 	
 	/*Creating Physical memory*/
-	kbuf = kmalloc(mem_size,GFP_KERNEL);
+	kbuf = kmalloc(mem_size, GFP_KERNEL);
 	if(!kbuf){
 		pr_info("cannot allocate mr to kernel\n");
 		goto r_device;
 	}
 
 	/* copy default data to kernel_buf */
-	strcpy(kbuf,"hii abhishek");
+	strcpy(kbuf, "hii abhishek");
 
 	pr_info("kernel module inserted successfully:\n");
 	return 0;

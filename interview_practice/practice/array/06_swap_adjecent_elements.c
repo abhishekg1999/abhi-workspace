@@ -10,10 +10,9 @@ output :
 #include <stdio.h>
 void swap_adj(int a[], int ele){
 
-	int i,j;
 	int temp;
 
-	for(i=0; i<ele-1; i=i+2){
+	for(int i=0; i<ele-1; i=i+2){
 		temp=a[i];
 		a[i]=a[i+1];
 		a[i+1]=temp;

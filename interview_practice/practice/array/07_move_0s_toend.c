@@ -26,7 +26,7 @@ void move_zero_toend(int a[], int ele){
 
 			
 			a[ele-1]=0;  //assign 0 at last
-			index--;     //paralelly decrease the index of first 0
+			index--;     //decrease index follows to first 0
 		}
 	}
 }

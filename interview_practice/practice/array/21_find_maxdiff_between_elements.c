@@ -17,12 +17,12 @@ So output:
 */
 
 #include <stdio.h>
+#include <limits.h>
 
 void find_diff(int a[], int ele){
 
-	int i;
 	int min_element = a[0];
-	int maxdiff =0;
+	int maxdiff = INT_MIN;
 
 	for(int i=1; i<ele; i++){
 

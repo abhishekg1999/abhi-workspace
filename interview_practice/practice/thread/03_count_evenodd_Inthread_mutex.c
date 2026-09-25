@@ -19,8 +19,8 @@ void* thread1(void *p){
 		pthread_mutex_lock(&lock);
 
 		/* Wait until count is odd */	
-		while(count%2==0 && count<10)
-			pthread_cond_wait(&cond, &lock);  //put thread2 in sleep
+		while(count%2 !=0 && count<10)
+			pthread_cond_wait(&cond, &lock);  //if count is odd , thread1 goto sleep so thread2 can print odd count
 
 		if(count >=10){
 			pthread_cond_signal(&cond);
@@ -47,8 +47,8 @@ void* thread2(void *p){
 		pthread_mutex_lock(&lock);
 		
 		/* wait until count is even */
-		while(count%2 !=0 && count<10)
-                        pthread_cond_wait(&cond, &lock);
+		while(count%2 ==0 && count<10)
+                        pthread_cond_wait(&cond, &lock);   //if count is even , thread2 goto sleep so thread1 can print even count
 
 		if(count >=10){
                         pthread_cond_signal(&cond);

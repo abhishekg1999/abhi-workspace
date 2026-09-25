@@ -9,38 +9,39 @@ typedef struct {
     char buf2[20];
 } shm_t;
 
+int shmid;
+int semid;
+shm_t *p;
+
 /* lock api */
-void sem_wait(int semid, int semno) {
+void sem_wait(int id, int semno) {
 
     struct sembuf op = {semno, -1, 0};
-    semop(semid, &op, 1);
+    semop(id, &op, 1);
 }
 
 /* unlock api */
-void sem_signal(int semid, int semno) {
+void sem_signal(int id, int semno) {
 
     struct sembuf op = {semno, +1, 0};
-    semop(semid, &op, 1);
+    semop(id, &op, 1);
 }
 
 int main() {
 
-	int shm_id = shmget(key, sizeof(shm_t), IPC_CREAT|0666);
-	shm_t *p = shmat(shm_id, NULL, 0);
+	shmid = shmget(key, sizeof(shm_t), IPC_CREAT|0666);
+	p = shmat(shmid, 0, 0);
 
-	int sem_id = semget(key, 2, IPC_CREAT|IPC_EXCL|0666);
-	sem_id = semget(key, 2, 0666);
+	semid = semget(key, 2, IPC_CREAT|0666);
 
-	
 	while(1) {
 
-		sem_wait(sem_id, 1);  //p2 waiting for p1
-		
+		sem_wait(semid, 1);  //p2 waiting for p1
 		printf("Received: %s\n", p->buf1);
 
 		printf("Enter data: \n");
         	scanf("%19s", p->buf2);
-		sem_signal(sem_id, 0);   //unlock p1
+		sem_signal(semid, 0);   //unlock p1
  
 	}
 }

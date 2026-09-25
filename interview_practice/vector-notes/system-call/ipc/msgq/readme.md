@@ -15,5 +15,5 @@ msgctl(mid, IPC_RMID, NULL);    //delete
 
 ## check the msg Q 
 
-$ ipcs -q    // show msg Q
+$ ipcs -q    // show msgQ
 $ ipcrm -q <id>  // remove it

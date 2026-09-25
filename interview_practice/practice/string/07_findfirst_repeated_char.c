@@ -15,7 +15,6 @@ void find_rep(char s[]){
 
 	int size = strlen(s);
 	int seen[size];
-
 	memset(seen, 0, size);
 
 	for(int i=0; s[i]; i++){
@@ -57,28 +56,6 @@ void find_rep(char s[]){
 
 		int ascii = (unsigned char)s[i];
 		if(count[ascii] > 1){
-			printf("%c\n", s[i]);
-			break;
-		}
-	}
-}
-
-void find_rep(char s[]){
-
-	int i,j;
-
-	for(i=0; s[i]; i++){
-
-		int is_repeated = 0;
-		for(j=0; s[j]; j++){
-
-			if( s[i] == s[j] && i != j){
-				is_repeated =1;
-				break;
-			}
-		}
-
-		if(is_repeated ==0) {
 			printf("%c\n", s[i]);
 			break;
 		}

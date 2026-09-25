@@ -94,3 +94,18 @@ Tells the kernel that this function is only executed once at startup. Once the i
 __exit: 
 Tells the kernel that if this driver is built directly into the core kernel binary (not as a separate .ko file), this function can be completely ignored because a built-in driver can never be removed anyway.
 
+## how driver s APIs called from user space
+
+when user call "open" bellow call happen to reach to my_open():
+
+Flow:
+open() --> sys_open() --> vfs_open() --> my_open()
+
+explanation:
+open():  Represents the application initiating the request in User Space.
+sys_open():  Represents the kernel's system call entry wrapper entrypoint.
+vfs_open():  Represents the Virtual File System Layer, which translates standard files into character device file definitions and performs the internal major/minor number table lookup. 
+my_open(): Represents the entry point to your custom hardware driver implementation.
+
+
+

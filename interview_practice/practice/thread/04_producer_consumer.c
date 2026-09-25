@@ -24,8 +24,8 @@ int head = 0;  //ring buffer head
 int tail = 0;  //ring buffer tail
 
 pthread_mutex_t lock = PTHREAD_MUTEX_INITIALIZER;
-pthread_cond_t send = PTHREAD_COND_INITIALIZER;
-pthread_cond_t recv = PTHREAD_COND_INITIALIZER;
+pthread_cond_t Prod = PTHREAD_COND_INITIALIZER;
+pthread_cond_t Cons = PTHREAD_COND_INITIALIZER;
 
 void* producer(void *arg){
 
@@ -35,16 +35,16 @@ void* producer(void *arg){
 		while( (head+1)%size == tail) {
 			
 			printf("buffer is full !! waiting ..\n");
-			pthread_cond_wait(&send, &lock);   //put producer in sleep, wait for consumer
+			pthread_cond_wait(&Prod, &lock);   //producer go to sleep & unlock mutex for consumer, waiting for consumer
 		} 
 			
 		a[head] = i;
 		printf("producer push : %d\n", i);
 		head = (head+1)% size;  //ring buffer logic  head[0-1-2-3-4 0-1--- ]
 
+		pthread_cond_signal(&Cons);
 		pthread_mutex_unlock(&lock);
-		pthread_cond_signal(&recv);  //wakeup consumer
-		usleep(100000);
+		usleep(100000); //100 ms
 	}
 
 	return 0;
@@ -58,16 +58,16 @@ void* consumer(void *arg) {
 		while(tail == head) {
 
 			printf("buffer is empty !! waiting..\n");
-			pthread_cond_wait(&recv, &lock);  //put consumer in sleep, wait for producer
+			pthread_cond_wait(&Cons, &lock);  //consumer go to sleep && unlock the mutex for producer, waiting for producer
 		}
 		
 		int data = a[tail];
 		printf("consumer pop :%d\n", data);
 		tail = (tail+1)% size;   //ring buffer logic tail[0-1-2-3-4 0-1--- ]
 
+		pthread_cond_signal(&Prod);
 		pthread_mutex_unlock(&lock);
-		pthread_cond_signal(&send);   //wakeup producer
-		usleep(100000);
+		usleep(100000);  //100 ms
 	}
 
 	return 0;

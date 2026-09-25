@@ -16,11 +16,9 @@ int main(){
 	int mid = msgget(key, IPC_CREAT|0666);
 	perror("msgget");
 
-	while(1){
 
-		msgrcv(mid, &v, sizeof(v.data), v.mtype, 0); //block till data send from msgsnd
-		printf("data=%s\n",v.data);
-	}
+	msgrcv(mid, &v, sizeof(v.data), v.mtype, 0); //block till data send from msgsnd
+	printf("data=%s\n",v.data);
 
 	msgctl(mid, IPC_RMID, NULL);  //delete msgQ
 	return 0;

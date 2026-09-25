@@ -29,8 +29,8 @@ void remove_dup(char s[]){
 		int ascii = (unsigned char)s[i];
 		if(seen[ascii] == 0){
 
-			seen[ascii]=1;
 			s[j++] = s[i];
+			seen[ascii]=1;
 		}
 
 	}

@@ -20,10 +20,8 @@ void count_freq(char s[]){
 	int i,j;
 	int size = strlen(s);
 	int seen[size];
+	memset(seen, 0, size*sizeof(int));
 
-	for(i=0; i<size; i++)
-		seen[i]=0;
-	
 	for(i=0; s[i]; i++){
 
 		if(seen[i] ==1 || s[i] == ' ')  //skip for seen character and space

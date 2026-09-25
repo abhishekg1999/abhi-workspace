@@ -12,7 +12,7 @@ output:
 #include <stdio.h>
 #include <string.h>
 
-/*
+#if 0
 void find_first_nonrep(int a[], int ele){
 
 	int seen[ele];
@@ -40,27 +40,42 @@ void find_first_nonrep(int a[], int ele){
 		}
 	}	
 }
-*/
+#endif
 
-void find_first_nonrep(int a[], int ele) {
+void find_first_nonrep(int a[], int ele){
 
-	int count[256] = {0};
-	int i,j;
 
-	for(i=0; i<ele; i++){
-	
-		int val = a[i];
-		count[val]++;
-	}
+        for(int i=0; i<ele; i++){
 
-	for(i=0; i<ele; i++){
-	
-		int val = a[i];
-		if(count[val] == 1){
-			printf("%d\n", a[i]);
-			break;   //break loop after find first non repeated element
+                /* check element already printed or not, if yes than skip in "if" condition */
+                int is_checked = 0;
+                for(int k=0; k<i; k++){
+
+                        if(a[i] == a[k]){
+                                is_checked = 1;
+                        }
+                }
+
+                if(is_checked)
+                        continue;
+
+                /* check the duplicate */
+                int is_dup = 0;
+                for(int j=i+1; j<ele; j++){
+
+                        if(a[i]==a[j]){
+                                is_dup = 1;
+                                break;
+                        }
+                }
+
+                if(is_dup == 0){
+                        printf("%d ", a[i]);
+			break;
 		}
-	}
+        }
+
+        printf("\n");
 }
 
 int main(){

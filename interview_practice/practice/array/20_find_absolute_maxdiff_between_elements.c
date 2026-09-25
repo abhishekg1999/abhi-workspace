@@ -52,10 +52,8 @@ void find_maxdiff(int a[], int ele){
 #if 0
 void find_maxdiff(int a[], int ele){
 
-	int i;
 	int min_element = a[0];
 	int max_element = a[0];
-	int maxdiff =0;
 
 	for(int i=1; i<ele; i++){
 
@@ -67,7 +65,7 @@ void find_maxdiff(int a[], int ele){
 	}
 
 	/* calculate the maxdiff */
-	maxdiff = max_element - min_element;
+	int maxdiff = max_element - min_element;
 	printf("%d - %d = %d\n", max_element, min_element, maxdiff);
 }
 
