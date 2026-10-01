@@ -5497,6 +5497,7 @@ CONFIG_OF_FPGA_REGION=y
 # CONFIG_MOST is not set
 # CONFIG_PECI is not set
 # CONFIG_HTE is not set
+CONFIG_HELLO_WORLD=m
 # end of Device Drivers
 
 #

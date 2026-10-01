@@ -1,8 +1,7 @@
 deps_config := \
 	Documentation/Kconfig \
 	lib/kunit/Kconfig \
-	drivers/hwtracing/coresight/Kconfig \
-	arch/arm/Kconfig.debug \
+	arch/x86/Kconfig.debug \
 	samples/rust/Kconfig \
 	samples/Kconfig \
 	kernel/trace/rv/Kconfig \
@@ -1509,8 +1508,10 @@ deps_config := \
 	kernel/module/Kconfig \
 	scripts/gcc-plugins/Kconfig \
 	kernel/gcov/Kconfig \
-	arch/arm/Kconfig.assembler \
-	kernel/power/Kconfig \
+	arch/x86/Kconfig.assembler \
+	virt/kvm/Kconfig \
+	arch/x86/kvm/Kconfig \
+	drivers/idle/Kconfig \
 	drivers/cpuidle/Kconfig.riscv \
 	drivers/cpuidle/Kconfig.powerpc \
 	drivers/cpuidle/Kconfig.mips \
@@ -1520,72 +1521,20 @@ deps_config := \
 	drivers/cpufreq/Kconfig.arm \
 	drivers/cpufreq/Kconfig.x86 \
 	drivers/cpufreq/Kconfig \
-	arch/arm/common/Kconfig \
-	arch/arm/Kconfig-nommu \
-	arch/arm/mm/Kconfig \
-	arch/arm/mach-zynq/Kconfig \
-	arch/arm/mach-vt8500/Kconfig \
-	arch/arm/mach-versatile/Kconfig \
-	arch/arm/mach-ux500/Kconfig \
-	arch/arm/mach-uniphier/Kconfig \
-	arch/arm/mach-tegra/Kconfig \
-	arch/arm/mach-sunxi/Kconfig \
-	arch/arm/mach-sunplus/Kconfig \
-	arch/arm/mach-stm32/Kconfig \
-	arch/arm/mach-sti/Kconfig \
-	arch/arm/mach-spear/Kconfig \
-	arch/arm/mach-socfpga/Kconfig \
-	arch/arm/mach-shmobile/Kconfig \
-	arch/arm/mach-sa1100/Kconfig \
-	arch/arm/mach-s5pv210/Kconfig \
-	arch/arm/mach-s3c/Kconfig.s3c64xx \
-	arch/arm/mach-s3c/Kconfig \
-	arch/arm/mach-rockchip/Kconfig \
-	arch/arm/mach-rpc/Kconfig \
-	arch/arm/mach-realtek/Kconfig \
-	arch/arm/mach-rda/Kconfig \
-	arch/arm/mach-qcom/Kconfig \
-	arch/arm/mach-pxa/Kconfig \
-	arch/arm/mach-orion5x/Kconfig \
-	arch/arm/mach-omap2/Kconfig \
-	arch/arm/mach-omap1/Kconfig \
-	arch/arm/mach-nspire/Kconfig \
-	arch/arm/mach-npcm/Kconfig \
-	arch/arm/mach-nomadik/Kconfig \
-	arch/arm/mach-mxs/Kconfig \
-	arch/arm/mach-mvebu/Kconfig \
-	arch/arm/mach-mv78xx0/Kconfig \
-	arch/arm/mach-mstar/Kconfig \
-	arch/arm/mach-moxart/Kconfig \
-	arch/arm/mach-mmp/Kconfig \
-	arch/arm/mach-milbeaut/Kconfig \
-	arch/arm/mach-meson/Kconfig \
-	arch/arm/mach-mediatek/Kconfig \
-	arch/arm/mach-lpc32xx/Kconfig \
-	arch/arm/mach-keystone/Kconfig \
-	arch/arm/mach-ixp4xx/Kconfig \
-	arch/arm/mach-imx/Kconfig \
-	arch/arm/mach-hpe/Kconfig \
-	arch/arm/mach-hisi/Kconfig \
-	arch/arm/mach-highbank/Kconfig \
-	arch/arm/mach-gemini/Kconfig \
-	arch/arm/mach-footbridge/Kconfig \
-	arch/arm/mach-exynos/Kconfig \
-	arch/arm/mach-ep93xx/Kconfig \
-	arch/arm/mach-dove/Kconfig \
-	arch/arm/mach-digicolor/Kconfig \
-	arch/arm/mach-davinci/Kconfig \
-	arch/arm/mach-clps711x/Kconfig \
-	arch/arm/mach-berlin/Kconfig \
-	arch/arm/mach-bcm/Kconfig \
-	arch/arm/mach-axxia/Kconfig \
-	arch/arm/mach-at91/Kconfig \
-	arch/arm/mach-aspeed/Kconfig \
-	arch/arm/mach-asm9260/Kconfig \
-	arch/arm/mach-artpec/Kconfig \
-	arch/arm/mach-alpine/Kconfig \
-	arch/arm/mach-actions/Kconfig \
-	arch/arm/Kconfig \
+	drivers/acpi/pmic/Kconfig \
+	drivers/acpi/arm64/Kconfig \
+	drivers/acpi/dptf/Kconfig \
+	drivers/acpi/apei/Kconfig \
+	drivers/acpi/numa/Kconfig \
+	drivers/acpi/nfit/Kconfig \
+	drivers/acpi/Kconfig \
+	kernel/power/Kconfig \
+	kernel/livepatch/Kconfig \
+	kernel/Kconfig.hz \
+	arch/x86/events/Kconfig \
+	arch/x86/Kconfig.cpu \
+	arch/x86/xen/Kconfig \
+	arch/x86/Kconfig \
 	arch/Kconfig \
 	kernel/Kconfig.kexec \
 	usr/Kconfig \
@@ -1601,28 +1550,28 @@ deps_config := \
 
 include/config/auto.conf: $(deps_config)
 
-ifneq "$(ARCH)" "arm"
+ifneq "$(ARCH)" "x86"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(KERNELVERSION)" "6.6.40"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(CC)" "arm-xilinx-linux-gnueabi-gcc"
+ifneq "$(CC)" "gcc"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(LD)" "arm-xilinx-linux-gnueabi-ld"
+ifneq "$(LD)" "ld"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(srctree)" "."
 include/config/auto.conf: FORCE
 endif
-ifneq "$(CC_VERSION_TEXT)" "arm-xilinx-linux-gnueabi-gcc (GCC) 13.3.0"
+ifneq "$(CC_VERSION_TEXT)" "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(NM)" "arm-xilinx-linux-gnueabi-nm"
+ifneq "$(NM)" "nm"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(OBJCOPY)" "arm-xilinx-linux-gnueabi-objcopy"
+ifneq "$(OBJCOPY)" "objcopy"
 include/config/auto.conf: FORCE
 endif
 ifneq "$(PAHOLE)" "pahole"
@@ -1634,10 +1583,10 @@ endif
 ifneq "$(BINDGEN)" "bindgen"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(SRCARCH)" "arm"
+ifneq "$(SRCARCH)" "x86"
 include/config/auto.conf: FORCE
 endif
-ifneq "$(AR)" "arm-xilinx-linux-gnueabi-ar"
+ifneq "$(AR)" "ar"
 include/config/auto.conf: FORCE
 endif
 
