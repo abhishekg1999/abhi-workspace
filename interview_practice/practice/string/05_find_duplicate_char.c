@@ -13,13 +13,14 @@ m
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #if 0
 void find_duplicate(char s[]){
 
 	int size = strlen(s)-1;
-	int seen[size];
-	memset(seen, 0, size*sizeof(int));
+	uint8_t seen[size];
+	memset(seen, 0, size);
 
 	for(int i=0; s[i]; i++){
 		

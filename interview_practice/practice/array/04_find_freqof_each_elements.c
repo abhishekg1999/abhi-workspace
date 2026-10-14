@@ -12,22 +12,21 @@ output:
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 void array_freq(int a[], int ele){
 
-	int i, j;
-
 	/* take flag to monitor seen or unseen elements */
-	int seen[ele];
-	memset(see, 0, ele);
+	uint8_t seen[ele];
+	memset(seen, 0, ele);
 
-	for(i=0; i<ele; i++) {
+	for(int i=0; i<ele; i++) {
 		
 		if(seen[i]==1)
 			continue;   //if element already seen, than skip loop
 
 		int count=1;
-		for(j=i+1; j<ele; j++){
+		for(int j=i+1; j<ele; j++){
 			if(a[i] == a[j]) {
 				count++;
 				seen[j]=1;   //set 1 , if element seen

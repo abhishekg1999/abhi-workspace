@@ -10,13 +10,14 @@ output:
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 #if 0
 void array_freq(int a[], int ele){
 
 	/* take flag to monitor seen or unseen elements */
-	int seen[ele];
-	memset(seen, 0, ele*sizeof(int));
+	uint8_t seen[ele];
+	memset(seen, 0, ele);
 
 	for(int i=0; i<ele; i++) {
 		

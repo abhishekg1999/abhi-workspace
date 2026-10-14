@@ -11,7 +11,6 @@ output :
 void swap_adj(int a[], int ele){
 
 	int temp;
-
 	for(int i=0; i<ele-1; i=i+2){
 		temp=a[i];
 		a[i]=a[i+1];

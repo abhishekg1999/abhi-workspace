@@ -68,7 +68,6 @@ void find_maxdiff(int a[], int ele){
 	int maxdiff = max_element - min_element;
 	printf("%d - %d = %d\n", max_element, min_element, maxdiff);
 }
-
 #endif
 
 int main(){

@@ -12,7 +12,6 @@ output :
 void rotate_left(int a[], int ele, int rotation){
 
 	int i, temp;
-
 	while(rotation--){
 
 		temp=a[0];
@@ -26,7 +25,6 @@ void rotate_left(int a[], int ele, int rotation){
 void rotate_right(int a[], int ele, int rotation){
 
         int i, temp;
-
         while(rotation--){
 
                 temp=a[ele-1];

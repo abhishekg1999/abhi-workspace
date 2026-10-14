@@ -37,7 +37,6 @@ void find_common(int a[], int ele1, int b[], int ele2){
 				break;
 			}
 		}
-
 	}
 }
 

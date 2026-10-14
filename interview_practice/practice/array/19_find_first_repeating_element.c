@@ -5,42 +5,12 @@ input:
 int a[] = {10, 5, 3, 4, 3, 5, 6};
 
 output:
-5
+3
 
 */
 
 #include <stdio.h>
 #include <string.h>
-
-/*
-void find_first_rep(int a[], int ele){
-
-	int seen[ele];
-	memset(seen ,0, ele);
-
-	int i,j;
-	for(i=0; i<ele; i++){
-
-		if(seen[i] == 1)
-			continue;
-
-		int count =1;
-		for(j=i+1; j<ele; j++){
-
-			if(a[i] == a[j]){
-
-				count++;
-				seen[j]=1;
-			};
-		}
-
-		if(count >1){
-			printf("%d\n", a[i]);
-			break;   //break loop after find first non repeated element
-		}
-	}
-}
-*/
 
 void find_first_rep(int a[], int ele){
 
@@ -49,33 +19,18 @@ void find_first_rep(int a[], int ele){
 
                 /* check element already printed or not, if yes than skip in "if" condition */
                 int is_checked = 0;
-                for(int k=0; k<i; k++){
+                for(int j=0; j<i; j++){
 
-                        if(a[i] == a[k]){
+                        if(a[i] == a[j]){
                                 is_checked = 1;
                         }
                 }
 
-                if(is_checked)
-                        continue;
-
-                /* check the duplicate */
-                int is_dup = 0;
-                for(int j=i+1; j<ele; j++){
-
-                        if(a[i]==a[j]){
-                                is_dup = 1;
-                                break;
-                        }
-                }
-
-                if(is_dup == 1){
-                        printf("%d ", a[i]);
-			break;
+                if(is_checked) {
+                        printf("%d\n", a[i]);
+                        break;
 		}
-        }
-
-        printf("\n");
+	}
 }
 
 int main(){

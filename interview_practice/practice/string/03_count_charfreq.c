@@ -14,21 +14,21 @@ o -> 2
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 void count_freq(char s[]){
 
-	int i,j;
 	int size = strlen(s);
-	int seen[size];
-	memset(seen, 0, size*sizeof(int));
+	uint8_t seen[size];
+	memset(seen, 0, size);
 
-	for(i=0; s[i]; i++){
+	for(int i=0; s[i]; i++){
 
 		if(seen[i] ==1 || s[i] == ' ')  //skip for seen character and space
 			continue;
 
 		int count=1;
-		for(j=i+1; s[j]; j++){
+		for(int j=i+1; s[j]; j++){
 			
 			if(s[i] == s[j]){
 				count++;

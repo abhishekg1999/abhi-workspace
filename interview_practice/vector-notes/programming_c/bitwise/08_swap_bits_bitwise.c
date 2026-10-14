@@ -14,6 +14,16 @@ void printbits(int num){
 
 }
 
+uint32_t swap_nibble(uint32_t num) {
+
+	uint32_t nib_h = (num& 0x000000F0)>>4;
+	uint32_t nib_l = (num& 0x0000000F)<<4;
+
+	uint32_t remain = (num& 0xFFFFFF00);
+
+	return nib_h | nib_l | remain;
+}
+
 /* byte/8-bit swap */
 uint32_t swap_b0_and_b1(uint32_t num){
 	
@@ -98,7 +108,7 @@ int main(){
 	uint32_t reg = 0x12345678;
 	
 	printbits(reg);
-	uint32_t temp = swap_32bit(reg);
+	uint32_t temp = swap_nibble(reg);
 	printbits(temp);	
 
 	return 0;

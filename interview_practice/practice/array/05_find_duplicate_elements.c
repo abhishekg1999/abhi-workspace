@@ -11,21 +11,21 @@ output:
 
 #include <stdio.h>
 #include <string.h>
+#include <stdint.h>
 
 /* 
 void find_duplicate(int a[], int ele){
 
-	int i, j;
-	int seen[ele];
+	uint8_t seen[ele];
 	memset(seen, 0, ele);
 
-	for(i=0; i<ele; i++){
+	for(int i=0; i<ele; i++){
 
 		if(seen[i] == 1)  //if element already seen , skip it 
 			continue;
 
 		int count=1;
-		for(j=i+1; j<ele; j++){
+		for(int j=i+1; j<ele; j++){
 
 			if(a[i] == a[j]){
 				count++;
