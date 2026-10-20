@@ -1,0 +1,17 @@
+22:40:31 **** Incremental Build of configuration Debug for project interrupt_priority ****
+make -j12 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F410RBTx -DSTM32 -DNUCLEO_F410RB -DSTM32F4 -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc -o "interrupt_priority.elf" @"objects.list"   -mcpu=cortex-m4 -T"D:\EmbeddedSystem-prog-on-ARMcortex-M3M4_mc\cortexmx\interrupt_priority\STM32F410RBTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="interrupt_priority.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: interrupt_priority.elf
+ 
+arm-none-eabi-size  interrupt_priority.elf 
+arm-none-eabi-objdump -h -S interrupt_priority.elf  > "interrupt_priority.list"
+   text	   data	    bss	    dec	    hex	filename
+   3648	    104	   1904	   5656	   1618	interrupt_priority.elf
+Finished building: default.size.stdout
+ 
+Finished building: interrupt_priority.list
+ 
+
+22:40:31 Build Finished. 0 errors, 0 warnings. (took 403ms)
+

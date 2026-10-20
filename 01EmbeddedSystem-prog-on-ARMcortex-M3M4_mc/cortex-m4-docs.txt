@@ -1,0 +1,5 @@
+
+## gcc attributes manual
+https://gcc.gnu.org/onlinedocs/gcc-15.1.0/gcc/index.html#SEC_Contents
+
+

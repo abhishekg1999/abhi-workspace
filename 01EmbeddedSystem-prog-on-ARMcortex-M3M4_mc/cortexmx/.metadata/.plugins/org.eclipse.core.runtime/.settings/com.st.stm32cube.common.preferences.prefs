@@ -1,0 +1,5 @@
+DeviceConfigurationTool..OffLineMode=true
+DeviceConfigurationTool..UpdaterCheckInterval=5
+DeviceConfigurationTool..UpdaterDataRefresh=dataRefreshNone
+DeviceConfigurationTool..UpdaterDataRefreshInterfval=3
+eclipse.preferences.version=1

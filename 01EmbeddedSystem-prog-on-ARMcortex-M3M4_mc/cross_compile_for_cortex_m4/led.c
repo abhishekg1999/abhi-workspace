@@ -1,0 +1,40 @@
+/*
+ * led.c
+ *
+ *  Created on: Jul 12, 2026
+ *      Author: Abhishek Walia
+ */
+
+#include <stdint.h>
+#include "led.h"
+
+void led_init_all(void)
+{
+    uint32_t *pRccAhb1enr = (uint32_t*)0x40023830;
+    uint32_t *pGpioaModeReg = (uint32_t*)0x40020000;
+
+    *pRccAhb1enr |= (1 << 0);                 // Enable Port A clock
+    *pGpioaModeReg &= ~(3 << (2 * LED_GREEN)); // Clear existing bits for Pin 5
+    *pGpioaModeReg |= (1 << (2 * LED_GREEN));  // Set Pin 5 as Output (01)
+
+    led_off(LED_GREEN);
+}
+
+void led_on(uint8_t led_no)
+{
+    uint32_t *pGpioaDataReg = (uint32_t*)0x40020014;
+    *pGpioaDataReg |= (1 << led_no);
+}
+
+void led_off(uint8_t led_no)
+{
+    uint32_t *pGpioaDataReg = (uint32_t*)0x40020014;
+    *pGpioaDataReg &= ~(1 << led_no);
+}
+
+// Simple software delay loop since FreeRTOS osDelay() is not running yet
+void delay(uint32_t count)
+{
+  for(uint32_t i = 0 ; i < count ; i++);
+}
+

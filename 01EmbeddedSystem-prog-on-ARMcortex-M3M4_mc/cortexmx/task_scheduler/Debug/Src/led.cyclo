@@ -1,0 +1,4 @@
+../Src/led.c:11:6:led_init_all	1
+../Src/led.c:23:6:led_on	1
+../Src/led.c:29:6:led_off	1
+../Src/led.c:36:6:delay	2
