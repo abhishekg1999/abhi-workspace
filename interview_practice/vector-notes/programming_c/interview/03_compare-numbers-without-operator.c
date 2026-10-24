@@ -2,7 +2,7 @@
 #include <stdio.h>
 int comp_fun(int a,int b)
 {
-	if(a^b)
+	if( (a^b) < 0 )
 		return 1;
 	else
 		return 0;

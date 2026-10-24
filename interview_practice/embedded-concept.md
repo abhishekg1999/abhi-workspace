@@ -138,6 +138,19 @@ int *b		int *b
 note: it is actually a pointer inside the function 
 
 
+## The Memory vs. Interpretation Rule
+
+The Storage (Memory): 
+When you store -5, the hardware converts it into the Two's Complement binary sequence: 11111111 11111111 11111111 11111011. This raw data is what actually sits in the RAM.
+
+Signed int Interpretation: 
+If the variable is signed, the CPU looks at that leftmost 1, recognizes it as a negative sign, and decodes the Two's Complement back into -5.
+
+unsigned int Interpretation: 
+If the variable is unsigned, the CPU ignores the sign rule, treats the leftmost 1 as a massive positive value (\(2^{31}\)), and reads the number as 4,294,967,291.
+
+conclusion: 
+The bits in memory are identical. The computer always uses Two's Complement to store negative values, but an unsigned int just "misinterprets" those exact bits as a large positive number.
 
 ## embedded boot flow :
 
@@ -474,7 +487,7 @@ Physical Address
           ▼
       RAM
  
-So    
+So
 malloc()
    ↓
 User virtual memory

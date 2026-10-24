@@ -22,3 +22,10 @@ int main(){
 
 	return 0;
 }
+
+/*
+8 in binary: 1000 (Exactly one 1 bit)
+8 - 1 = 7 in binary: 0111 (The single 1 flipped to 0, and all trailing 0s flipped to 1s) 
+
+trailing 0s : after 3rd bit all 0s are trailing 0s (left to right)
+*/

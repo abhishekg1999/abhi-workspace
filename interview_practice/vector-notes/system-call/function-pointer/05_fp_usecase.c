@@ -20,24 +20,25 @@ int my_sub(int a, int b){
 	printf("my_sub called ..\n");
 }
 
+/* define structure */
 struct my_operations {
 
 	void (*open)(void);
+	void (*close)(void);
 	int (*add)(int, int);
 	int (*sub)(int, int);
-	void (*close)(void);
 };
 
+/* Initialize with functions */
+struct my_operations myops = {
+
+	.open = my_open,
+	.add = my_add,
+	.sub = my_sub,
+	.close = my_close,
+};
 
 int main(){
-
-	struct my_operations myops = {
-
-		.open = my_open,
-		.add = my_add,
-		.sub = my_sub,
-		.close = my_close,
-	};
 
 	int ret;
 	myops.open();

@@ -5,6 +5,6 @@ int main()
   	printf ("Enter two integer values: ");
   	scanf ("%d%d", &n1, &n2);
  
-	(n1^n2) ? printf("both are different\n") : printf("both are same\n"); 
+	((n1^n2) < 0) ? printf("both are different\n") : printf("both are same\n"); 
   	return 0;
 }

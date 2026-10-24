@@ -15,27 +15,27 @@ Shared Memory → Full-duplex
 
 ## used header files
 
-<unistd.h>
+#include<unistd.h>
 pipe()
 read(), write(), sleep()
 
-<sys/socket.h>
-socketpair()
-
-<sys/stat.h>
-mkfifo()
-
-<fcntl.h>
+#include<fcntl.h>
 open(), fcntl()
 
-<sys/msg.h>
-msgget(), msgsnd(), msgrcv(), msgctl()
-
-<stdlib.h>
+#include<stdlib.h>
 exit(), malloc()
 
-<signal.h>
+#include<signal.h>
 signal()
 
-<sys/shm.h>
+#include<sys/socket.h>
+socketpair()
+
+#include<sys/stat.h>
+mkfifo()
+
+#include<sys/msg.h>
+msgget(), msgsnd(), msgrcv(), msgctl()
+
+#include<sys/shm.h>
 shmget(), shmat(), shmdt(), shmctl()
